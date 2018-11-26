@@ -265,6 +265,7 @@ void printScreen() {
 void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::string name;
 	std::locale loc;
+	int playerSize = -1;
 
 	pokemonList.push_back(aerodactyl);
 	pokemonList.push_back(alakazam);
@@ -320,12 +321,42 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		}
 		for (int x = 0; x < 35; x++) {
 			if (name == pokemonList[x].name) {
-				player.push_back(pokemonList[x]);
-				/*for (int f = 0; f < player.size(); f++) {
+				if (player.size() == 0) {
+					player.push_back(pokemonList[x]);
+					playerSize = player.size();
+				}
+				for (int f = 0; f < player.size(); f++) {
 					if (name != player[f].name) {
 						player.push_back(pokemonList[x]);
+						playerSize = player.size();
+					} 
+				}
+			}
+		}
+		while(player.size() != playerSize) {
+			std::cout << "Choose a real/new pokemon: ";
+
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+
+			std::cin >> name;
+			for (int i = 0; i < name.length(); i++) {
+				std::tolower(name[i], loc);
+			}
+
+			for (int x = 0; x < 35; x++) {
+				if (name == pokemonList[x].name) {
+					if (player.size() == 0) {
+						player.push_back(pokemonList[x]);
+						playerSize = player.size();
 					}
-				}*/
+					for (int f = 0; f < player.size(); f++) {
+						if (name != player[f].name) {
+							player.push_back(pokemonList[x]);
+							playerSize = player.size();
+						}
+					}
+				}
 			}
 		}
 	}
@@ -336,7 +367,6 @@ void startBattle(std::vector<Pokemon> player) {
 	int moveChoice;
 	system("CLS");
 
-	std::cout << player.size();
 	if (currentPokemon < player.size()) {
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
 		std::cout << "1. " << player[currentPokemon].move1.name << std::endl;
@@ -346,6 +376,18 @@ void startBattle(std::vector<Pokemon> player) {
 		std::cout << "Player 1 pick a move: ";
 		std::cin >> moveChoice;
 
+		if (moveChoice == 1) {
+			player[currentPokemon].move1.useMove();
+		}
+		else if (moveChoice == 2) {
+			player[currentPokemon].move2.useMove();
+		}
+		else if (moveChoice == 3) {
+			player[currentPokemon].move3.useMove();
+		}
+		else if (moveChoice == 4) {
+			player[currentPokemon].move4.useMove();
+		}
 	}
 	
 }

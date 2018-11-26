@@ -18,6 +18,8 @@ public:
 	Moves(int, int, float, std::string, std::string, std::string);
 	Moves(std::string, int, int, float, std::string, std::string, std::string);
 
+	void useMove();
+
 	//Getters and Setters
 	//=======================
 	void setPOW(int);
