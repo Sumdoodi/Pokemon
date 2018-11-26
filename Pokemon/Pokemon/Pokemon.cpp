@@ -25,6 +25,22 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 	move4 = newMove4;
 }
 
+void Pokemon::useMove(Moves &move, Pokemon &other){
+	int damage = 0;
+	float modifier = 1;
+	//typecompare(other, move);
+	//modifier = typemodifier;
+	std::cout << move.getCAT();
+	if (move.getCAT() == "P") {
+		damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
+	}
+	else if (move.getCAT() == "Sp") {
+		damage = (((22 * move.getPOW()*stat.getSpATK() / other.stat.getSpDEF()) / 50) + 2) * modifier;
+	}
+
+	other.stat.setHP(other.stat.getHP() - damage);
+}
+
 void Pokemon::typecompare(Pokemon other, Moves usedMove)
 {
 

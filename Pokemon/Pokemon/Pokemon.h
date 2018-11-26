@@ -26,6 +26,8 @@ public:
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
 
+	void useMove(Moves&, Pokemon&);
+
 	std::string getName() {
 		return name;
 	}

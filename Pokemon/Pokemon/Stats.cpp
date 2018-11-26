@@ -15,7 +15,7 @@ Stats::Stats()
 
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD)
 {
-	HP = newHP;
+	HP = (((2 * newHP+100) * 50) / 100) + 10;
 	ATK = newATK;
 	DEF = newDEF;
 	SpATK = newSpATK;
@@ -25,7 +25,7 @@ Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int 
 
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD, double newACC, double newEVA)
 {
-	HP = newHP;
+	HP = (((2 * newHP + 100) * 50) / 100) + 10;
 	ATK = newATK;
 	DEF = newDEF;
 	SpATK = newSpATK;

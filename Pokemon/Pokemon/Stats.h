@@ -3,6 +3,9 @@
 
 class Stats {
 private:
+
+public:
+
 	int HP; //Health
 	int ATK; //Attack
 	int DEF; //Defense
@@ -12,7 +15,6 @@ private:
 	double acc; //Accuracy
 	double eva; //Evasiveness
 
-public:
 	Stats();
 	Stats(int, int, int, int, int, int);
 	Stats(int, int, int, int, int, int, double, double);

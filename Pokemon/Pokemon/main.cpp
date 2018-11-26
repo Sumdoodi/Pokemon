@@ -5,6 +5,8 @@
 #include "Pokemon.h"
 #include "Moves.h"
 #include "Stats.h"
+#include <ctime>
+#include <cstdlib>
 
 bool story = false, multiplayer = false;
 std::vector<Pokemon> pokemonList;
@@ -312,87 +314,184 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::cout << "Poliwrath			Radicate			Raichu				Sandslash" << std::endl;
 	std::cout << "Scyther				Snorlax				Tentacruel			Golem" << std::endl;
 	std::cout << "Venusaur			Weezing				Zapdos" << std::endl;
+	bool poke = false;
+	bool duplicate = false;
+	int num;
+	std::cout << "how many pokemon: ";
+	std::cin >> num;
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < num; i++) {
+		poke = false;
+		duplicate = false;
 		std::cout << "Choose a pokemon: ";
 		std::cin >> name;
 		for (int i = 0; i < name.length(); i++) {
 			std::tolower(name[i], loc);
 		}
+
 		for (int x = 0; x < 35; x++) {
 			if (name == pokemonList[x].name) {
 				if (player.size() == 0) {
 					player.push_back(pokemonList[x]);
-					playerSize = player.size();
+
+					poke = true;
 				}
-				for (int f = 0; f < player.size(); f++) {
-					if (name != player[f].name) {
-						player.push_back(pokemonList[x]);
-						playerSize = player.size();
-					} 
-				}
-			}
-		}
-		while(player.size() != playerSize) {
-			std::cout << "Choose a real/new pokemon: ";
-
-			std::cin.clear();
-			std::cin.ignore(INT_MAX, '\n');
-
-			std::cin >> name;
-			for (int i = 0; i < name.length(); i++) {
-				std::tolower(name[i], loc);
-			}
-
-			for (int x = 0; x < 35; x++) {
-				if (name == pokemonList[x].name) {
-					if (player.size() == 0) {
-						player.push_back(pokemonList[x]);
-						playerSize = player.size();
-					}
+				else {
 					for (int f = 0; f < player.size(); f++) {
-						if (name != player[f].name) {
-							player.push_back(pokemonList[x]);
-							playerSize = player.size();
+						if (name == player[f].name) {
+							duplicate = true;
 						}
 					}
+					if (duplicate == false)
+					{
+						player.push_back(pokemonList[x]);
+						poke = true;
+					}
 				}
+
 			}
 		}
+		if (poke == false) {
+			std::cout << "That is not real or has already been picked: " << std::endl;
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			i--;
+		}
+		std::cout << "Current Team: " << std::endl;
+		for (int i = 0; i < player.size(); i++)
+			std::cout << player[i].name << std::endl;
 	}
 }
 
-void startBattle(std::vector<Pokemon> player) {
+void selectMove(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0;
+	int opponentCurrent = 0;
 	int moveChoice;
+	int oppMoveChoice;
 	system("CLS");
 
 	if (currentPokemon < player.size()) {
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
-		std::cout << "1. " << player[currentPokemon].move1.name << std::endl;
-		std::cout << "2. " << player[currentPokemon].move2.name << std::endl;
-		std::cout << "3. " << player[currentPokemon].move3.name << std::endl;
-		std::cout << "4. " << player[currentPokemon].move4.name << std::endl;
+		std::cout << "1. " << player[currentPokemon].move1.name << "	" << player[currentPokemon].move1.getPP() << "/" << player[currentPokemon].move1.maxPP << std::endl;
+		std::cout << "2. " << player[currentPokemon].move2.name << "	" << player[currentPokemon].move2.getPP() << "/" << player[currentPokemon].move2.maxPP << std::endl;
+		std::cout << "3. " << player[currentPokemon].move3.name << "	" << player[currentPokemon].move3.getPP() << "/" << player[currentPokemon].move3.maxPP << std::endl;
+		std::cout << "4. " << player[currentPokemon].move4.name << "	" << player[currentPokemon].move4.getPP() << "/" << player[currentPokemon].move4.maxPP << std::endl;
 		std::cout << "Player 1 pick a move: ";
 		std::cin >> moveChoice;
 
-		if (moveChoice == 1) {
-			player[currentPokemon].move1.useMove();
+		oppMoveChoice = rand() % 4 + 1;
+
+		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
+
+		std::cout << std::endl << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
+
+		if (player[currentPokemon].stat.SPD > trainer[opponentCurrent].stat.SPD) {
+			int temp = opponentCurrent;
+			int temp2 = currentPokemon;
+
+			if (moveChoice == 1) {
+				player[currentPokemon].useMove(player[currentPokemon].move1, trainer[opponentCurrent]);
+				std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move1.name << "!" << std::endl;
+			}
+			else if (moveChoice == 2) {
+				player[currentPokemon].useMove(player[currentPokemon].move2, trainer[opponentCurrent]);
+				std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move2.name << "!" << std::endl;
+			}
+			else if (moveChoice == 3) {
+				player[currentPokemon].useMove(player[currentPokemon].move3, trainer[opponentCurrent]);
+				std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move3.name << "!" << std::endl;
+			}
+			else if (moveChoice == 4) {
+				player[currentPokemon].useMove(player[currentPokemon].move4, trainer[opponentCurrent]);
+				std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move4.name << "!" << std::endl;
+			}
+
+			if (player[currentPokemon].stat.HP <= 0) {
+				currentPokemon++;
+			}
+			else if (trainer[opponentCurrent].stat.HP <= 0) {
+				opponentCurrent++;
+			}
+
+			if (opponentCurrent == temp && currentPokemon == temp2) {
+				if (oppMoveChoice == 1) {
+					player[currentPokemon].useMove(player[currentPokemon].move1, trainer[opponentCurrent]);
+					std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move1.name << "!" << std::endl;
+				}
+				else if (oppMoveChoice == 2) {
+					player[currentPokemon].useMove(player[currentPokemon].move2, trainer[opponentCurrent]);
+					std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move2.name << "!" << std::endl;
+				}
+				else if (oppMoveChoice == 3) {
+					player[currentPokemon].useMove(player[currentPokemon].move3, trainer[opponentCurrent]);
+					std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move3.name << "!" << std::endl;
+				}
+				else if (oppMoveChoice == 4) {
+					player[currentPokemon].useMove(player[currentPokemon].move4, trainer[opponentCurrent]);
+					std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move4.name << "!" << std::endl;
+				}
+			}
 		}
-		else if (moveChoice == 2) {
-			player[currentPokemon].move2.useMove();
+		else {
+			int temp = opponentCurrent;
+			int temp2 = currentPokemon;
+
+			if (oppMoveChoice == 1) {
+				player[currentPokemon].useMove(player[currentPokemon].move1, trainer[opponentCurrent]);
+				std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move1.name << "!" << std::endl;
+			}
+			else if (oppMoveChoice == 2) {
+				player[currentPokemon].useMove(player[currentPokemon].move2, trainer[opponentCurrent]);
+				std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move2.name << "!" << std::endl;
+			}
+			else if (oppMoveChoice == 3) {
+				player[currentPokemon].useMove(player[currentPokemon].move3, trainer[opponentCurrent]);
+				std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move3.name << "!" << std::endl;
+			}
+			else if (oppMoveChoice == 4) {
+				player[currentPokemon].useMove(player[currentPokemon].move4, trainer[opponentCurrent]);
+				std::cout << trainer[opponentCurrent].name << " used " << trainer[opponentCurrent].move4.name << "!" << std::endl;
+			}
+
+			if (player[currentPokemon].stat.HP <= 0) {
+				currentPokemon++;
+			}
+			else if (trainer[opponentCurrent].stat.HP <= 0) {
+				opponentCurrent++;
+			}
+
+			if (opponentCurrent == temp && currentPokemon == temp2) {
+				if (moveChoice == 1) {
+					player[currentPokemon].useMove(player[currentPokemon].move1, trainer[opponentCurrent]);
+					std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move1.name << "!" << std::endl;
+				}
+				else if (moveChoice == 2) {
+					player[currentPokemon].useMove(player[currentPokemon].move2, trainer[opponentCurrent]);
+					std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move2.name << "!" << std::endl;
+				}
+				else if (moveChoice == 3) {
+					player[currentPokemon].useMove(player[currentPokemon].move3, trainer[opponentCurrent]);
+					std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move3.name << "!" << std::endl;
+				}
+				else if (moveChoice == 4) {
+					player[currentPokemon].useMove(player[currentPokemon].move4, trainer[opponentCurrent]);
+					std::cout << player[currentPokemon].name << " used " << player[currentPokemon].move4.name << "!" << std::endl;
+				}
+			}
+
 		}
-		else if (moveChoice == 3) {
-			player[currentPokemon].move3.useMove();
-		}
-		else if (moveChoice == 4) {
-			player[currentPokemon].move4.useMove();
-		}
+
+		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
+
+		std::cout << std::endl << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
 	}
-	
+}
+void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
+	selectMove(player, trainer);
 }
 
 int main() {
+	srand(time(NULL));
 
 	printScreen();
 
@@ -408,7 +507,7 @@ int main() {
 		trainer.push_back(beedrill);
 		trainer.push_back(pidgeot);
 
-		startBattle(player1);
+		startBattle(player1, trainer);
 	}
 	
 	if (multiplayer == true) {

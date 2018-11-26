@@ -6,7 +6,6 @@ class Moves {
 private:
 	int pow; //Power
 	int pp; //Power Points
-	int maxPP;
 	float acc; //Accuracy
 	std::string ty; //Type
 	std::string cat; //Category
@@ -14,11 +13,10 @@ private:
 
 public:
 	std::string name; //Name
+	int maxPP;
 	Moves();
 	Moves(int, int, float, std::string, std::string, std::string);
 	Moves(std::string, int, int, float, std::string, std::string, std::string);
-
-	void useMove();
 
 	//Getters and Setters
 	//=======================
