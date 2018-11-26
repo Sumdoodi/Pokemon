@@ -317,7 +317,11 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		}
 		for (int x = 0; x < pokemonList.size(); x++) {
 			if (name == pokemonList[x].name) {
-				player[i] = pokemonList[x];
+				for (int f = 0; f < player.size(); f++) {
+					if (name != player[f].name) {
+						player[i] = pokemonList[x];
+					}
+				}
 			}
 		}
 	}
