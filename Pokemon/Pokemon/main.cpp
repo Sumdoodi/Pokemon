@@ -7,7 +7,7 @@
 #include "Stats.h"
 
 bool story = false, multiplayer = false;
-Pokemon pokemonList[35];
+std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;
 
 
@@ -266,41 +266,41 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::string name;
 	std::locale loc;
 
-	pokemonList[0] = aerodactyl;
-	pokemonList[1] = alakazam;
-	pokemonList[2] = ampharos;
-	pokemonList[3] = arbok;
-	pokemonList[4] = articuno;
-	pokemonList[5] = beedrill;
-	pokemonList[6] = blastoise;
-	pokemonList[7] = butterfree;
-	pokemonList[8] = charizard;
-	pokemonList[9] = clefable;
-	pokemonList[10] = dragonite;
-	pokemonList[11] = exeggutor;
-	pokemonList[12] = gengar;
-	pokemonList[13] = gyrados;
-	pokemonList[14] = jynx;
-	pokemonList[15] = lapras;
-	pokemonList[16] = machamp;
-	pokemonList[17] = magneton;
-	pokemonList[18] = mewtwo;
-	pokemonList[19] = moltres;
-	pokemonList[20] = nidoking;
-	pokemonList[21] = onix;
-	pokemonList[22] = pidgeot;
-	pokemonList[23] = poliwrath;
-	pokemonList[24] = raticate;
-	pokemonList[25] = sandslash;
-	pokemonList[26] = scyther;
-	pokemonList[27] = snorlax;
-	pokemonList[28] = tentacruel;
-	pokemonList[29] = golem;
-	pokemonList[30] = venusaur;
-	pokemonList[31] = weezing;
-	pokemonList[32] = zapdos;
-	pokemonList[33] = raichu;
-	pokemonList[34] = arcanine;
+	pokemonList.push_back(aerodactyl);
+	pokemonList.push_back(alakazam);
+	pokemonList.push_back(ampharos);
+	pokemonList.push_back(arbok);
+	pokemonList.push_back(articuno);
+	pokemonList.push_back(beedrill);
+	pokemonList.push_back(blastoise);
+	pokemonList.push_back(butterfree);
+	pokemonList.push_back(charizard);
+	pokemonList.push_back(clefable);
+	pokemonList.push_back(dragonite);
+	pokemonList.push_back(exeggutor);
+	pokemonList.push_back(gengar);
+	pokemonList.push_back(gyrados);
+	pokemonList.push_back(jynx);
+	pokemonList.push_back(lapras);
+	pokemonList.push_back(machamp);
+	pokemonList.push_back(magneton);
+	pokemonList.push_back(mewtwo);
+	pokemonList.push_back(moltres);
+	pokemonList.push_back(nidoking);
+	pokemonList.push_back(onix);
+	pokemonList.push_back(pidgeot);
+	pokemonList.push_back(poliwrath);
+	pokemonList.push_back(raticate);
+	pokemonList.push_back(sandslash);
+	pokemonList.push_back(scyther);
+	pokemonList.push_back(snorlax);
+	pokemonList.push_back(tentacruel);
+	pokemonList.push_back(golem);
+	pokemonList.push_back(venusaur);
+	pokemonList.push_back(weezing);
+	pokemonList.push_back(zapdos);
+	pokemonList.push_back(raichu);
+	pokemonList.push_back(arcanine);
 
 	std::cout << "Aerodactyl			Alakazam			Ampharos			Arbok" << std::endl;
 	std::cout << "Arcanine			Articuno			Beedrill			Blastoise" << std::endl;
@@ -320,11 +320,12 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		}
 		for (int x = 0; x < 35; x++) {
 			if (name == pokemonList[x].name) {
-				for (int f = 0; f < player.size(); f++) {
+				player.push_back(pokemonList[x]);
+				/*for (int f = 0; f < player.size(); f++) {
 					if (name != player[f].name) {
 						player.push_back(pokemonList[x]);
 					}
-				}
+				}*/
 			}
 		}
 	}
@@ -332,7 +333,9 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 
 void startBattle(std::vector<Pokemon> player) {
 	int currentPokemon = 0;
-	//system("CLS");
+	int moveChoice;
+	system("CLS");
+
 	std::cout << player.size();
 	if (currentPokemon < player.size()) {
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
@@ -341,6 +344,8 @@ void startBattle(std::vector<Pokemon> player) {
 		std::cout << "3. " << player[currentPokemon].move3.name << std::endl;
 		std::cout << "4. " << player[currentPokemon].move4.name << std::endl;
 		std::cout << "Player 1 pick a move: ";
+		std::cin >> moveChoice;
+
 	}
 	
 }

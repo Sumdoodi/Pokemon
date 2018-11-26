@@ -1,8 +1,4 @@
 ﻿  main.cpp
 c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(318): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(323): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(337): warning C4018: '<': signed/unsigned mismatch
-  Moves.cpp
-  Pokemon.cpp
-  Generating Code...
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(339): warning C4018: '<': signed/unsigned mismatch
   Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe

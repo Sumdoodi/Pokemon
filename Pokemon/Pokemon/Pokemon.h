@@ -8,7 +8,7 @@ class Pokemon {
 private:
 
 public:
-	std::string name; //Move name
+	std::string name; //Pokemon name
 
 	Stats stat; //Statistics
 	std::string ty; //Type 1
@@ -25,6 +25,10 @@ public:
 
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
+
+	std::string getName() {
+		return name;
+	}
 
 };
 
