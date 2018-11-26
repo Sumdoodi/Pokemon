@@ -30,7 +30,6 @@ void Pokemon::useMove(Moves &move, Pokemon &other){
 	float modifier = 1;
 	//typecompare(other, move);
 	//modifier = typemodifier;
-	std::cout << move.getCAT();
 	if (move.getCAT() == "P") {
 		damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
 	}
