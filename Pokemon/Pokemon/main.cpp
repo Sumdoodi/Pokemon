@@ -8,6 +8,8 @@
 
 bool story = false, multiplayer = false;
 std::vector<Pokemon> pokemonList;
+std::vector<Pokemon> trainer;
+
 
 //Generate Pokemon stats
 Stats venusaur_stats(80, 82, 83, 100, 100, 80);
@@ -73,6 +75,7 @@ Moves solarbeam(120, 10, 1.0f, "grass", "Sp", "charge");
 Moves megadrain(40, 15, 1.0f, "grass", "Sp", "drain");
 Moves gigadrain(75, 10, 1.0f, "grass", "Sp", "drain");
 Moves sleeppowder(0, 15, 0.75f, "grass", "S", "sleep");
+Moves stunspore(0, 30, 0.75f, "grass", "S", "par");
 
 //Fire 3 moves
 Moves firefang(65, 15, 0.95f, "fire", "P", "burn+flinch");
@@ -336,6 +339,14 @@ int main() {
 		printChoosePokemon(player1);
 	}
 
+	std::vector<Pokemon> trainer;
+	trainer[0] = venusaur;
+	trainer[1] = blastoise;
+	trainer[2] = charizard;
+	trainer[3] = butterfree;
+	trainer[4] = beedrill;
+	trainer[5] = pidgeot;
+	
 	if (multiplayer == true) {
 		Pokemon player1;
 		Pokemon player2;
@@ -345,3 +356,4 @@ int main() {
 
 	return 0;
 }
+

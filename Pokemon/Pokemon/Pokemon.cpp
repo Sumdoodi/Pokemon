@@ -12,7 +12,7 @@ Pokemon::Pokemon()
 	move4 = Moves();
 }
 
-Pokemon::Pokemon(Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4)
+Pokemon::Pokemon(std::string, Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4)
 {
 	stat = newStats;
 	ty = newTY;
