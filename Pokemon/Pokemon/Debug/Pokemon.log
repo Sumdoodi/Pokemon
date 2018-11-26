@@ -1,7 +1,23 @@
-﻿  main.cpp
+﻿  Pokemon.cpp
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(39): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(42): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(30): warning C4101: 'Burn': unreferenced local variable
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(53): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(63): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(72): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  main.cpp
 c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(332): warning C4018: '<': signed/unsigned mismatch
 c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(337): warning C4018: '<': signed/unsigned mismatch
 c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(349): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(397): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(464): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(395): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(452): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(458): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(464): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(467): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(485): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(67): warning C4715: 'Pokemon::critical': not all control paths return a value
   Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe

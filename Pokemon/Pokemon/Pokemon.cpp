@@ -25,10 +25,15 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 	move4 = newMove4;
 }
 
-void Pokemon::useMove(Moves &move, Pokemon &other){
+void Pokemon::useMove(Moves &move, Pokemon &other) {
 	int damage = 0;
-	float modifier = 1;
-	//typecompare(other, move);
+	float Critical, Stab, Burn, Random;
+	Random = (rand() % 25 + 85) / 100;
+	typecompare(other, move);
+	Critical = critical();
+	Stab = stab(move);
+	float modifier = Critical * Stab * typemodifier  * Random;
+
 	//modifier = typemodifier;
 	if (move.getCAT() == "P") {
 		damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
@@ -36,9 +41,39 @@ void Pokemon::useMove(Moves &move, Pokemon &other){
 	else if (move.getCAT() == "Sp") {
 		damage = (((22 * move.getPOW()*stat.getSpATK() / other.stat.getSpDEF()) / 50) + 2) * modifier;
 	}
+	std::cout << "crit = " << Critical << "stab: " << Stab << "type" << typemodifier;
 
 	other.stat.setHP(other.stat.getHP() - damage);
 }
+
+int Pokemon::critical()// Moves usedMove)
+{
+	bool crit;
+	float chance;
+	chance = rand() % 10000;
+
+	if (chance < 625)
+		crit = true;
+	else
+		crit = false;
+	/*if (usedMove.getTY() == "slash")
+		chance =
+	if (crit)*/
+	if (crit)
+		return 1.5;
+
+	if (!crit)
+		return 1;
+}
+
+int Pokemon::stab(Moves usedMove)
+{
+	if (usedMove.getTY() == ty || usedMove.getTY() == ty2)
+		return 1.5;
+	else
+		return 1;
+}
+
 
 void Pokemon::typecompare(Pokemon other, Moves usedMove)
 {

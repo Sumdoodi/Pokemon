@@ -370,7 +370,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	system("CLS");
 }
 
-void useTheMove(int moveChoice, Pokemon one, Pokemon two) {
+void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 	if (moveChoice == 1) {
 		one.useMove(one.move1, two);
 		std::cout << one.name << " used " << one.move1.name << "!" << std::endl;
@@ -388,9 +388,7 @@ void useTheMove(int moveChoice, Pokemon one, Pokemon two) {
 		std::cout << one.name << " used " << one.move4.name << "!" << std::endl;
 	}
 }
-void selectMove(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
-	int currentPokemon = 0;
-	int opponentCurrent = 0;
+void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
 	int moveChoice;
 	int oppMoveChoice;
 
@@ -409,7 +407,7 @@ void selectMove(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 
 		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
 
-		std::cout << std::endl << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
+		std::cout << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
 
 		if (player[currentPokemon].stat.SPD > trainer[opponentCurrent].stat.SPD) {
 			int temp = opponentCurrent;
@@ -448,15 +446,38 @@ void selectMove(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 				useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 			}
 		}
+		int count = 0;
+		int count2 = 0;
+
+		for (int f = 0; f < player.size(); f++) {
+			if (player[f].stat.getHP() <= 0) {
+				count++;
+			}
+		}
+
+		for (int f = 0; f < trainer.size(); f++) {
+			if (trainer[f].stat.getHP() <= 0) {
+				count2++;
+			}
+		}
+
+		if (count >= player.size()) {
+			p1Alive = false;
+		}
+		if (count2 >= trainer.size()) {
+			trainerAlive = false;
+		}
 
 		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
 
-		std::cout << std::endl << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
+		std::cout << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
 	}
 }
-void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
+void startBattle(std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
+	int currentPokemon = 0, opponentCurrent = 0;
+
 	while (p1Alive == true && trainerAlive == true) {
-		selectMove(player, trainer);
+		selectMove(currentPokemon, opponentCurrent, player, trainer);
 	}
 }
 

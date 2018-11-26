@@ -22,6 +22,8 @@ public:
 
 	float typemodifier;
 	void typecompare(Pokemon, Moves);
+	int critical();
+	int stab(Moves);
 
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
