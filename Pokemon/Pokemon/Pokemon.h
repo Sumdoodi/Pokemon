@@ -20,6 +20,9 @@ public:
 	Moves move3; //Third Move
 	Moves move4; //Fourth Move
 
+	float typemodifier;
+	void typecompare(Pokemon, Moves);
+
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
 

@@ -332,7 +332,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 
 void startBattle(std::vector<Pokemon> player) {
 	int currentPokemon = 0;
-	system("CLS");
+	//system("CLS");
 	std::cout << player.size();
 	if (currentPokemon < player.size()) {
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
