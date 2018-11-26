@@ -13,8 +13,12 @@ private:
 	std::string sec; //Secondary Effect
 
 public:
+	std::string name; //Name
+	float typemodifier;
+	void typecompare(Pokemon);
 	Moves();
 	Moves(int, int, float, std::string, std::string, std::string);
+	Moves(std::string, int, int, float, std::string, std::string, std::string);
 
 	//Getters and Setters
 	//=======================
