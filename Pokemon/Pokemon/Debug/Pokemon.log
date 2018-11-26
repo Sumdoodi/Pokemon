@@ -1,7 +1,7 @@
 ﻿  main.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(328): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(340): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(361): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(373): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(494): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(331): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(336): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(348): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(378): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(499): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe

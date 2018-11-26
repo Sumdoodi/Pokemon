@@ -305,15 +305,6 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	pokemonList.push_back(raichu);
 	pokemonList.push_back(arcanine);
 
-	std::cout << "Aerodactyl			Alakazam			Ampharos			Arbok" << std::endl;
-	std::cout << "Arcanine			Articuno			Beedrill			Blastoise" << std::endl;
-	std::cout << "Butterfree			Charizard			Clefable			Dragonite" << std::endl;
-	std::cout << "Exeggutor			Gengar				Gyrados				Jynx" << std::endl;
-	std::cout << "Lapras				Machamp				Magneton			Mewtwo" << std::endl;
-	std::cout << "Moltres				Nidoking			Onix				Pidgeot" << std::endl;
-	std::cout << "Poliwrath			Radicate			Raichu				Sandslash" << std::endl;
-	std::cout << "Scyther				Snorlax				Tentacruel			Golem" << std::endl;
-	std::cout << "Venusaur			Weezing				Zapdos" << std::endl;
 	bool poke = false;
 	bool duplicate = false;
 	int num;
@@ -323,6 +314,23 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	for (int i = 0; i < num; i++) {
 		poke = false;
 		duplicate = false;
+
+		system("CLS");
+
+		std::cout << "Aerodactyl			Alakazam			Ampharos			Arbok" << std::endl;
+		std::cout << "Arcanine			Articuno			Beedrill			Blastoise" << std::endl;
+		std::cout << "Butterfree			Charizard			Clefable			Dragonite" << std::endl;
+		std::cout << "Exeggutor			Gengar				Gyrados				Jynx" << std::endl;
+		std::cout << "Lapras				Machamp				Magneton			Mewtwo" << std::endl;
+		std::cout << "Moltres				Nidoking			Onix				Pidgeot" << std::endl;
+		std::cout << "Poliwrath			Radicate			Raichu				Sandslash" << std::endl;
+		std::cout << "Scyther				Snorlax				Tentacruel			Golem" << std::endl;
+		std::cout << "Venusaur			Weezing				Zapdos" << std::endl;
+
+		std::cout << "Current Team: " << std::endl;
+		for (int i = 0; i < player.size(); i++)
+			std::cout << player[i].name << std::endl;
+
 		std::cout << "Choose a pokemon: ";
 		std::cin >> name;
 		for (int i = 0; i < name.length(); i++) {
@@ -352,14 +360,11 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 			}
 		}
 		if (poke == false) {
-			std::cout << "That is not real or has already been picked: " << std::endl;
+			std::cout << "\a";
 			std::cin.clear();
 			std::cin.ignore(INT_MAX, '\n');
 			i--;
 		}
-		std::cout << "Current Team: " << std::endl;
-		for (int i = 0; i < player.size(); i++)
-			std::cout << player[i].name << std::endl;
 	}
 }
 
