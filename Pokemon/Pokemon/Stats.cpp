@@ -11,6 +11,7 @@ Stats::Stats()
 	SPD = 0;
 	acc = 0;
 	eva = 0;
+	CRIT = 0;
 }
 
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD)
@@ -21,6 +22,7 @@ Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int 
 	SpATK = newSpATK;
 	SpDEF = newSpDEF;
 	SPD = newSPD;
+	CRIT = 6.25;
 }
 
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD, double newACC, double newEVA)

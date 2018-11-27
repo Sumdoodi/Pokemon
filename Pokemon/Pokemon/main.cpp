@@ -7,9 +7,12 @@
 #include "Stats.h"
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 
 bool story = false, multiplayer = false;
 bool p1Alive = true, trainerAlive = true;
+unsigned int stage = 10;
+
 std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;
 
@@ -56,129 +59,127 @@ Stats ampharos_stats(90, 75, 85, 115, 90, 55);
 Moves quickattack("Quick Attack", 40, 30, 1.0f, "normal", "P", "first");
 Moves extremespeed("Extreme Speed", 80, 5, 1.0f, "normal", "P", "first");
 Moves slash("Slash", 70, 20, 1.0f, "normal", "P", "crit");
-Moves stomp("Stomp", 65, 15, 1.0f, "normal", "P", "flinch");
-Moves bodyslam("Body Slam", 85, 15, 1.0f, "normal", "P", "par");
-Moves hyperfang("Hyper Fang", 80, 15, 0.9f, "normal", "P", "flinch");
-Moves takedown("Take Down", 90, 20, 0.85f, "normal", "P", "coil");
-Moves smokescreen("Smokescreen", 0, 15, 1.0f, "normal", "S", "dAcc");
+Moves stomp("Stomp", 65, 15, 1.0f, "normal", "P", "flinch30");
+Moves bodyslam("Body Slam", 85, 15, 1.0f, "normal", "P", "par30");
+Moves hyperfang("Hyper Fang", 80, 15, 0.9f, "normal", "P", "flinch10");
+Moves takedown("Take Down", 90, 20, 0.85f, "normal", "P", "coil25");
+Moves smokescreen("Smokescreen", 0, 15, 1.0f, "normal", "S", "dAcc1");
 Moves focusenergy("Focus Energy", 0, 30, 0.0f, "normal", "S", "crit");
-Moves doubleteam("Double Team", 0, 15, 0.0f, "normal", "S", "iEVA");
-Moves sworddance("Sword Dance", 0, 20, 0.0f, "normal", "S", "iATK");
-Moves recover("Recover", 0, 10, 0.0f, "normal", "S", "heal");
-Moves screech("Screech", 0, 40, 0.85f, "normal", "S", "dDEF");
-Moves scaryface("Scary Face", 0, 20, 1.0f, "normal", "S", "dSPD");
-Moves supersonic("Supersonic", 0, 20, 0.55f, "normal", "S", "conf");
-Moves sing("Sing", 0, 15, 0.55f, "normal", "S", "sleep");
-Moves glare("Glare", 0, 30, 1.0f, "normal", "S", "par");
+Moves doubleteam("Double Team", 0, 15, 0.0f, "normal", "S", "iEVA1");
+Moves sworddance("Sword Dance", 0, 20, 0.0f, "normal", "S", "iATK2");
+Moves recover("Recover", 0, 10, 0.0f, "normal", "S", "heal50");
+Moves screech("Screech", 0, 40, 0.85f, "normal", "S", "dDEF2");
+Moves scaryface("Scary Face", 0, 20, 1.0f, "normal", "S", "dSPD2");
+Moves supersonic("Supersonic", 0, 20, 0.55f, "normal", "S", "conf100");
+Moves sing("Sing", 0, 15, 0.55f, "normal", "S", "sleep100");
+Moves glare("Glare", 0, 30, 1.0f, "normal", "S", "par100");
 Moves explosion("Explosion", 250, 5, 1.0f, "normal", "P", "death");
 
 //Grass 5 moves
 Moves seedbomb("Seed Bomb", 80, 15, 1.0f, "grass", "P", "none");
 Moves solarbeam("Solar Beam", 120, 10, 1.0f, "grass", "Sp", "charge");
-Moves megadrain("Mega Drain", 40, 15, 1.0f, "grass", "Sp", "drain");
-Moves gigadrain("Giga Drain", 75, 10, 1.0f, "grass", "Sp", "drain");
-Moves sleeppowder("Sleep Powder", 0, 15, 0.75f, "grass", "S", "sleep");
-Moves stunspore("Stun Spore", 0, 30, 0.75f, "grass", "S", "par");
+Moves megadrain("Mega Drain", 40, 15, 1.0f, "grass", "Sp", "drain50");
+Moves gigadrain("Giga Drain", 75, 10, 1.0f, "grass", "Sp", "drain50");
+Moves sleeppowder("Sleep Powder", 0, 15, 0.75f, "grass", "S", "sleep100");
+Moves stunspore("Stun Spore", 0, 30, 0.75f, "grass", "S", "par100");
 
 //Fire 3 moves
-Moves firefang("Fire Fang", 65, 15, 0.95f, "fire", "P", "burn+flinch");
-Moves flamethrower("Flame Thrower", 90, 15, 1.0f, "fire", "Sp", "burn");
-Moves flareblitz("Flare Blitz", 120, 15, 1.0f, "fire", "Sp", "coil+burn");
+Moves firefang("Fire Fang", 65, 15, 0.95f, "fire", "P", "burn10+flinch10");
+Moves flamethrower("Flame Thrower", 90, 15, 1.0f, "fire", "Sp", "burn10");
+Moves flareblitz("Flare Blitz", 120, 15, 1.0f, "fire", "Sp", "coil33+burn10");
 
 //Water 4 moves
 Moves surf("Surf", 90, 15, 1.0f, "water", "Sp", "none");
 Moves hydropump("Hydro Pump", 110, 5, 0.8f, "water", "Sp", "none");
 Moves aquatail("Aqua Tail", 90, 10, 0.9f, "water", "P", "none");
-Moves waterfall("Waterfall", 80, 15, 1.0f, "water", "P", "flinch");
+Moves waterfall("Waterfall", 80, 15, 1.0f, "water", "P", "flinch20");
 
 //Bug 5 moves
-Moves bugbuzz("Bug Buzz", 90, 20, 1.0f, "bug", "Sp", "lSpDEF");
+Moves bugbuzz("Bug Buzz", 90, 20, 1.0f, "bug", "Sp", "lSpDEF10");
 Moves xscissor("X=Scissor", 80, 15, 1.0f, "bug", "P", "none");
 Moves megahorn("Megahorn", 120, 10, 1.0f, "bug", "P", "none");
-Moves signalbeam("Signal Beam", 75, 15, 1.0f, "bug", "Sp", "conf");
-Moves quiverdance("Quiver Dance", 0, 20, 0.0f, "bug", "S", "iSpATK,SpDEF, SPD");
+Moves signalbeam("Signal Beam", 75, 15, 1.0f, "bug", "Sp", "conf10");
+Moves quiverdance("Quiver Dance", 0, 20, 0.0f, "bug", "S", "iSpATK1+SpDEF1+SPD1");
 
 //Flying 6 moves
 Moves aerialace("Aerial Ace", 60, 20, 0.0f, "flying", "P", "100");
-Moves airslash("Air Slash", 75, 15, 0.95f, "flying", "P", "flinch");
+Moves airslash("Air Slash", 75, 15, 0.95f, "flying", "P", "flinch30");
 Moves aircutter("Air Cutter", 60, 25, 0.95f, "flying", "Sp", "crit");
-Moves hurricane("Hurricane", 110, 10, 0.75f, "flying", "Sp", "conf");
-Moves featherdance("Feather Dance", 0, 15, 1.0f, "flying", "S", "dATK");
-Moves roost("Roost", 0, 10, 0.0f, "flying", "S", "heal");
+Moves hurricane("Hurricane", 110, 10, 0.75f, "flying", "Sp", "conf30");
+Moves featherdance("Feather Dance", 0, 15, 1.0f, "flying", "S", "dATK2");
+Moves roost("Roost", 0, 10, 0.0f, "flying", "S", "heal50");
 
 //Dark 3 moves
-Moves crunch("Crunch", 80, 15, 1.0f, "dark", "P", "lSpDEF");
-Moves darkpulse("Dark Pulse", 80, 15, 1.0f, "dark", "Sp", "flinch");
+Moves crunch("Crunch", 80, 15, 1.0f, "dark", "P", "lSpDEF20");
+Moves darkpulse("Dark Pulse", 80, 15, 1.0f, "dark", "Sp", "flinch20");
 Moves assurance("Assurance", 60, 20, 1.0f, "dark", "P", "none");
 Moves nightslash("Night Slash", 70, 15, 1.0f, "dark", "P", "crit");
 
 //Psychic 8 moves
-Moves psychic("Psychic", 90, 10, 1.0f, "psychic", "Sp", "lSpDEF");
+Moves psychic("Psychic", 90, 10, 1.0f, "psychic", "Sp", "lSpDEF10");
 Moves psychocut("Psycho Cut", 70, 10, 1.0f, "psychic", "P", "crit");
 Moves psystrike("Psystrike", 120, 10, 1.0f, "psychic", "Sp", "none");
-Moves amnesia("Amnesia", 0, 20, 0.0f, "psychic", "S", "iSpDEF");
-Moves cosmicpower("Cosmic Power", 0, 20, 0.0f, "psychic", "S", "iDEF, SpDEF");
-Moves agility("Agility", 0, 20, 0.0f, "psychic", "S", "iSPD");
-Moves calmmind("Calm Mind", 0, 20, 0.0f, "psychic", "S", "iSpATK, SpDEF");
-Moves barrier("Barrier", 0, 20, 0.0f, "psychic", "S", "iDEF");
-Moves hypnosis("Hypnosis", 0, 20, 0.6f, "psychic", "S", "sleep");
-Moves rest("Rest", 0, 10, 1.0f, "psychic", "S", "sleep+heal");
+Moves amnesia("Amnesia", 0, 20, 0.0f, "psychic", "S", "iSpDEF2");
+Moves cosmicpower("Cosmic Power", 0, 20, 0.0f, "psychic", "S", "iDEF1+SpDEF1");
+Moves agility("Agility", 0, 20, 0.0f, "psychic", "S", "iSPD2");
+Moves calmmind("Calm Mind", 0, 20, 0.0f, "psychic", "S", "iSpATK1+SpDEF1");
+Moves barrier("Barrier", 0, 20, 0.0f, "psychic", "S", "iDEF2");
+Moves hypnosis("Hypnosis", 0, 20, 0.6f, "psychic", "S", "sleep100");
+Moves rest("Rest", 0, 10, 1.0f, "psychic", "S", "sSleep100+heal100");
 
 //Poison 5 moves
-Moves poisonjab("Poison Jab", 80, 20, 1.0f, "poison", "P", "poison");
-Moves sludgebomb("Sludge Bomb", 90, 10, 1.0f, "poison", "Sp", "poison");
-Moves sludgewave("Sludge Wave", 95, 10, 1.0f, "poison", "Sp", "poison");
-Moves coil("Coil", 0, 20, 0.0f, "poison", "S", "iATK, DEF, ACC");
-Moves poisonpowder("Poison Powder", 0, 35, 0.75f, "poison", "S", "poison");
-
+Moves poisonjab("Poison Jab", 80, 20, 1.0f, "poison", "P", "poison30");
+Moves sludgebomb("Sludge Bomb", 90, 10, 1.0f, "poison", "Sp", "poison30");
+Moves sludgewave("Sludge Wave", 95, 10, 1.0f, "poison", "Sp", "poison10");
+Moves coil("Coil", 0, 20, 0.0f, "poison", "S", "iATK1+DEF1+ACC1");
+Moves poisonpowder("Poison Powder", 0, 35, 0.75f, "poison", "S", "poison100");
 //Electric 4 moves
-Moves thunderbolt("Thunderbolt", 90, 15, 1.0f, "electric", "Sp", "par");
-Moves thunder("Thunder", 110, 5, 0.7f, "electric", "Sp", "par");
-Moves zapcannon("Zap Cannon", 120, 5, 0.5f, "electric", "Sp", "par");
-Moves thunderpunch("Thunder Punch", 75, 15, 1.0f, "electric", "Sp", "par");
-Moves thunderwave("Thunder Wave", 0, 20, 0.9f, "electric", "S", "par");
+Moves thunderbolt("Thunderbolt", 90, 15, 1.0f, "electric", "Sp", "par10");
+Moves thunder("Thunder", 110, 5, 0.7f, "electric", "Sp", "par30");
+Moves zapcannon("Zap Cannon", 120, 5, 0.5f, "electric", "Sp", "par100");
+Moves thunderpunch("Thunder Punch", 75, 15, 1.0f, "electric", "Sp", "par10");
+Moves thunderwave("Thunder Wave", 0, 20, 0.9f, "electric", "S", "par100");
 
 //Fighting 4 moves
 Moves crosschop("Cross Chop", 100, 5, 0.8f, "fighting", "P", "crit");
 Moves aurasphere("Aura Sphere", 80, 5, 0.0f, "fighting", "Sp", "100");
-Moves lowsweep("Low Sweep", 65, 20, 1.0f, "fighting", "P", "dSPD");
-Moves bulkup("Bulk Up", 0, 20, 0.0f, "fighting", "S", "iATK, DEF");
+Moves lowsweep("Low Sweep", 65, 20, 1.0f, "fighting", "P", "dSPD1");
+Moves bulkup("Bulk Up", 0, 20, 0.0f, "fighting", "S", "iATK1+DEF1");
 
 //Steel 4 moves
-Moves flashcannon("Flash Cannon", 80, 10, 1.0f, "steel", "Sp", "lSpDEF");
-Moves irontail("Iron Tail", 100, 15, 1.0f, "steel", "P", "flinch");
-Moves ironhead("Iron Head", 80, 15, 0.75f, "steel", "P", "lDEF");
-Moves irondefense("Iron Defense", 0, 15, 0.0f, "steel", "S", "iDEF");
+Moves flashcannon("Flash Cannon", 80, 10, 1.0f, "steel", "Sp", "lSpDEF1");
+Moves irontail("Iron Tail", 100, 15, 1.0f, "steel", "P", "flinch30");
+Moves ironhead("Iron Head", 80, 15, 0.75f, "steel", "P", "lDEF30");
+Moves irondefense("Iron Defense", 0, 15, 0.0f, "steel", "S", "iDEF2");
 
 //Ghost 4 moves
-Moves lick("Lick", 30, 30, 1.0f, "ghost", "P", "lSpDEF");
-Moves shadowball("Shadow Ball", 80, 15, 1.0f, "ghost", "Sp", "lSpDEF");
-Moves nightshade("Night Shade", 0, 15, 1.0f, "ghost", "Sp", "50");
-Moves confuseray("Confuse Ray", 0, 10, 1.0f, "ghost", "P", "conf");
+Moves lick("Lick", 30, 30, 1.0f, "ghost", "P", "par30");
+Moves shadowball("Shadow Ball", 80, 15, 1.0f, "ghost", "Sp", "lSpDEF20");
+Moves nightshade("Night Shade", 0, 15, 1.0f, "ghost", "Sp", "deal50");
+Moves confuseray("Confuse Ray", 0, 10, 1.0f, "ghost", "P", "conf100");
 
 //Ground 2 moves
 Moves earthquake("Earthquake", 100, 10, 1.0f, "ground", "P", "none");
-Moves sandattack("Sand Attack", 0, 15, 1.0f, "ground", "S", "dACC");
+Moves sandattack("Sand Attack", 0, 15, 1.0f, "ground", "S", "dACC1");
 
 //Rock 3 moves
-Moves rockslide("Rock Slide", 75, 10, 0.9f, "rock", "P", "flinch");
+Moves rockslide("Rock Slide", 75, 10, 0.9f, "rock", "P", "flinch30");
 Moves stoneedge("Stone Edge", 100, 10, 0.8f, "rock", "P", "crit");
-Moves rockpolish("Rock Polish", 0, 20, 0.0f, "rock", "S", "iSPD");
-
+Moves rockpolish("Rock Polish", 0, 20, 0.0f, "rock", "S", "iSPD2");
 //Ice 2 moves
-Moves icepunch("Ice Punch", 75, 10, 1.0f, "ice", "P", "freeze");
-Moves icebeam("Ice Beam", 90, 10, 1.0f, "ice", "P", "freeze");
-Moves icefang("Ice Fang", 65, 15, 0.95f, "ice", "P", "freeze+flinch");
-Moves blizzard("Blizzard", 120, 5, 0.7f, "ice", "Sp", "freeze");
+Moves icepunch("Ice Punch", 75, 10, 1.0f, "ice", "P", "freeze10");
+Moves icebeam("Ice Beam", 90, 10, 1.0f, "ice", "P", "freeze10");
+Moves icefang("Ice Fang", 65, 15, 0.95f, "ice", "P", "freeze10+flinch10");
+Moves blizzard("Blizzard", 120, 5, 0.7f, "ice", "Sp", "freeze10");
 
 //Dragon 2 moves
-Moves dragonrush("Dragon Rush", 100, 10, 0.75f, "dragon", "P", "conf");
+Moves dragonrush("Dragon Rush", 100, 10, 0.75f, "dragon", "P", "conf20");
 Moves dragonpulse("Dragon Pulse", 85, 10, 1.0f, "dragon", "P", "none");
-Moves dragondance("Dragon Dance", 0, 20, 0.0f, "dragon", "S", "iATK, SPD");
+Moves dragondance("Dragon Dance", 0, 20, 0.0f, "dragon", "S", "iATK1+SPD1");
 
 //Fairy 2 moves
-Moves moonblast("Moonblast", 95, 15, 1.0f, "fairy", "Sp", "lSpATK");
-Moves moonlight("Moonlight", 0, 10, 0.0f, "fairy", "S", "heal");
+Moves moonblast("Moonblast", 95, 15, 1.0f, "fairy", "Sp", "lSpATK30");
+Moves moonlight("Moonlight", 0, 10, 0.0f, "fairy", "S", "heal50");
 
 //Generate Pokemon
 Pokemon venusaur("venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
@@ -270,41 +271,219 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::locale loc;
 	int playerSize = -1;
 
-	pokemonList.push_back(aerodactyl);
-	pokemonList.push_back(alakazam);
-	pokemonList.push_back(ampharos);
-	pokemonList.push_back(arbok);
-	pokemonList.push_back(articuno);
-	pokemonList.push_back(beedrill);
-	pokemonList.push_back(blastoise);
+	if (stage == 1) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+	}
+
+	else if (stage == 2) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+	}
+
+	else if (stage == 3) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(blastoise);
+	}
+
+	else if (stage == 4) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(machamp);
+	}
+
+	else if (stage == 5) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(machamp);
+		pokemonList.push_back(jynx);
+		pokemonList.push_back(lapras);
+	}
+
+	else if (stage == 6) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(machamp);
+		pokemonList.push_back(jynx);
+		pokemonList.push_back(lapras);
+		pokemonList.push_back(exeggutor);
+		pokemonList.push_back(snorlax);
+		pokemonList.push_back(poliwrath);
+		pokemonList.push_back(clefable);
+	}
+
+	else if (stage == 7) {
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(machamp);
+		pokemonList.push_back(jynx);
+		pokemonList.push_back(lapras);
+		pokemonList.push_back(exeggutor);
+		pokemonList.push_back(snorlax);
+		pokemonList.push_back(poliwrath);
+		pokemonList.push_back(clefable);
+		pokemonList.push_back(golem);
+		pokemonList.push_back(magneton);
+	}
+
+	else if (stage == 8) {
 	pokemonList.push_back(butterfree);
-	pokemonList.push_back(charizard);
-	pokemonList.push_back(clefable);
-	pokemonList.push_back(dragonite);
-	pokemonList.push_back(exeggutor);
-	pokemonList.push_back(gengar);
-	pokemonList.push_back(gyrados);
-	pokemonList.push_back(jynx);
-	pokemonList.push_back(lapras);
-	pokemonList.push_back(machamp);
-	pokemonList.push_back(magneton);
-	pokemonList.push_back(mewtwo);
-	pokemonList.push_back(moltres);
-	pokemonList.push_back(nidoking);
-	pokemonList.push_back(onix);
+	pokemonList.push_back(beedrill);
 	pokemonList.push_back(pidgeot);
-	pokemonList.push_back(poliwrath);
+	pokemonList.push_back(arbok);
+	pokemonList.push_back(raichu);
+	pokemonList.push_back(onix);
+	pokemonList.push_back(venusaur);
 	pokemonList.push_back(raticate);
 	pokemonList.push_back(sandslash);
-	pokemonList.push_back(scyther);
-	pokemonList.push_back(snorlax);
 	pokemonList.push_back(tentacruel);
+	pokemonList.push_back(blastoise);
+	pokemonList.push_back(charizard);
+	pokemonList.push_back(nidoking);
+	pokemonList.push_back(machamp);
+	pokemonList.push_back(jynx);
+	pokemonList.push_back(lapras);
+	pokemonList.push_back(exeggutor);
+	pokemonList.push_back(snorlax);
+	pokemonList.push_back(poliwrath);
+	pokemonList.push_back(clefable);
 	pokemonList.push_back(golem);
-	pokemonList.push_back(venusaur);
-	pokemonList.push_back(weezing);
-	pokemonList.push_back(zapdos);
-	pokemonList.push_back(raichu);
+	pokemonList.push_back(magneton);
 	pokemonList.push_back(arcanine);
+	pokemonList.push_back(weezing);
+	pokemonList.push_back(scyther);
+	}
+
+	else if (stage == 9 || 10) {
+	pokemonList.push_back(butterfree);
+	pokemonList.push_back(beedrill);
+	pokemonList.push_back(pidgeot);
+	pokemonList.push_back(arbok);
+	pokemonList.push_back(raichu);
+	pokemonList.push_back(onix);
+	pokemonList.push_back(venusaur);
+	pokemonList.push_back(raticate);
+	pokemonList.push_back(sandslash);
+	pokemonList.push_back(tentacruel);
+	pokemonList.push_back(blastoise);
+	pokemonList.push_back(charizard);
+	pokemonList.push_back(nidoking);
+	pokemonList.push_back(machamp);
+	pokemonList.push_back(jynx);
+	pokemonList.push_back(lapras);
+	pokemonList.push_back(exeggutor);
+	pokemonList.push_back(snorlax);
+	pokemonList.push_back(poliwrath);
+	pokemonList.push_back(clefable);
+	pokemonList.push_back(golem);
+	pokemonList.push_back(magneton);
+	pokemonList.push_back(arcanine);
+	pokemonList.push_back(weezing);
+	pokemonList.push_back(scyther);
+	pokemonList.push_back(alakazam);
+	pokemonList.push_back(gengar);
+	pokemonList.push_back(aerodactyl);
+	}
+
+	//pokemonList.push_back(aerodactyl);
+	//pokemonList.push_back(alakazam);
+	//pokemonList.push_back(ampharos);
+	//pokemonList.push_back(arbok);
+	//pokemonList.push_back(articuno);
+	//pokemonList.push_back(beedrill);
+	//pokemonList.push_back(blastoise);
+	//pokemonList.push_back(butterfree);
+	//pokemonList.push_back(charizard);
+	//pokemonList.push_back(clefable);
+	//pokemonList.push_back(dragonite);
+	//pokemonList.push_back(exeggutor);
+	//pokemonList.push_back(gengar);
+	//pokemonList.push_back(gyrados);
+	//pokemonList.push_back(jynx);
+	//pokemonList.push_back(lapras);
+	//pokemonList.push_back(machamp);
+	//pokemonList.push_back(magneton);
+	//pokemonList.push_back(mewtwo);
+	//pokemonList.push_back(moltres);
+	//pokemonList.push_back(nidoking);
+	//pokemonList.push_back(onix);
+	//pokemonList.push_back(pidgeot);
+	//pokemonList.push_back(poliwrath);
+	//pokemonList.push_back(raticate);
+	//pokemonList.push_back(sandslash);
+	//pokemonList.push_back(scyther);
+	//pokemonList.push_back(snorlax);
+	//pokemonList.push_back(tentacruel);
+	//pokemonList.push_back(golem);
+	//pokemonList.push_back(venusaur);
+	//pokemonList.push_back(weezing);
+	//pokemonList.push_back(zapdos);
+	//pokemonList.push_back(raichu);
+	//pokemonList.push_back(arcanine);
 
 	bool poke = false;
 	bool duplicate = false;
@@ -318,15 +497,15 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 
 		system("CLS");
 
-		std::cout << "Aerodactyl			Alakazam			Ampharos			Arbok" << std::endl;
-		std::cout << "Arcanine			Articuno			Beedrill			Blastoise" << std::endl;
-		std::cout << "Butterfree			Charizard			Clefable			Dragonite" << std::endl;
-		std::cout << "Exeggutor			Gengar				Gyrados				Jynx" << std::endl;
-		std::cout << "Lapras				Machamp				Magneton			Mewtwo" << std::endl;
-		std::cout << "Moltres				Nidoking			Onix				Pidgeot" << std::endl;
-		std::cout << "Poliwrath			Radicate			Raichu				Sandslash" << std::endl;
-		std::cout << "Scyther				Snorlax				Tentacruel			Golem" << std::endl;
-		std::cout << "Venusaur			Weezing				Zapdos" << std::endl;
+		int tempCount = 0;
+
+		for (int i = 0; i < pokemonList.size(); i++) {
+			std::cout << std::setw(15) << pokemonList[i].name;
+			tempCount += 1;
+			if (tempCount % 4 == 0 || i == pokemonList.size() - 1) {
+				std::cout << std::endl;
+			}
+		}
 
 		std::cout << "Current Team: " << std::endl;
 		for (int i = 0; i < player.size(); i++)
@@ -338,7 +517,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 			std::tolower(name[i], loc);
 		}
 
-		for (int x = 0; x < 35; x++) {
+		for (int x = 0; x < pokemonList.size(); x++) {
 			if (name == pokemonList[x].name) {
 				if (player.size() == 0) {
 					player.push_back(pokemonList[x]);

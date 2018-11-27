@@ -1,11 +1,13 @@
 ﻿  main.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(332): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(337): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(349): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(462): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(544): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(550): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(556): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(559): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(585): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(502): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(511): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(516): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(520): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(528): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(641): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(721): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(727): warning C4018: '<': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(733): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(736): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100694227\documents\pokemon\pokemon\pokemon\main.cpp(762): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Pokemon.vcxproj -> C:\Users\100694227\Documents\Pokemon\Pokemon\Debug\Pokemon.exe

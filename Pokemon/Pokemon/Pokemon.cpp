@@ -30,7 +30,7 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	float Critical, Stab, Burn, Random = 0;
 	Random = (fmod(rand(), 25) + 85) / 100;
 	typecompare(other, move);
-	Critical = critical();
+	Critical = critical(move);
 	Stab = stab(move);
 	float modifier = Critical * Stab * typemodifier  * Random;
 
@@ -45,22 +45,43 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	other.stat.setHP(other.stat.getHP() - damage);
 }
 
-int Pokemon::critical()// Moves usedMove)
+int Pokemon::critical(Moves usedMove)
 {
+	//when changes pokemon the crit resets
 	bool crit;
 	float chance;
 	chance = rand() % 10000;
 
-	if (chance < 625)
-		crit = true;
-	else
-		crit = false;
-	/*if (usedMove.getTY() == "slash")
-		chance =
-	if (crit)*/
+	if (usedMove.getSEC() == "crit" && usedMove.getCAT() == "S")
+		stat.CRIT = 25;
+
+	if (stat.CRIT == 25 && usedMove.getSEC() == "crit" && usedMove.getCAT() == "P") {
+		if (chance < 3750)
+			crit = true;
+		else
+			crit = false;
+	}
+	else if (stat.CRIT == 25) {
+		if (chance < 2500)
+			crit = true;
+		else
+			crit = false;
+	}
+	else if (usedMove.getSEC() == "crit" && stat.CRIT == 6.25 && usedMove.getCAT() == "P") {
+		if (chance < 1250)
+			crit = true;
+		else
+			crit = false;
+	}
+	else if (stat.CRIT == 6.25) {
+		if (chance < 625)
+			crit = true;
+		else
+			crit = false;
+	}
+
 	if (crit)
 		return 1.5;
-
 	if (!crit)
 		return 1;
 }

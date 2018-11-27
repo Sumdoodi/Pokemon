@@ -14,6 +14,7 @@ public:
 	int SPD; //Speed
 	double acc; //Accuracy
 	double eva; //Evasiveness
+	float CRIT; //critical
 
 	Stats();
 	Stats(int, int, int, int, int, int);

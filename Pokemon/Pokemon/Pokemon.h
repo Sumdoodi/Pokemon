@@ -22,7 +22,7 @@ public:
 
 	float typemodifier;
 	void typecompare(Pokemon, Moves);
-	int critical();
+	int critical(Moves);
 	int stab(Moves);
 
 	Pokemon();
