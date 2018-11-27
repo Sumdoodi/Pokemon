@@ -371,21 +371,88 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 }
 
 void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
-	if (moveChoice == 1) {
-		one.useMove(one.move1, two);
-		std::cout << one.name << " used " << one.move1.name << "!" << std::endl;
-	}
-	else if (moveChoice == 2) {
-		one.useMove(one.move2, two);
-		std::cout << one.name << " used " << one.move2.name << "!" << std::endl;
-	}
-	else if (moveChoice == 3) {
-		one.useMove(one.move3, two);
-		std::cout << one.name << " used " << one.move3.name << "!" << std::endl;
-	}
-	else if (moveChoice == 4) {
-		one.useMove(one.move4, two);
-		std::cout << one.name << " used " << one.move4.name << "!" << std::endl;
+	bool worked = false;
+	while (worked == false) {
+		if (moveChoice == 1) {
+			if (one.move1.getPP() > 0) {
+				one.useMove(one.move1, two);
+				std::cout << one.name << " used " << one.move1.name << "!" << std::endl;
+				one.move1.setPP(one.move1.getPP() - 1);
+				worked = true;
+			}
+			else {
+				std::cout << "|============================|" << std::endl;
+				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
+				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
+				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
+				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << "|============================|" << std::endl;
+				std::cout << "What will " << one.name << " do?" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+				std::cin >> moveChoice;
+			}
+		}
+		else if (moveChoice == 2) {
+			if (one.move2.getPP() > 0) {
+				one.useMove(one.move2, two);
+				std::cout << one.name << " used " << one.move2.name << "!" << std::endl;
+				one.move2.setPP(one.move2.getPP() - 1);
+				worked = true;
+			}
+			else {
+				std::cout << "|============================|" << std::endl;
+				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
+				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
+				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
+				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << "|============================|" << std::endl;
+				std::cout << "What will " << one.name << " do?" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+				std::cin >> moveChoice;
+			}
+		}
+		else if (moveChoice == 3) {
+			if (one.move3.getPP() > 0) {
+				one.useMove(one.move3, two);
+				std::cout << one.name << " used " << one.move3.name << "!" << std::endl;
+				one.move3.setPP(one.move3.getPP() - 1);
+				worked = true;
+			}
+			else {
+				std::cout << "|============================|" << std::endl;
+				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
+				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
+				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
+				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << "|============================|" << std::endl;
+				std::cout << "What will " << one.name << " do?" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+				std::cin >> moveChoice;
+			}
+		}
+		else if (moveChoice == 4) {
+			if (one.move4.getPP() > 0) {
+				one.useMove(one.move4, two);
+				std::cout << one.name << " used " << one.move4.name << "!" << std::endl;
+				one.move4.setPP(one.move4.getPP() - 1);
+				worked = true;
+			}
+			else {
+				std::cout << "|============================|" << std::endl;
+				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
+				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
+				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
+				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << "|============================|" << std::endl;
+				std::cout << "What will " << one.name << " do?" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+				std::cin >> moveChoice;
+			}
+		}
 	}
 }
 void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
@@ -393,21 +460,21 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 	int oppMoveChoice;
 
 	if (currentPokemon < player.size()) {
+		std::cout << "|============================|" << std::endl;
+		std::cout << "| 1. " << player[currentPokemon].move1.name << "	" << player[currentPokemon].move1.getPP() << "/" << player[currentPokemon].move1.maxPP << "|" << std::endl;
+		std::cout << "| 2. " << player[currentPokemon].move2.name << "		" << player[currentPokemon].move2.getPP() << "/" << player[currentPokemon].move2.maxPP << "|" << std::endl;
+		std::cout << "| 3. " << player[currentPokemon].move3.name << "		" << player[currentPokemon].move3.getPP() << "/" << player[currentPokemon].move3.maxPP << "|" << std::endl;
+		std::cout << "| 4. " << player[currentPokemon].move4.name << "		" << player[currentPokemon].move4.getPP() << "/" << player[currentPokemon].move4.maxPP << "|" << std::endl;
+		std::cout << "|============================|" << std::endl;
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
-		std::cout << "1. " << player[currentPokemon].move1.name << "	" << player[currentPokemon].move1.getPP() << "/" << player[currentPokemon].move1.maxPP << std::endl;
-		std::cout << "2. " << player[currentPokemon].move2.name << "	" << player[currentPokemon].move2.getPP() << "/" << player[currentPokemon].move2.maxPP << std::endl;
-		std::cout << "3. " << player[currentPokemon].move3.name << "	" << player[currentPokemon].move3.getPP() << "/" << player[currentPokemon].move3.maxPP << std::endl;
-		std::cout << "4. " << player[currentPokemon].move4.name << "	" << player[currentPokemon].move4.getPP() << "/" << player[currentPokemon].move4.maxPP << std::endl;
-		std::cout << "Player 1 pick a move: ";
 		std::cin >> moveChoice;
 
 		system("CLS");
 
 		oppMoveChoice = rand() % 4 + 1;
-
-		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
-
-		std::cout << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
+		std::cout << "=========================================" << std::endl;
+		std::cout << "Previous: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
+		std::cout << "=========================================" << std::endl;
 
 		if (player[currentPokemon].stat.SPD > trainer[opponentCurrent].stat.SPD) {
 			int temp = opponentCurrent;
@@ -416,10 +483,14 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 
 			if (player[currentPokemon].stat.HP <= 0) {
+				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
+				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
 			else if (trainer[opponentCurrent].stat.HP <= 0) {
+				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
+				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
@@ -435,10 +506,14 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
 			if (player[currentPokemon].stat.HP <= 0) {
+				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
+				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
 			else if (trainer[opponentCurrent].stat.HP <= 0) {
+				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
+				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
@@ -446,6 +521,21 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 				useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 			}
 		}
+
+		if (player[currentPokemon].stat.HP <= 0) {
+			std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
+			currentPokemon++;
+		}
+		else if (trainer[opponentCurrent].stat.HP <= 0) {
+			std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
+			opponentCurrent++;
+		}
+		else {
+			std::cout << "=========================================" << std::endl;
+			std::cout << "Current: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
+			std::cout << "=========================================" << std::endl;
+		}
+
 		int count = 0;
 		int count2 = 0;
 
@@ -467,17 +557,25 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		if (count2 >= trainer.size()) {
 			trainerAlive = false;
 		}
-
-		std::cout << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
-
-		std::cout << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << std::endl;
 	}
 }
 void startBattle(std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
-
+	int choice;
 	while (p1Alive == true && trainerAlive == true) {
-		selectMove(currentPokemon, opponentCurrent, player, trainer);
+
+		std::cout << "1. Move \n2. Pokemon" << std::endl;
+		std::cin >> choice;
+		if (choice == 1) {
+			system("CLS");
+
+			selectMove(currentPokemon, opponentCurrent, player, trainer);
+		}
+		if (choice == 2) {
+			system("CLS");
+
+			//Pokemon screen
+		}
 	}
 }
 
