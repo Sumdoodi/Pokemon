@@ -16,6 +16,7 @@ public:
 	double eva; //Evasiveness
 	float CRIT; //critical
 
+	int IHP;
 	int IATK;
 	int IDEF;
 	int ISpATK;
@@ -59,6 +60,7 @@ public:
 	void resetSpATK();
 	void resetSpDEF();
 	void resetSPD();
+	void resetCRIT();
 
 	void resetALL();
 };

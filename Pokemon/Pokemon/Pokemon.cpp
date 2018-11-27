@@ -94,6 +94,140 @@ void Pokemon::secondaryEffect(Moves move) {
 	else if (move.getSEC() == "flinch10") {
 
 	}
+	else if (move.getSEC() == "flinch30") {
+
+	}
+	else if (move.getSEC() == "par30") {
+
+	}
+	else if (move.getSEC() == "coil25") {
+
+	}
+	else if (move.getSEC() == "dAcc1") {
+
+	}
+	else if (move.getSEC() == "iEVA1") {
+
+	}
+	else if (move.getSEC() == "iATK2") {
+
+	}
+	else if (move.getSEC() == "heal50") {
+
+	}
+	else if (move.getSEC() == "dDEF2") {
+
+	}
+	else if (move.getSEC() == "dSPD2") {
+
+	}
+	else if (move.getSEC() == "conf100") {
+
+	}
+	else if (move.getSEC() == "sleep100") {
+
+	}
+	else if (move.getSEC() == "par100") {
+
+	}
+	else if (move.getSEC() == "death") {
+
+	}
+	else if (move.getSEC() == "charge") {
+
+	}
+	else if (move.getSEC() == "drain50") {
+
+	}
+	else if (move.getSEC() == "burn10") {
+
+	}
+	else if (move.getSEC() == "flinch20") {
+
+	}
+	else if (move.getSEC() == "lSpDEF10") {
+
+	}
+	else if (move.getSEC() == "conf10") {
+
+	}
+	else if (move.getSEC() == "100") {
+
+	}
+	else if (move.getSEC() == "conf30") {
+
+	}
+	else if (move.getSEC() == "dATK2") {
+
+	}
+	else if (move.getSEC() == "lSpDEF20") {
+
+	}
+	else if (move.getSEC() == "iSpDEF2") {
+
+	}
+	else if (move.getSEC() == "iSPD2") {
+
+	}
+	else if (move.getSEC() == "iDEF2") {
+
+	}
+	else if (move.getSEC() == "poison10") {
+
+	}
+	else if (move.getSEC() == "poison30") {
+
+	}
+	else if (move.getSEC() == "par10") {
+
+	}
+	else if (move.getSEC() == "dSPD1") {
+
+	}
+	else if (move.getSEC() == "lDEF30") {
+
+	}
+	else if (move.getSEC() == "deal50") {
+
+	}
+	else if (move.getSEC() == "dACC1") {
+
+	}
+	else if (move.getSEC() == "freeze10") {
+
+	}
+	else if (move.getSEC() == "lSpATK30") {
+
+	}
+	else if (move.getSEC() == "freeze10+flinch10") {
+
+	}
+	else if (move.getSEC() == "iATK1+SPD1") {
+
+	}
+	else if (move.getSEC() == "iATK1+DEF1") {
+
+	}
+	else if (move.getSEC() == "sSleep100+heal100") {
+
+	}
+	else if (move.getSEC() == "iSpATK1+SpDEF1") {
+
+	}
+	else if (move.getSEC() == "iDEF1+SpDEF1") {
+
+	}
+	else if (move.getSEC() == "iSpATK1+SpDEF1+SPD1") {
+
+	}
+	else if (move.getSEC() == "iATK1+DEF1+ACC1") {
+
+	}
+	else if (move.getSEC() == "burn10+flinch10") {
+
+	}
+
+
 }
 
 int Pokemon::stab(Moves usedMove)

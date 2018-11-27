@@ -147,7 +147,7 @@ Moves lowsweep("Low Sweep", 65, 20, 1.0f, "fighting", "P", "dSPD1");
 Moves bulkup("Bulk Up", 0, 20, 0.0f, "fighting", "S", "iATK1+DEF1");
 
 //Steel 4 moves
-Moves flashcannon("Flash Cannon", 80, 10, 1.0f, "steel", "Sp", "lSpDEF1");
+Moves flashcannon("Flash Cannon", 80, 10, 1.0f, "steel", "Sp", "lSpDEF10");
 Moves irontail("Iron Tail", 100, 15, 1.0f, "steel", "P", "flinch30");
 Moves ironhead("Iron Head", 80, 15, 0.75f, "steel", "P", "lDEF30");
 Moves irondefense("Iron Defense", 0, 15, 0.0f, "steel", "S", "iDEF2");

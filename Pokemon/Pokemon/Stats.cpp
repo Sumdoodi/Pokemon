@@ -17,12 +17,19 @@ Stats::Stats()
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD)
 {
 	HP = (((2 * newHP+100) * 50) / 100) + 10;
+	IHP = HP;
 	ATK = newATK;
+	IATK = newATK;
 	DEF = newDEF;
+	IDEF = newDEF;
 	SpATK = newSpATK;
+	ISpATK = newSpATK;
 	SpDEF = newSpDEF;
+	ISpDEF = newSpDEF;
 	SPD = newSPD;
+	ISPD = newSPD;
 	CRIT = 6.25;
+	ICRIT = 6.25;
 }
 
 Stats::Stats(int newHP, int newATK, int newDEF, int newSpATK, int newSpDEF, int newSPD, double newACC, double newEVA)
@@ -117,11 +124,6 @@ void Stats::setEVA(double newACC)
 	acc = newACC;
 }
 
-void Stats::setEVA(double newACC)
-{
-	acc = newACC;
-}
-
 void Stats::resetATK() {
 	ATK = IATK;
 }
@@ -142,10 +144,15 @@ void Stats::resetSPD() {
 	SPD = ISPD;
 }
 
+void Stats::resetCRIT() {
+	CRIT = ICRIT;
+}
+
 void Stats::resetALL() {
 	void resetATK();
 	void resetDEF();
 	void resetSpATK();
 	void resetSpDEF();
 	void resetSPD();
+	void resetCRIT();
 }
