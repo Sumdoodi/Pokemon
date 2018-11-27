@@ -24,11 +24,14 @@ public:
 	void typecompare(Pokemon, Moves);
 	int critical(Moves);
 	int stab(Moves);
+	int burn(Moves);
 
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
 
 	void useMove(Moves&, Pokemon&);
+
+	void secondaryEffect(Moves);
 
 	std::string getName() {
 		return name;

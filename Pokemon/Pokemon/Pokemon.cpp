@@ -32,7 +32,8 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	typecompare(other, move);
 	Critical = critical(move);
 	Stab = stab(move);
-	float modifier = Critical * Stab * typemodifier  * Random;
+	Burn = burn(move);
+	float modifier = Critical * Stab * typemodifier  * Random * Burn;
 
 	//modifier = typemodifier;
 	if (move.getCAT() == "P") {
@@ -86,10 +87,27 @@ int Pokemon::critical(Moves usedMove)
 		return 1;
 }
 
+void Pokemon::secondaryEffect(Moves move) {
+	if (move.getSEC() == "first") {
+
+	}
+	else if (move.getSEC() == "flinch10") {
+
+	}
+}
+
 int Pokemon::stab(Moves usedMove)
 {
 	if (usedMove.getTY() == ty || usedMove.getTY() == ty2)
 		return 1.5;
+	else
+		return 1;
+}
+
+int Pokemon::burn(Moves usedMove)
+{
+	if (status == "burn" && usedMove.getCAT() == "P")
+		return 0.5;
 	else
 		return 1;
 }

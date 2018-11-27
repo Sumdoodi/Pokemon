@@ -116,3 +116,36 @@ void Stats::setEVA(double newACC)
 {
 	acc = newACC;
 }
+
+void Stats::setEVA(double newACC)
+{
+	acc = newACC;
+}
+
+void Stats::resetATK() {
+	ATK = IATK;
+}
+
+void Stats::resetDEF() {
+	DEF = IDEF;
+}
+
+void Stats::resetSpATK() {
+	SpATK = ISpATK;
+}
+
+void Stats::resetSpDEF() {
+	SpDEF = ISpDEF;
+}
+
+void Stats::resetSPD() {
+	SPD = ISPD;
+}
+
+void Stats::resetALL() {
+	void resetATK();
+	void resetDEF();
+	void resetSpATK();
+	void resetSpDEF();
+	void resetSPD();
+}

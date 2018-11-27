@@ -16,6 +16,13 @@ public:
 	double eva; //Evasiveness
 	float CRIT; //critical
 
+	int IATK;
+	int IDEF;
+	int ISpATK;
+	int ISpDEF;
+	int ISPD;
+	int ICRIT;
+
 	Stats();
 	Stats(int, int, int, int, int, int);
 	Stats(int, int, int, int, int, int, double, double);
@@ -46,4 +53,12 @@ public:
 	double getEVA();
 	void setEVA(double);
 	//===================
+
+	void resetATK();
+	void resetDEF();
+	void resetSpATK();
+	void resetSpDEF();
+	void resetSPD();
+
+	void resetALL();
 };
