@@ -15,6 +15,7 @@ public:
 	std::string ty2; //Type 2
 	std::string status; //Status Effect
 	bool confused;
+	bool dontmove; //used for status effects
 
 	int accStage;
 	int atkStage;
@@ -22,6 +23,7 @@ public:
 	int spATKStage;
 	int spDEFStage;
 	int spdStage;
+	int sleepturrns; //how long the pokemon will be alseep for
 
 	Moves move1; //First Move
 	Moves move2; //Second Move
@@ -39,6 +41,7 @@ public:
 
 	void useMove(Moves&, Pokemon&);
 
+	void statusEffect(Moves&);
 	void secondaryEffect(Pokemon&, Moves&);
 
 	std::string getName() {

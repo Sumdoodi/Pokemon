@@ -41,24 +41,28 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 
 void Pokemon::useMove(Moves &move, Pokemon &other) {
 	move.damage = 0;
-	float Critical, Stab, Burn, Random = 0;
-	Random = (fmod(rand(), 25) + 85) / 100;
-	typecompare(other, move);
-	Critical = critical(move);
-	Stab = stab(move);
-	Burn = burn(move);
-	float modifier = Critical * Stab * typemodifier  * Random * Burn;
+	statusEffect(move);
+	if (dontmove == false) {
+		float Critical, Stab, Burn, Random = 0;
+		Random = (fmod(rand(), 25) + 85) / 100;
+		typecompare(other, move);
+		Critical = critical(move);
+		Stab = stab(move);
+		Burn = burn(move);
+		float modifier = Critical * Stab * typemodifier  * Random * Burn;
 
-	//modifier = typemodifier;
-	if (move.getCAT() == "P") {
-		move.damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
+		//modifier = typemodifier;
+		if (move.getCAT() == "P") {
+			move.damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
+		}
+		else if (move.getCAT() == "Sp") {
+			move.damage = (((22 * move.getPOW()*stat.getSpATK() / other.stat.getSpDEF()) / 50) + 2) * modifier;
+		}
+		secondaryEffect(other, move);
+		other.stat.setHP(other.stat.getHP() - move.damage);
 	}
-	else if (move.getCAT() == "Sp") {
-		move.damage = (((22 * move.getPOW()*stat.getSpATK() / other.stat.getSpDEF()) / 50) + 2) * modifier;
-	}
-	secondaryEffect(other, move);
-	other.stat.setHP(other.stat.getHP() - move.damage);
 }
+
 
 int Pokemon::critical(Moves usedMove)
 {
@@ -101,6 +105,47 @@ int Pokemon::critical(Moves usedMove)
 		return 1;
 }
 
+void Pokemon::statusEffect(Moves &usedmove)
+{
+	dontmove = false;
+
+	if (status == "burn")
+		stat.setHP(stat.getHP() - (stat.IHP / 16));
+
+	if (status == "poison")
+		stat.setHP(stat.getHP() - (stat.IHP / 8));
+
+	if (status == "sleep") {
+		dontmove = true;
+		if (sleepturrns > 0) {
+			sleepturrns--;
+		}
+		else {
+			status = "none";
+			dontmove = false;
+		}
+	}
+
+	int chance;
+	chance = rand() % 10000;
+
+	if (status == "freeze") {
+		dontmove = true;
+		if (chance < 2000 || usedmove.getTY() == "fire") {
+			status = "none";
+			dontmove = false;
+		}
+	}
+
+	if (status == "par") {
+		if (chance < 2500) {
+			dontmove = true;
+		}
+	}
+
+
+}
+
 void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//Pokemon goes first
 	if (move.getSEC() == "first") {
@@ -124,13 +169,13 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 	}
 	//Opponent has 30% chance to be paralized
-	else if (move.getSEC() == "par30") {
+	else if (move.getSEC() == "par30" && (ty != "electic" && ty2 != "electric")) {
+		if (status == "none")
+			stat.SPD *= 0.5;
 		if (rand() % 100 + 1 < 30) {
 			opp.status = "par";
 		}
-		else {
-
-		}
+		
 	}
 	//Pokemon recieves 25% of damage as recoil
 	else if (move.getSEC() == "coil25") {
@@ -197,10 +242,14 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//100% chance to put opponent to sleep
 	else if (move.getSEC() == "sleep100") {
+		if (opp.status == "none") {
+			sleepturrns = rand() % 2 + 1;
+		}
 		opp.status = "sleep";
+	
 	}
 	//100% chance to paralize opponent
-	else if (move.getSEC() == "par100") {
+	else if (move.getSEC() == "par100" && (ty != "electic" && ty2 != "electric")) {
 		opp.status = "par";
 	}
 	//Kills pokemon
@@ -216,7 +265,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		stat.HP += move.damage / 2;
 	}
 	//10% chance to burn opponent
-	else if (move.getSEC() == "burn10") {
+	else if (move.getSEC() == "burn10" && (ty != "fire" && ty2 != "fire")) {
 		if (rand() % 100 + 1 < 10) {
 			opp.status = "burn";
 		}
@@ -320,7 +369,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		std::cout << name << "'s deffense sharply rose by 2 stages! It is now " << defStage << std::endl;
 	}
 	//10% chance to poison opponent
-	else if (move.getSEC() == "poison10") {
+	else if (move.getSEC() == "poison10" && (ty != "poison" && ty2 != "poison")) {
 		if (rand() % 100 + 1 < 10) {
 			opp.status = "poison";
 		}
@@ -329,7 +378,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 	}
 	//30% chance to poison opponent
-	else if (move.getSEC() == "poison30") {
+	else if (move.getSEC() == "poison30" && (ty != "poison" && ty2 != "poison")) {
 		if (rand() % 100 + 1 < 30) {
 			opp.status = "poison";
 		}
@@ -338,7 +387,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 	}
 	//10% chance to paralize opponent
-	else if (move.getSEC() == "par10") {
+	else if (move.getSEC() == "par10" && (ty != "electic" && ty2 != "electric")) {
 		if (rand() % 100 + 1 < 10) {
 			opp.status = "par";
 		}
@@ -377,7 +426,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 	}
 	//10% chance to freeze opponnent
-	else if (move.getSEC() == "freeze10") {
+	else if (move.getSEC() == "freeze10" && (ty != "ice" && ty2 != "ice")) {
 		if (rand() % 100 + 1 < 10) {
 			opp.status = "freeze";
 		}
@@ -399,7 +448,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//10% chance to freeze and 10% chance to flinch opponent
 	else if (move.getSEC() == "freeze10+flinch10") {
-		if (rand() % 100 + 1 < 10) {
+		if (rand() % 100 + 1 < 10 && (ty != "ice" && ty2 != "ice")) {
 			//Freeze
 			opp.status = "freeze";
 		}
@@ -437,8 +486,11 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Put self to sleep and completely heal self
 	else if (move.getSEC() == "sSleep100+heal100") {
-		status = "sleep";
-		stat.HP = stat.IHP;
+		if (opp.status == "none") {
+			sleepturrns = rand() % 2 + 1;
+	}
+	status = "sleep";
+	stat.HP = stat.IHP;
 	}
 	//Increase speical attack and special defense by 1 stage
 	else if (move.getSEC() == "iSpATK1+SpDEF1") {
@@ -494,7 +546,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//10% chance to burn and 10% chance to flinch
 	else if (move.getSEC() == "burn10+flinch10") {
-		if (rand() % 100 + 1 < 10) {
+		if (rand() % 100 + 1 < 10 && (ty != "fire" && ty2 != "fire")) {
 			//Brun
 			opp.status = "burn";
 		}

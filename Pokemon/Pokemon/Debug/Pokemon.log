@@ -1,14 +1,40 @@
-﻿  Pokemon.cpp
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(57): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(68): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(99): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(137): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(518): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(526): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(102): warning C4715: 'Pokemon::critical': not all control paths return a value
-  Pokemon.vcxproj -> D:\repositories\Pokemon\Pokemon\Debug\Pokemon.exe
+﻿  Moves.cpp
+  Pokemon.cpp
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(50): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(56): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(59): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(72): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(103): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(174): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(182): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(570): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(578): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  SecondaryEffect.cpp
+  Stats.cpp
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\stats.cpp(32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\stats.cpp(148): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(502): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(511): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(516): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(520): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(528): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(641): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(668): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(674): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(693): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(696): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(699): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(709): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(713): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(726): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(732): warning C4018: '<': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(738): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(741): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\main.cpp(767): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+c:\users\100632983\documents\repos\new folder\pokemon\pokemon\pokemon\pokemon.cpp(106): warning C4715: 'Pokemon::critical': not all control paths return a value
+  Pokemon.vcxproj -> C:\Users\100632983\Documents\repos\New folder\Pokemon\Pokemon\Debug\Pokemon.exe
