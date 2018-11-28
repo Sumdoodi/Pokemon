@@ -14,6 +14,7 @@ public:
 	std::string ty; //Type 1
 	std::string ty2; //Type 2
 	std::string status; //Status Effect
+	bool confused;
 
 	Moves move1; //First Move
 	Moves move2; //Second Move
@@ -31,7 +32,7 @@ public:
 
 	void useMove(Moves&, Pokemon&);
 
-	void secondaryEffect(Moves);
+	void secondaryEffect(Pokemon&, Moves&);
 
 	std::string getName() {
 		return name;
