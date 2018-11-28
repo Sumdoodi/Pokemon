@@ -207,7 +207,7 @@ Pokemon exeggutor("exeggutor",exeggutor_stats, "grass", "psychic", "none", solar
 Pokemon weezing("weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
 Pokemon scyther("scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
 Pokemon jynx("jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
-Pokemon gyrados("gyrados",gyrados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
+Pokemon gayrados("gyarados",gyrados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
 Pokemon lapras("lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
 Pokemon aerodactyl("aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
 Pokemon snorlax("snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
@@ -474,6 +474,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	pokemonList.push_back(weezing);
 	pokemonList.push_back(scyther);
 	pokemonList.push_back(jynx);
+	pokemonList.push_back(gyarados);
 	pokemonList.push_back(lapras);
 	pokemonList.push_back(aerodactyl);
 	pokemonList.push_back(snorlax);
