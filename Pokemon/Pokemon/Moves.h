@@ -14,6 +14,8 @@ private:
 public:
 	std::string name; //Name
 	int maxPP;
+	int damage;
+
 	Moves();
 	Moves(int, int, float, std::string, std::string, std::string);
 	Moves(std::string, int, int, float, std::string, std::string, std::string);

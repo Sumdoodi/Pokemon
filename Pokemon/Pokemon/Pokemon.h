@@ -16,6 +16,13 @@ public:
 	std::string status; //Status Effect
 	bool confused;
 
+	int accStage;
+	int atkStage;
+	int defStage;
+	int spATKStage;
+	int spDEFStage;
+	int spdStage;
+
 	Moves move1; //First Move
 	Moves move2; //Second Move
 	Moves move3; //Third Move

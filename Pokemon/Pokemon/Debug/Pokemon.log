@@ -1,4 +1,14 @@
-﻿  Stats.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\stats.cpp(32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\stats.cpp(149): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe
+﻿  Pokemon.cpp
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(47): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(49): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(54): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(57): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(68): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(99): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(137): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(518): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(526): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+d:\repositories\pokemon\pokemon\pokemon\pokemon.cpp(102): warning C4715: 'Pokemon::critical': not all control paths return a value
+  Pokemon.vcxproj -> D:\repositories\Pokemon\Pokemon\Debug\Pokemon.exe

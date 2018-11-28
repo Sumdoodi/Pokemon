@@ -661,12 +661,12 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 
 			useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 
-			if (player[currentPokemon].stat.HP <= 0) {
+			if (player.size() < currentPokemon && player[currentPokemon].stat.HP <= 0) {
 				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
 				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
-			else if (trainer[opponentCurrent].stat.HP <= 0) {
+			else if (trainer.size() < opponentCurrent && trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
 				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
@@ -684,12 +684,12 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 
 			useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
-			if (player[currentPokemon].stat.HP <= 0) {
+			if (player.size() < currentPokemon && player[currentPokemon].stat.HP <= 0) {
 				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
 				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
-			else if (trainer[opponentCurrent].stat.HP <= 0) {
+			else if (trainer.size() < opponentCurrent && trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
 				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
@@ -701,11 +701,11 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			}
 		}
 
-		if (player[currentPokemon].stat.HP <= 0) {
+		if (player.size() < currentPokemon && player[currentPokemon].stat.HP <= 0) {
 			std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 			currentPokemon++;
 		}
-		else if (trainer[opponentCurrent].stat.HP <= 0) {
+		else if (trainer.size() < opponentCurrent && trainer[opponentCurrent].stat.HP <= 0) {
 			std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 			opponentCurrent++;
 		}
