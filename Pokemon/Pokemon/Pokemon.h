@@ -16,6 +16,7 @@ public:
 	std::string status; //Status Effect
 	bool confused;
 	bool dontmove; //used for status effects
+	int chance;
 
 	int accStage;
 	int atkStage;
@@ -23,7 +24,8 @@ public:
 	int spATKStage;
 	int spDEFStage;
 	int spdStage;
-	int sleepturrns; //how long the pokemon will be alseep for
+	int sleepturrns; //how long the pokemon will be asleep for
+	int confusionturns;//how long the pokemon will be confused for
 
 	Moves move1; //First Move
 	Moves move2; //Second Move

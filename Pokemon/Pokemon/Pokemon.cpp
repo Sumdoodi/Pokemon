@@ -42,15 +42,15 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 void Pokemon::useMove(Moves &move, Pokemon &other) {
 	move.damage = 0;
 	statusEffect(move);
-	if (dontmove == false) {
-		float Critical, Stab, Burn, Random = 0;
-		Random = (fmod(rand(), 25) + 85) / 100;
-		typecompare(other, move);
-		Critical = critical(move);
-		Stab = stab(move);
-		Burn = burn(move);
-		float modifier = Critical * Stab * typemodifier  * Random * Burn;
+	float Critical, Stab, Burn, Random = 0;
+	Random = (fmod(rand(), 25) + 85) / 100;
+	typecompare(other, move);
+	Critical = critical(move);
+	Stab = stab(move);
+	Burn = burn(move);
+	float modifier = Critical * Stab * typemodifier  * Random * Burn;
 
+	if (dontmove == false) {
 		//modifier = typemodifier;
 		if (move.getCAT() == "P") {
 			move.damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
@@ -60,6 +60,20 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 		}
 		secondaryEffect(other, move);
 		other.stat.setHP(other.stat.getHP() - move.damage);
+
+		if (confusionturns > 0) {
+			confusionturns--;
+		}
+		else {
+			confused = false;
+		}
+		if (confused == true) {
+			chance = rand() % 10000;
+			if (chance < 3333) {
+				move.damage = (((22 * 40 * stat.getATK() / other.stat.getDEF()) / 50) + 2) * Burn * Random;
+				stat.setHP(stat.getHP() - move.damage);
+			}
+		}
 	}
 }
 
@@ -68,7 +82,6 @@ int Pokemon::critical(Moves usedMove)
 {
 	//when changes pokemon the crit resets
 	bool crit;
-	float chance;
 	chance = rand() % 10000;
 
 	if (usedMove.getSEC() == "crit" && usedMove.getCAT() == "S")
@@ -126,7 +139,6 @@ void Pokemon::statusEffect(Moves &usedmove)
 		}
 	}
 
-	int chance;
 	chance = rand() % 10000;
 
 	if (status == "freeze") {
@@ -238,12 +250,15 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//100% chance to confuse opponent
 	else if (move.getSEC() == "conf100") {
+		if (opp.confused == false) {
+			opp.confusionturns = rand() % 4 + 1;
+		}
 		opp.confused = true;
 	}
 	//100% chance to put opponent to sleep
 	else if (move.getSEC() == "sleep100") {
 		if (opp.status == "none") {
-			sleepturrns = rand() % 2 + 1;
+			opp.sleepturrns = rand() % 3 + 1;
 		}
 		opp.status = "sleep";
 	
@@ -297,6 +312,9 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//10% chance to confuse opponent
 	else if (move.getSEC() == "conf10") {
 		if (rand() % 100 + 1 < 10) {
+			if (opp.confused == false) {
+				opp.confusionturns = rand() % 4 + 1;
+			}
 			opp.confused = true;
 		}
 		else {
@@ -310,6 +328,9 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//30% chance to confuse opponent
 	else if (move.getSEC() == "conf30") {
 		if (rand() % 100 + 1 < 30) {
+			if (opp.confused == false) {
+				opp.confusionturns = rand() % 4 + 1;
+			}
 			opp.confused = true;
 		}
 		else {
@@ -486,7 +507,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Put self to sleep and completely heal self
 	else if (move.getSEC() == "sSleep100+heal100") {
-		if (opp.status == "none") {
+		if (status == "none") {
 			sleepturrns = rand() % 2 + 1;
 	}
 	status = "sleep";
@@ -762,180 +783,182 @@ void Pokemon::typecompare(Pokemon other, Moves usedMove)
 	}
 
 	//Second Type
-	if (usedMove.getTY() == "normal")
-	{
-		if (other.ty2 == "rock" || other.ty2 == "steel")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "ghost")
-			typemodifier *= 0.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "fighting")
-	{
-		if (other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "bug" || other.ty2 == "psychic" || other.ty2 == "fairy")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "ghost")
-			typemodifier *= 0.0f;
-		else if (other.ty2 == "normal" || other.ty2 == "rock" || other.ty2 == "ice" || other.ty2 == "dark")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "flying")
-	{
-		if (other.ty2 == "rock" || other.ty2 == "steel" || other.ty2 == "electric" || other.ty2 == "fairy")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "fighting" || other.ty2 == "bug" || other.ty2 == "grass")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "poison")
-	{
-		if (other.ty2 == "poison" || other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "ghost")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "steel")
-			typemodifier *= 0.0f;
-		else if (other.ty2 == "grass" || other.ty2 == "fairy")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "ground")
-	{
-		if (other.ty2 == "bug" || other.ty2 == "grass")
-			typemodifier *= 0.5f;
-		else if (other.ty == "flying")
-			typemodifier *= 0.0f;
-		else if (other.ty2 == "poison" || other.ty2 == "rock" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "electric")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "rock")
-	{
-		if (other.ty2 == "fighting" || other.ty2 == "ground" || other.ty2 == "steel")
-			typemodifier *= 0.5f;
-		else if (other.ty == "flying" || other.ty2 == "bug" || other.ty2 == "fire" || other.ty2 == "ice")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	if (usedMove.getTY() == "bug")
-	{
-		if (other.ty2 == "fighting" || other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "ghost" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "fairy")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "grass" || other.ty2 == "psychic" || other.ty2 == "dark")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "ghost")
-	{
-		if (other.ty2 == "dark")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "normal")
-			typemodifier *= 0.0;
-		else if (other.ty2 == "ghost" || other.ty2 == "psychic")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "steel")
-	{
-		if (other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "electric")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "rock" || other.ty2 == "ice" || other.ty2 == "fairy")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "steel")
-	{
-		if (other.ty2 == "rock" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "dragon")
-			typemodifier = 0.5f;
-		else if (other.ty2 == "bug" || other.ty2 == "steel" || other.ty2 == "grass" || other.ty2 == "ice")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "water")
-	{
-		if (other.ty2 == "water" || other.ty2 == "grass" || other.ty2 == "dragon")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "fire")
-			typemodifier *= 2.0f;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "grass")
-	{
-		if (other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "bug" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "grass" || other.ty2 == "dragon")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "water")
-			typemodifier *= 2.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "electric")
-	{
-		if (other.ty2 == "grass" || other.ty2 == "electric" || other.ty2 == "dragon")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "flying" || other.ty2 == "water")
-			typemodifier *= 2.0;
-		else if (other.ty2 == "ground")
-			typemodifier *= 0.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "psychic")
-	{
-		if (other.ty2 == "steel" || other.ty2 == "psychic")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "fighting" || other.ty2 == "poison")
-			typemodifier *= 2.0;
-		else if (other.ty2 == "dark")
-			typemodifier *= 0.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "ice")
-	{
-		if (other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "ice")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "flying" || other.ty2 == "ground" || other.ty2 == "grass" || other.ty2 == "dragon")
-			typemodifier *= 2.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "dragon")
-	{
-		if (other.ty2 == "steel")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "dragon")
-			typemodifier *= 2.0;
-		else if (other.ty2 == "dark")
-			typemodifier *= 0.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "dark")
-	{
-		if (other.ty2 == "fighting" || other.ty2 == "dark" || other.ty2 == "fairy")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "ghost" || other.ty2 == "psychic")
-			typemodifier *= 2.0;
-		else
-			typemodifier *= 1.0f;
-	}
-	else if (usedMove.getTY() == "fairy")
-	{
-		if (other.ty2 == "poison" || other.ty2 == "steel" || other.ty2 == "fire")
-			typemodifier *= 0.5f;
-		else if (other.ty2 == "fighting" || other.ty2 == "dragon" || other.ty2 == "dark")
-			typemodifier *= 2.0;
-		else
-			typemodifier *= 1.0f;
+	if (other.ty2 != "none") {
+		if (usedMove.getTY() == "normal")
+		{
+			if (other.ty2 == "rock" || other.ty2 == "steel")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "ghost")
+				typemodifier *= 0.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "fighting")
+		{
+			if (other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "bug" || other.ty2 == "psychic" || other.ty2 == "fairy")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "ghost")
+				typemodifier *= 0.0f;
+			else if (other.ty2 == "normal" || other.ty2 == "rock" || other.ty2 == "ice" || other.ty2 == "dark")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "flying")
+		{
+			if (other.ty2 == "rock" || other.ty2 == "steel" || other.ty2 == "electric" || other.ty2 == "fairy")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "fighting" || other.ty2 == "bug" || other.ty2 == "grass")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "poison")
+		{
+			if (other.ty2 == "poison" || other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "ghost")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "steel")
+				typemodifier *= 0.0f;
+			else if (other.ty2 == "grass" || other.ty2 == "fairy")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "ground")
+		{
+			if (other.ty2 == "bug" || other.ty2 == "grass")
+				typemodifier *= 0.5f;
+			else if (other.ty == "flying")
+				typemodifier *= 0.0f;
+			else if (other.ty2 == "poison" || other.ty2 == "rock" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "electric")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "rock")
+		{
+			if (other.ty2 == "fighting" || other.ty2 == "ground" || other.ty2 == "steel")
+				typemodifier *= 0.5f;
+			else if (other.ty == "flying" || other.ty2 == "bug" || other.ty2 == "fire" || other.ty2 == "ice")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		if (usedMove.getTY() == "bug")
+		{
+			if (other.ty2 == "fighting" || other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "ghost" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "fairy")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "grass" || other.ty2 == "psychic" || other.ty2 == "dark")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "ghost")
+		{
+			if (other.ty2 == "dark")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "normal")
+				typemodifier *= 0.0;
+			else if (other.ty2 == "ghost" || other.ty2 == "psychic")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "steel")
+		{
+			if (other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "electric")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "rock" || other.ty2 == "ice" || other.ty2 == "fairy")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "steel")
+		{
+			if (other.ty2 == "rock" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "dragon")
+				typemodifier = 0.5f;
+			else if (other.ty2 == "bug" || other.ty2 == "steel" || other.ty2 == "grass" || other.ty2 == "ice")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "water")
+		{
+			if (other.ty2 == "water" || other.ty2 == "grass" || other.ty2 == "dragon")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "fire")
+				typemodifier *= 2.0f;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "grass")
+		{
+			if (other.ty2 == "flying" || other.ty2 == "poison" || other.ty2 == "bug" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "grass" || other.ty2 == "dragon")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "ground" || other.ty2 == "rock" || other.ty2 == "water")
+				typemodifier *= 2.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "electric")
+		{
+			if (other.ty2 == "grass" || other.ty2 == "electric" || other.ty2 == "dragon")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "flying" || other.ty2 == "water")
+				typemodifier *= 2.0;
+			else if (other.ty2 == "ground")
+				typemodifier *= 0.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "psychic")
+		{
+			if (other.ty2 == "steel" || other.ty2 == "psychic")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "fighting" || other.ty2 == "poison")
+				typemodifier *= 2.0;
+			else if (other.ty2 == "dark")
+				typemodifier *= 0.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "ice")
+		{
+			if (other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "water" || other.ty2 == "ice")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "flying" || other.ty2 == "ground" || other.ty2 == "grass" || other.ty2 == "dragon")
+				typemodifier *= 2.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "dragon")
+		{
+			if (other.ty2 == "steel")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "dragon")
+				typemodifier *= 2.0;
+			else if (other.ty2 == "dark")
+				typemodifier *= 0.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "dark")
+		{
+			if (other.ty2 == "fighting" || other.ty2 == "dark" || other.ty2 == "fairy")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "ghost" || other.ty2 == "psychic")
+				typemodifier *= 2.0;
+			else
+				typemodifier *= 1.0f;
+		}
+		else if (usedMove.getTY() == "fairy")
+		{
+			if (other.ty2 == "poison" || other.ty2 == "steel" || other.ty2 == "fire")
+				typemodifier *= 0.5f;
+			else if (other.ty2 == "fighting" || other.ty2 == "dragon" || other.ty2 == "dark")
+				typemodifier *= 2.0;
+			else
+				typemodifier *= 1.0f;
+		}
 	}
 }
