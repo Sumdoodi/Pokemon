@@ -502,10 +502,10 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		int tempCount = 0;
 
 		for (int i = 0; i < pokemonList.size(); i++) {
-			std::cout << std::setw(15) << pokemonList[i].name << " " << pokemonList[i].num << ".";
+			std::cout << pokemonList[i].num << ". " << pokemonList[i].name << std::setw(16); // change this, make my own setw
 			tempCount += 1;
 			if (tempCount % 4 == 0 || i == pokemonList.size() - 1) {
-				std::cout << std::endl;
+				std::cout << "\n";
 			}
 		}
 
