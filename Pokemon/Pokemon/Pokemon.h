@@ -8,6 +8,7 @@ class Pokemon {
 private:
 
 public:
+	std::string num; //Pokemon num
 	std::string name; //Pokemon name
 
 	Stats stat; //Statistics
@@ -55,7 +56,7 @@ public:
 	int burn(Moves);
 
 	Pokemon();
-	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
+	Pokemon(std::string, std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
 	Pokemon(const Pokemon&);
 
 	void changeMod(int&, float&);

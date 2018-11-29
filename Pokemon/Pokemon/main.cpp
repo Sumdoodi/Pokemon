@@ -184,41 +184,41 @@ Moves moonblast("Moonblast", 95, 15, 1.0f, "fairy", "Sp", "lSpATK30");
 Moves moonlight("Moonlight", 0, 10, 0.0f, "fairy", "S", "heal50");
 
 //Generate Pokemon
-Pokemon venusaur("venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
-Pokemon charizard("charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface);
-Pokemon blastoise("blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch);
-Pokemon butterfree("butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter);
-Pokemon beedrill("beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance);
-Pokemon pidgeot("pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance);
-Pokemon raticate("raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy);
-Pokemon arbok("arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare);
-Pokemon raichu("raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam);
-Pokemon sandslash("sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance);
-Pokemon nidoking("nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam);
-Pokemon clefable("clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight);
-Pokemon arcanine("arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
-Pokemon poliwrath("poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
-Pokemon alakazam("alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
-Pokemon machamp("machamp", machamp_stats, "fighting", "none", "none", crosschop, scaryface, focusenergy, lowsweep);
-Pokemon tentacruel("tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
-Pokemon golem("golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
-Pokemon magneton("magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
-Pokemon gengar("gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
-Pokemon onix("onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
-Pokemon exeggutor("exeggutor",exeggutor_stats, "grass", "psychic", "none", solarbeam, stomp, psychic, stunspore);
-Pokemon weezing("weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
-Pokemon scyther("scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
-Pokemon jynx("jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
-Pokemon gyarados("gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
-Pokemon lapras("lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
-Pokemon aerodactyl("aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
-Pokemon snorlax("snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
-Pokemon articuno("articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility);
-Pokemon zapdos("zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter);
-Pokemon moltres("moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, solarbeam);
-Pokemon dragonite("dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane);
-Pokemon mewtwo("mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere);
-Pokemon ampharos("ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse);
+Pokemon venusaur("1", "venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
+Pokemon charizard("2", "charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface);
+Pokemon blastoise("3", "blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch);
+Pokemon butterfree("4", "butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter);
+Pokemon beedrill("5", "beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance);
+Pokemon pidgeot("6", "pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance);
+Pokemon raticate("7", "raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy);
+Pokemon arbok("8", "arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare);
+Pokemon raichu("9", "raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam);
+Pokemon sandslash("10", "sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance);
+Pokemon nidoking("11", "nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam);
+Pokemon clefable("12", "clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight);
+Pokemon arcanine("13", "arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
+Pokemon poliwrath("14", "poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
+Pokemon alakazam("15", "alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
+Pokemon machamp("16", "machamp", machamp_stats, "fighting", "none", "none", crosschop, scaryface, focusenergy, lowsweep);
+Pokemon tentacruel("17", "tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
+Pokemon golem("18", "golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
+Pokemon magneton("19", "magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
+Pokemon gengar("20", "gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
+Pokemon onix("21", "onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
+Pokemon exeggutor("22", "exeggutor",exeggutor_stats, "grass", "psychic", "none", solarbeam, stomp, psychic, stunspore);
+Pokemon weezing("23", "weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
+Pokemon scyther("24", "scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
+Pokemon jynx("25", "jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
+Pokemon gyarados("26", "gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
+Pokemon lapras("27", "lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
+Pokemon aerodactyl("28", "aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
+Pokemon snorlax("29", "snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
+Pokemon articuno("30", "articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility);
+Pokemon zapdos("31", "zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter);
+Pokemon moltres("32", "moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, solarbeam);
+Pokemon dragonite("33", "dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane);
+Pokemon mewtwo("34", "mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere);
+Pokemon ampharos("35", "ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse);
 
 
 void printScreen() {
@@ -502,7 +502,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		int tempCount = 0;
 
 		for (int i = 0; i < pokemonList.size(); i++) {
-			std::cout << std::setw(15) << pokemonList[i].name;
+			std::cout << std::setw(15) << pokemonList[i].name << " " << pokemonList[i].num << ".";
 			tempCount += 1;
 			if (tempCount % 4 == 0 || i == pokemonList.size() - 1) {
 				std::cout << std::endl;
@@ -520,7 +520,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		}
 
 		for (int x = 0; x < pokemonList.size(); x++) {
-			if (name == pokemonList[x].name) {
+			if (name == pokemonList[x].name || name == pokemonList[x].num) {
 				if (player.size() == 0) {
 					player.push_back(Pokemon(pokemonList[x]));
 
@@ -528,7 +528,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 				}
 				else {
 					for (int f = 0; f < player.size(); f++) {
-						if (name == player[f].name) {
+						if (name == player[f].name || name == player[f].num) {
 							duplicate = true;
 						}
 					}
@@ -764,6 +764,7 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice;
+	std::cout << "Opponent: " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.HP << std::endl;
 	while (p1Alive == true && trainerAlive == true) {
 
 		std::cout << "1. Move \n2. Pokemon" << std::endl;

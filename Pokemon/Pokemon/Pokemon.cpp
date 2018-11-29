@@ -20,8 +20,9 @@ Pokemon::Pokemon()
 	spDEFStage = 0;
 }
 
-Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4)
+Pokemon::Pokemon(std::string newNum, std::string newName, Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4)
 {
+	num = newNum;
 	name = newName;
 	stat = newStats;
 	ty = newTY;
@@ -44,6 +45,7 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 }
 
 Pokemon::Pokemon(const Pokemon &poke) {
+	num = poke.num;
 	name = poke.name;
 	stat = poke.stat;
 	ty = poke.ty;
