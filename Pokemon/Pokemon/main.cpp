@@ -56,7 +56,7 @@ Stats ampharos_stats(90, 75, 85, 115, 90, 55);
 
 //Generate Moves
 //Normal moves 18 moves
-Moves quickattack("Quick Attack", 40, 30, 1.0f, "normal", "P", "first");
+Moves quickattack("Quick Attack", 40, 30, 1.f, "normal", "P", "first");
 Moves extremespeed("Extreme Speed", 80, 5, 1.0f, "normal", "P", "first");
 Moves slash("Slash", 70, 20, 1.0f, "normal", "P", "crit");
 Moves stomp("Stomp", 65, 15, 1.0f, "normal", "P", "flinch30");
@@ -202,7 +202,7 @@ Pokemon tentacruel("tentacruel", tentacruel_stats, "water", "poison", "none", sl
 Pokemon golem("golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
 Pokemon magneton("magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
 Pokemon gengar("gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
-Pokemon onix("onix",onix_stats, "rock", "ground", "sleep", rockslide, earthquake, irontail, rockpolish);
+Pokemon onix("onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
 Pokemon exeggutor("exeggutor",exeggutor_stats, "grass", "psychic", "none", solarbeam, stomp, psychic, stunspore);
 Pokemon weezing("weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
 Pokemon scyther("scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
@@ -520,7 +520,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		for (int x = 0; x < pokemonList.size(); x++) {
 			if (name == pokemonList[x].name) {
 				if (player.size() == 0) {
-					player.push_back(pokemonList[x]);
+					player.push_back(Pokemon(pokemonList[x]));
 
 					poke = true;
 				}
@@ -532,7 +532,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 					}
 					if (duplicate == false)
 					{
-						player.push_back(pokemonList[x]);
+						player.push_back(Pokemon(pokemonList[x]));
 						poke = true;
 					}
 				}
@@ -655,11 +655,17 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		std::cout << "Previous: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
 		std::cout << "=========================================" << std::endl;
 
-		if (player[currentPokemon].stat.SPD > trainer[opponentCurrent].stat.SPD) {
+		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
+		trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
+
+		if (player[currentPokemon].stat.SPD * player[currentPokemon].spdMod > trainer[opponentCurrent].stat.SPD * trainer[opponentCurrent].spdMod) {
 			int temp = opponentCurrent;
 			int temp2 = currentPokemon;
 
-			//if(player[currentPokemon].dontmove == false)
+			if (player[currentPokemon].flinched == true)
+				player[currentPokemon].flinched == false;
+
+
 			useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 
 
@@ -687,7 +693,9 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			int temp = opponentCurrent;
 			int temp2 = currentPokemon;
 
-			//if (trainer[opponentCurrent].dontmove == false)
+			if (trainer[opponentCurrent].flinched == true)
+				trainer[opponentCurrent].flinched == false;
+
 			useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
 			if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
@@ -771,33 +779,51 @@ void startBattle(std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
 	}
 }
 
+void endBattle() {
+	p1Alive = true;
+	trainerAlive = true;
+}
+
 int main() {
-	srand(time(NULL));
+	srand(time(NULL)); //Random seed
 
-	printScreen();
+	while (1) { //Game loop
+		system("CLS");
 
-	if (story == true) {
-		std::vector<Pokemon> player1;
-		printChoosePokemon(player1);
+		printScreen();
 
-		std::vector<Pokemon> trainer;
-		trainer.push_back(venusaur);
-		trainer.push_back(blastoise);
-		trainer.push_back(charizard);
-		trainer.push_back(butterfree);
-		trainer.push_back(beedrill);
-		trainer.push_back(pidgeot);
+		if (story == true) {
+			std::vector<Pokemon> player1;
+			printChoosePokemon(player1);
 
-		startBattle(player1, trainer);
+			std::vector<Pokemon> trainer;
+			trainer.push_back(venusaur);
+			trainer.push_back(blastoise);
+			trainer.push_back(charizard);
+			trainer.push_back(butterfree);
+			trainer.push_back(beedrill);
+			trainer.push_back(pidgeot);
+
+			startBattle(player1, trainer);
+			endBattle();
+			std::cin.ignore();
+			std::cin.get();
+
+			story = false;
+		}
+
+		else if (multiplayer == true) {
+			Pokemon player1;
+			Pokemon player2;
+
+			multiplayer = false;
+		}
+		else {
+			std::cin.ignore();
+			std::cin.get();
+
+			return 0;
+		}
 	}
-	
-	if (multiplayer == true) {
-		Pokemon player1;
-		Pokemon player2;
-	}
-	std::cin.ignore();
-	std::cin.get();
-
-	return 0;
 }
 

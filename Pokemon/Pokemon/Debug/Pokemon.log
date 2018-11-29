@@ -1,18 +1,44 @@
-﻿  Pokemon.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(50): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(51): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(52): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(68): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(71): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(85): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(128): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(210): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(217): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(294): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(446): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(629): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(639): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(647): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(131): warning C4715: 'Pokemon::critical': not all control paths return a value
+﻿  main.cpp
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(502): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(511): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(516): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(520): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(528): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(641): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(666): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(675): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(681): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(697): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(701): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(704): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(707): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(710): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(721): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(724): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(727): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(730): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(733): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(742): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(748): warning C4018: '<': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(754): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(757): warning C4018: '>=': signed/unsigned mismatch
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(788): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Pokemon.cpp
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(168): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(170): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(171): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(172): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(182): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(185): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(231): warning C4553: '==': result of expression not used; did you intend '='?
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(271): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(352): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(359): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(436): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(588): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(773): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(793): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(801): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\pokemon.cpp(274): warning C4715: 'Pokemon::critical': not all control paths return a value
   Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe

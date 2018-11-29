@@ -11,6 +11,7 @@ Pokemon::Pokemon()
 	move3 = Moves();
 	move4 = Moves();
 	confused = false;
+	flinched = false;
 	accStage = 0;
 	evaStage = 0;
 	atkStage = 0;
@@ -31,6 +32,7 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 	move3 = newMove3;
 	move4 = newMove4;
 	confused = false;
+	flinched = false;
 
 	accStage = 0;
 	evaStage = 0;
@@ -41,9 +43,127 @@ Pokemon::Pokemon(std::string newName, Stats newStats, std::string newTY, std::st
 	spdStage = 0;
 }
 
+Pokemon::Pokemon(const Pokemon &poke) {
+	name = poke.name;
+	stat = poke.stat;
+	ty = poke.ty;
+	ty2 = poke.ty2;
+	status = poke.status;
+	move1 = poke.move1;
+	move2 = poke.move2;
+	move3 = poke.move3;
+	move4 = poke.move4;
+	confused = false;
+	flinched = false;
+
+	accStage = 0;
+	evaStage = 0;
+	atkStage = 0;
+	spATKStage = 0;
+	defStage = 0;
+	spDEFStage = 0;
+	spdStage = 0;
+}
+
+void Pokemon::changeMod(int &stage, float &mod) {
+	if (stage == -6) {
+		mod = 2 / 8;
+	}
+	if (stage == -5) {
+		mod = 2 / 7;
+	}
+	if (stage == -4) {
+		mod = 2 / 6;
+	}
+	if (stage == -3) {
+		mod = 2 / 5;
+	}
+	if (stage == -2) {
+		mod = 2 / 4;
+	}
+	if (stage == -1) {
+		mod = 2 / 3;
+	}
+	if (stage == 0) {
+		mod = 1;
+	}
+	if (stage == 1) {
+		mod = 3 / 2;
+	}
+	if (stage == 2) {
+		mod = 4 / 2;
+	}
+	if (stage == 3) {
+		mod = 5 / 2;
+	}
+	if (stage == 4) {
+		mod = 6 / 2;
+	}
+	if (stage == 5) {
+		mod = 7 / 2;
+	}
+	if (stage == 6) {
+		mod = 8 / 2;
+	}
+}
+
+void Pokemon::changeAcc(int &stage, float &mod) {
+	if (stage == -6) {
+		mod = 3 / 9;
+	}
+	if (stage == -5) {
+		mod = 3 / 8;
+	}
+	if (stage == -4) {
+		mod = 3 / 7;
+	}
+	if (stage == -3) {
+		mod = 3 / 6;
+	}
+	if (stage == -2) {
+		mod = 3 / 5;
+	}
+	if (stage == -1) {
+		mod = 3 / 4;
+	}
+	if (stage == 0) {
+		mod = 1;
+	}
+	if (stage == 1) {
+		mod = 4 / 3;
+	}
+	if (stage == 2) {
+		mod = 5 / 3;
+	}
+	if (stage == 3) {
+		mod = 6 / 3;
+	}
+	if (stage == 4) {
+		mod = 7 / 3;
+	}
+	if (stage == 5) {
+		mod = 8 / 3;
+	}
+	if (stage == 6) {
+		mod = 9 / 3;
+	}
+}
 void Pokemon::useMove(Moves &move, Pokemon &other) {
 	move.damage = 0;
 	statusEffect(move);
+
+	changeAcc(accStage, accMod);
+	changeAcc(evaStage, evaMod);
+
+	changeMod(atkStage, atkMod);
+	changeMod(spATKStage, spATKMod);
+
+	other.changeAcc(other.accStage, other.accMod);
+	other.changeAcc(other.evaStage, other.evaMod);
+
+	other.changeMod(other.defStage, other.defMod);
+	other.changeMod(other.spDEFStage, other.spDEFMod);
+
 	float Critical, Stab, Burn, Random = 0;
 	Random = (fmod(rand(), 25) + 85) / 100;
 	typecompare(other, move);
@@ -52,40 +172,63 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	Burn = burn(move);
 	float modifier = Critical * Stab * typemodifier  * Random * Burn;
 
-	if (typemodifier == 0.0f) {
-		std::cout << move.name << " had no effect!" << std::endl;
-	}
-	else if (typemodifier == 0.25f || typemodifier == 0.5f) {
-		std::cout << move.name << " was not very effective!" << std::endl;
-	}
-	else if (typemodifier == 2.0f || typemodifier == 4.0f) {
-		std::cout << move.name << " was super effective!" << std::endl;
-	}
-
-	if (dontmove == false) {
-		//modifier = typemodifier;
-		if (move.getCAT() == "P") {
-			move.damage = (((22 * move.getPOW()*stat.getATK() / other.stat.getDEF()) / 50) + 2) * modifier;
+	if (dontmove == false && flinched == false) {
+		if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+			std::cout << move.name << " missed!" << std::endl;
 		}
-		else if (move.getCAT() == "Sp") {
-			move.damage = (((22 * move.getPOW()*stat.getSpATK() / other.stat.getSpDEF()) / 50) + 2) * modifier;
+		else {
+			//modifier = typemodifier;
+			if (move.getCAT() == "P") {
+				move.damage = (((22 * (move.getPOW()*stat.getATK() * atkMod) / (other.stat.getDEF() * other.atkMod)) / 50) + 2) * modifier;
+			}
+			else if (move.getCAT() == "Sp") {
+				move.damage = (((22 * (move.getPOW()*stat.getSpATK() * spATKMod) / (other.stat.getSpDEF() * other.spATKMod)) / 50) + 2) * modifier;
+			}
 		}
-		secondaryEffect(other, move);
-		other.stat.setHP(other.stat.getHP() - move.damage);
-
 		if (confusionturns > 0) {
 			confusionturns--;
 		}
-		else {
+		else if (confused == true){
+			std::cout << name << " snapped out of its confusion!" << std::endl;
 			confused = false;
 		}
 		if (confused == true) {
 			chance = rand() % 10000;
 			if (chance < 3333) {
-				move.damage = (((22 * 40 * stat.getATK() / other.stat.getDEF()) / 50) + 2) * Burn * Random;
-				stat.setHP(stat.getHP() - move.damage);
+				stat.setHP(stat.getHP() - ((((2*50 / 5 + 2)*stat.ATK * 40) / stat.DEF) / 50) + 2);
+
+			}
+			else if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+				std::cout << move.name << " missed!" << std::endl;
+			}
+			else {
+				other.stat.setHP(other.stat.getHP() - move.damage);
+				secondaryEffect(other, move);
 			}
 		}
+		else if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+		}
+		else {
+			other.stat.setHP(other.stat.getHP() - move.damage);
+			secondaryEffect(other, move);
+			if (move.getCAT() != "S") {
+				if (typemodifier == 0.0f) {
+					std::cout << move.name << " had no effect!" << std::endl;
+				}
+				else if (typemodifier == 0.25f || typemodifier == 0.5f) {
+					std::cout << move.name << " was not very effective!" << std::endl;
+				}
+				else if (typemodifier == 2.0f || typemodifier == 4.0f) {
+					std::cout << move.name << " was super effective!" << std::endl;
+				}
+			}
+		}
+	}
+	else {
+		if (dontmove == true) {
+			std::cout << name << " flinched and could not move!" << std::endl;
+		}
+		flinched == false;
 	}
 }
 
@@ -133,18 +276,19 @@ int Pokemon::critical(Moves usedMove)
 void Pokemon::statusEffect(Moves &usedmove)
 {
 	dontmove = false;
+	chance = rand() % 10000;
 
 	if (status == "burn") {
 		stat.setHP(stat.getHP() - (stat.IHP / 16));
 		std::cout << name << " is burning!" << std::endl;
 	}
 
-	if (status == "poison") {
+	else if (status == "poison") {
 		stat.setHP(stat.getHP() - (stat.IHP / 8));
 		std::cout << name << " is poisoned!" << std::endl;
 	}
 
-	if (status == "sleep") {
+	else if (status == "sleep") {
 		dontmove = true;
 		std::cout << name << " cannot move because they are asleep!" << std::endl;
 		if (sleepturrns > 0) {
@@ -157,9 +301,7 @@ void Pokemon::statusEffect(Moves &usedmove)
 		}
 	}
 
-	chance = rand() % 10000;
-
-	if (status == "freeze") {
+	else if (status == "freeze") {
 		dontmove = true;
 		std::cout << name << " cannot move because they are frozon!" << std::endl;
 		if (chance < 2000 || usedmove.getTY() == "fire") {
@@ -169,7 +311,7 @@ void Pokemon::statusEffect(Moves &usedmove)
 		}
 	}
 
-	if (status == "par") {
+	else if (status == "par") {
 		if (chance < 2500) {
 			dontmove = true;
 			std::cout << name << " cannot move because they are paralized!" << std::endl;
@@ -186,7 +328,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	else if (move.getSEC() == "flinch10") {
 		if (rand() % 100 + 1 < 10) {
-
+			opp.flinched = true;
 		}
 		else {
 
@@ -195,7 +337,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//Opponent has 30% chance to flinch
 	else if (move.getSEC() == "flinch30") {
 		if (rand() % 100 + 1 < 30) {
-
+			opp.flinched = true;
 		}
 		else {
 
@@ -319,7 +461,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//20% chance for opponent to flinch
 	else if (move.getSEC() == "flinch20") {
 		if (rand() % 100 + 1 < 20) {
-
+			opp.flinched = true;
 		}
 		else {
 
@@ -514,6 +656,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 		if (rand() % 100 + 1 < 10) {
 			//Flinch
+			opp.flinched = true;
 		}
 		else {
 
@@ -614,6 +757,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 		if (rand() % 100 + 1 < 10) {
 			//Flinch
+			opp.flinched = true;
 		}
 		else {
 
@@ -631,6 +775,16 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 
 	}
 
+}
+
+void Pokemon::resetStages(Pokemon &poke){
+	poke.accStage = 0;
+	poke.evaStage = 0;
+	poke.atkStage = 0;
+	poke.spATKStage = 0;
+	poke.defStage = 0;
+	poke.spDEFStage = 0;
+	poke.spdStage = 0;
 }
 
 int Pokemon::stab(Moves usedMove)

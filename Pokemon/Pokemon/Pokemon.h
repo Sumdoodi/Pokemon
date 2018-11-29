@@ -16,15 +16,30 @@ public:
 	std::string status; //Status Effect
 	bool confused;
 	bool dontmove; //used for status effects
+	bool flinched;
 	int chance;
 
 	int accStage;
+	float accMod;
+
 	int evaStage;
+	float evaMod;
+
 	int atkStage;
+	float atkMod;
+
 	int defStage;
+	float defMod;
+
 	int spATKStage;
+	float spATKMod;
+
 	int spDEFStage;
+	float spDEFMod;
+
 	int spdStage;
+	float spdMod;
+
 	int sleepturrns; //how long the pokemon will be asleep for
 	int confusionturns;//how long the pokemon will be confused for
 
@@ -41,11 +56,16 @@ public:
 
 	Pokemon();
 	Pokemon(std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
+	Pokemon(const Pokemon&);
 
+	void changeMod(int&, float&);
+	void changeAcc(int&, float&);
 	void useMove(Moves&, Pokemon&);
 
 	void statusEffect(Moves&);
 	void secondaryEffect(Pokemon&, Moves&);
+
+	void resetStages(Pokemon&);
 
 	std::string getName() {
 		return name;
