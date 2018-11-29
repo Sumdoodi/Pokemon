@@ -11,10 +11,12 @@
 
 bool story = false, multiplayer = false;
 bool p1Alive = true, trainerAlive = true;
-unsigned int stage = 10;
+int num;
+unsigned int stage = 1;
 
 std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;
+std::string trainerName;
 
 
 //Generate Pokemon stats
@@ -43,7 +45,7 @@ Stats exeggutor_stats(95, 95, 85, 125, 65, 125);
 Stats weezing_stats(65, 90, 120, 85, 70, 60);
 Stats scyther_stats(70, 110, 80, 55, 80, 105);
 Stats jynx_stats(65, 50, 35, 115, 95, 95);
-Stats gyrados_stats(95, 125, 79, 60, 100, 81);
+Stats gyarados_stats(95, 125, 79, 60, 100, 81);
 Stats lapras_stats(130, 85, 80, 85, 95, 60);
 Stats aerodactyl_stats(80, 105, 65, 60, 75, 130);
 Stats snorlax_stats(160, 110, 65, 65, 110, 30);
@@ -207,7 +209,7 @@ Pokemon exeggutor("exeggutor",exeggutor_stats, "grass", "psychic", "none", solar
 Pokemon weezing("weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
 Pokemon scyther("scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
 Pokemon jynx("jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
-Pokemon gayrados("gyarados",gyrados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
+Pokemon gyarados("gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
 Pokemon lapras("lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
 Pokemon aerodactyl("aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
 Pokemon snorlax("snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
@@ -487,9 +489,9 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 
 	bool poke = false;
 	bool duplicate = false;
-	int num;
-	std::cout << "how many pokemon: ";
-	std::cin >> num;
+
+	/*std::cout << "how many pokemon: ";
+	std::cin >> num;*/
 
 	for (int i = 0; i < num; i++) {
 		poke = false;
@@ -759,7 +761,7 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		}
 	}
 }
-void startBattle(std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
+void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice;
 	while (p1Alive == true && trainerAlive == true) {
@@ -794,21 +796,202 @@ int main() {
 
 		if (story == true) {
 			std::vector<Pokemon> player1;
+
+			//Stage 1
+			num = 3;
 			printChoosePokemon(player1);
 
 			std::vector<Pokemon> trainer;
+
+			trainerName = "Youngster Jiminy";
+			trainer.push_back(raticate);
+			trainer.push_back(sandslash);
 			trainer.push_back(venusaur);
-			trainer.push_back(blastoise);
-			trainer.push_back(charizard);
-			trainer.push_back(butterfree);
-			trainer.push_back(beedrill);
-			trainer.push_back(pidgeot);
 
 			startBattle(player1, trainer);
 			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 2
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer2;
+
+			trainerName = "Berry Farmer Robert";
+			trainer2.push_back(blastoise);
+			trainer2.push_back(tentacruel);
+			trainer2.push_back(beedrill);
+
+			startBattle(player1, trainer2);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 3
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer3;
+
+			trainerName = "Math Teacher Myles";
+			trainer3.push_back(charizard);
+			trainer3.push_back(machamp);
+			trainer3.push_back(nidoking);
+
+			startBattle(player1, trainer3);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 4
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer4;
+
+			trainerName = "Painter Charley";
+			trainer4.push_back(jynx);
+			trainer4.push_back(lapras);
+			trainer4.push_back(gengar);
+
+			startBattle(player1, trainer4);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 5
+			num = 6;
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer5;
+
+			trainerName = "No Frills Enthusiast Kennedy";
+			trainer5.push_back(butterfree);
+			trainer5.push_back(snorlax);
+			trainer5.push_back(exeggutor);
+			trainer5.push_back(magneton);
+			trainer5.push_back(poliwrath);
+			trainer5.push_back(clefable);
+
+			startBattle(player1, trainer5);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 6
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer6;
+
+			trainerName = "Queen Ryan";
+			trainer6.push_back(arbok);
+			trainer6.push_back(weezing);
+			trainer6.push_back(raichu);
+			trainer6.push_back(tentacruel);
+			trainer6.push_back(gyarados);
+			trainer6.push_back(golem);
+
+			startBattle(player1, trainer6);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 7
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer7;
+
+			trainerName = "Bird Keeper Steph";
+			trainer7.push_back(pidgeot);
+			trainer7.push_back(aerodactyl);
+			trainer7.push_back(gyarados);
+			trainer7.push_back(arcanine);
+			trainer7.push_back(scyther);
+			trainer7.push_back(articuno);
+
+			startBattle(player1, trainer7);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 8
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer8;
+
+			trainerName = "Bodybuilder Cob";
+			trainer8.push_back(poliwrath);
+			trainer8.push_back(machamp);
+			trainer8.push_back(golem);
+			trainer8.push_back(onix);
+			trainer8.push_back(snorlax);
+			trainer8.push_back(dragonite);
+
+			startBattle(player1, trainer8);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 9
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer9;
+
+			trainerName = "Elite Trainer Jonah";
+			trainer9.push_back(venusaur);
+			trainer9.push_back(blastoise);
+			trainer9.push_back(charizard);
+			trainer9.push_back(articuno);
+			trainer9.push_back(moltres);
+			trainer9.push_back(zapdos);
+
+			startBattle(player1, trainer9);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			//Stage 10
+			printChoosePokemon(player1);
+
+			std::vector<Pokemon> trainer10;
+
+			trainerName = "Champion Rhyss";
+			trainer10.push_back(gyarados);
+			trainer10.push_back(clefable);
+			trainer10.push_back(gengar);
+			trainer10.push_back(dragonite);
+			trainer10.push_back(mewtwo);
+			trainer10.push_back(ampharos);
+
+			startBattle(player1, trainer10);
+			endBattle();
+
+			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+			stage++;
+			player1.clear();
+
+			std::cout << "You defeated EVERYONE!";
 			std::cin.ignore();
 			std::cin.get();
 
+			pokemonList.clear();
 			story = false;
 		}
 
