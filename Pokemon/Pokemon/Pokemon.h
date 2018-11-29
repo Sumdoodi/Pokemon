@@ -19,6 +19,7 @@ public:
 	int chance;
 
 	int accStage;
+	int evaStage;
 	int atkStage;
 	int defStage;
 	int spATKStage;

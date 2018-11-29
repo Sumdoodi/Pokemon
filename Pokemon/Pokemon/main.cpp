@@ -202,7 +202,7 @@ Pokemon tentacruel("tentacruel", tentacruel_stats, "water", "poison", "none", sl
 Pokemon golem("golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
 Pokemon magneton("magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
 Pokemon gengar("gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
-Pokemon onix("onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
+Pokemon onix("onix",onix_stats, "rock", "ground", "sleep", rockslide, earthquake, irontail, rockpolish);
 Pokemon exeggutor("exeggutor",exeggutor_stats, "grass", "psychic", "none", solarbeam, stomp, psychic, stunspore);
 Pokemon weezing("weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
 Pokemon scyther("scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
@@ -554,8 +554,8 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 	while (worked == false) {
 		if (moveChoice == 1) {
 			if (one.move1.getPP() > 0) {
-				one.useMove(one.move1, two);
 				std::cout << one.name << " used " << one.move1.name << "!" << std::endl;
+				one.useMove(one.move1, two);
 				one.move1.setPP(one.move1.getPP() - 1);
 				worked = true;
 			}
@@ -574,8 +574,8 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 		}
 		else if (moveChoice == 2) {
 			if (one.move2.getPP() > 0) {
-				one.useMove(one.move2, two);
 				std::cout << one.name << " used " << one.move2.name << "!" << std::endl;
+				one.useMove(one.move2, two);
 				one.move2.setPP(one.move2.getPP() - 1);
 				worked = true;
 			}
@@ -594,8 +594,8 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 		}
 		else if (moveChoice == 3) {
 			if (one.move3.getPP() > 0) {
-				one.useMove(one.move3, two);
 				std::cout << one.name << " used " << one.move3.name << "!" << std::endl;
+				one.useMove(one.move3, two);
 				one.move3.setPP(one.move3.getPP() - 1);
 				worked = true;
 			}
@@ -614,8 +614,8 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 		}
 		else if (moveChoice == 4) {
 			if (one.move4.getPP() > 0) {
-				one.useMove(one.move4, two);
 				std::cout << one.name << " used " << one.move4.name << "!" << std::endl;
+				one.useMove(one.move4, two);
 				one.move4.setPP(one.move4.getPP() - 1);
 				worked = true;
 			}
@@ -659,24 +659,26 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			int temp = opponentCurrent;
 			int temp2 = currentPokemon;
 
+			//if(player[currentPokemon].dontmove == false)
 			useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 
 
 			if (player[currentPokemon].stat.HP <= 0) {
 				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
-				if (player.size() < currentPokemon)
+				if (currentPokemon < player.size())
 					std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
 			else if (trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
-				if (trainer.size() < opponentCurrent)
+				if (opponentCurrent < trainer.size())
 					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
 
+				//if (trainer[opponentCurrent].dontmove == false)
 				useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
 			}
@@ -685,36 +687,42 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			int temp = opponentCurrent;
 			int temp2 = currentPokemon;
 
+			//if (trainer[opponentCurrent].dontmove == false)
 			useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
-			if (player[currentPokemon].stat.HP <= 0) {
+			if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
 				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
-				if (player.size() < currentPokemon)
+				if (currentPokemon < player.size())
 					std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 			}
-			else if (trainer.size() < opponentCurrent && trainer[opponentCurrent].stat.HP <= 0) {
+			else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
-				if (trainer.size() < currentPokemon)
+				if (opponentCurrent < trainer.size())
 					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
 
+				//if (player[currentPokemon].dontmove == false)
 				useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 			}
 		}
 
-		if (player.size() < currentPokemon && player[currentPokemon].stat.HP <= 0) {
+		if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
 			std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 			currentPokemon++;
+			if (currentPokemon < player.size())
+				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 		}
-		else if (trainer.size() < opponentCurrent && trainer[opponentCurrent].stat.HP <= 0) {
+		else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
 			std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 			opponentCurrent++;
+			if (opponentCurrent < trainer.size())
+				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 		}
-		else {
+		if(opponentCurrent < trainer.size() && currentPokemon < player.size()) {
 			std::cout << "=========================================" << std::endl;
 			std::cout << "Current: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
 			std::cout << "=========================================" << std::endl;
