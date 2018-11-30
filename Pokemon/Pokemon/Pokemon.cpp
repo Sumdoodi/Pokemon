@@ -371,9 +371,9 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Pokemons evasion increases a stage
 	else if (move.getSEC() == "iEVA1") {
-		if (accStage < 6) {
-			accStage += 1;
-			std::cout << name << "'s accuracy rose by 1 stage! It is now " << accStage << std::endl;
+		if (evaStage < 6) {
+			evaStage += 1;
+			std::cout << name << "'s evasion rose by 1 stage! It is now " << evaStage << std::endl;
 		}
 	}
 	//Pokemons attack increases 2 stages
@@ -404,7 +404,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		else {
 			opp.defStage = -6;
 		}
-		std::cout << opp.name << "'s deffense sharply fell by 2 stages! It is now " << opp.defStage << std::endl;
+		std::cout << opp.name << "'s defense sharply fell by 2 stages! It is now " << opp.defStage << std::endl;
 	}
 	//Opponent decreases speed 2 stages
 	else if (move.getSEC() == "dSPD2") {
@@ -462,17 +462,11 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			std::cout << opp.name << " has been burned!" << std::endl;
 			opp.status = "burn";
 		}
-		else {
-
-		}
 	}
 	//20% chance for opponent to flinch
 	else if (move.getSEC() == "flinch20") {
 		if (rand() % 100 + 1 < 20) {
 			opp.flinched = true;
-		}
-		else {
-
 		}
 	}
 	//10% chance to lower opponents speacial defense by 1 stage
@@ -480,11 +474,8 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		if (rand() % 100 + 1 < 10) {
 			if (opp.spDEFStage > -6) {
 				opp.spDEFStage -= 1;
-				std::cout << opp.name << "'s special deffense fell by 1 stage! It is now " << opp.spDEFStage << std::endl;
+				std::cout << opp.name << "'s special defense fell by 1 stage! It is now " << opp.spDEFStage << std::endl;
 			}
-		}
-		else {
-
 		}
 	}
 	//10% chance to confuse opponent
@@ -495,13 +486,6 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			}
 			opp.confused = true;
 		}
-		else {
-
-		}
-	}
-	//Move always hits
-	else if (move.getSEC() == "100") {
-
 	}
 	//30% chance to confuse opponent
 	else if (move.getSEC() == "conf30") {
@@ -510,9 +494,6 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 				opp.confusionturns = rand() % 4 + 1;
 			}
 			opp.confused = true;
-		}
-		else {
-
 		}
 	}
 	//Decreases opponent attack by 2 stages
@@ -530,11 +511,8 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		if (rand() % 100 + 1 < 10) {
 			if (opp.spDEFStage > -6) {
 				opp.spDEFStage -= 1;
-				std::cout << opp.name << "'s special deffense fell by 1 stage! It is now " << opp.spDEFStage << std::endl;
+				std::cout << opp.name << "'s special defense fell by 1 stage! It is now " << opp.spDEFStage << std::endl;
 			}
-		}
-		else {
-
 		}
 	}
 	//increases special defense by 2 stages
@@ -545,7 +523,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		else {
 			spDEFStage = 6;
 		}
-		std::cout << name << "'s special deffense sharply fell by 2 stages! It is now " << spDEFStage << std::endl;
+		std::cout << name << "'s special defense sharply rose by 2 stages! It is now " << spDEFStage << std::endl;
 	}
 	//Increases speed by 2 stages
 	else if (move.getSEC() == "iSPD2") {
@@ -565,7 +543,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		else {
 			defStage = 6;
 		}
-		std::cout << name << "'s deffense sharply rose by 2 stages! It is now " << defStage << std::endl;
+		std::cout << name << "'s defense sharply rose by 2 stages! It is now " << defStage << std::endl;
 	}
 	//10% chance to poison opponent
 	else if (move.getSEC() == "poison10" && (opp.ty != "poison" && opp.ty2 != "poison")) {
@@ -573,18 +551,12 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			opp.status = "poison";
 			std::cout << opp.name << " has been poisoned!" << std::endl;
 		}
-		else {
-
-		}
 	}
 	//30% chance to poison opponent
 	else if (move.getSEC() == "poison30" && (opp.ty != "poison" && opp.ty2 != "poison")) {
 		if (rand() % 100 + 1 < 30 && opp.status == "none") {
 			std::cout << opp.name << " has been poisoned!" << std::endl;
 			opp.status = "poison";
-		}
-		else {
-
 		}
 	}
 	//10% chance to paralize opponent
@@ -595,9 +567,6 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 				opp.status = "par";
 				stat.SPD *= 0.5;
 			}
-		}
-		else {
-
 		}
 	}
 	//decreases opponent speed by 1 stage
@@ -612,11 +581,8 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		if (rand() % 100 + 1 < 30) {
 			if (opp.defStage > -6) {
 				opp.defStage -= 1;
-				std::cout << opp.name << "'s deffense fell by 1 stage! It is now " << opp.defStage << std::endl;
+				std::cout << opp.name << "'s defense fell by 1 stage! It is now " << opp.defStage << std::endl;
 			}
-		}
-		else {
-
 		}
 	}
 	//Deal exactly 50 damage
@@ -645,7 +611,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		if (rand() % 100 + 1 < 30) {
 			if (opp.spATKStage > -6) {
 				opp.spATKStage -= 1;
-				std::cout << opp.name << "'s deffense fell by 1 stage! It is now " << opp.spATKStage << std::endl;
+				std::cout << opp.name << "'s special attack fell by 1 stage! It is now " << opp.spATKStage << std::endl;
 			}
 		}
 		else {
@@ -689,7 +655,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 		}
 		if (defStage < 6) {
 			defStage += 1;
-			std::cout << name << "'s deffense rose by 1 stage! It is now " << defStage << std::endl;
+			std::cout << name << "'s defense rose by 1 stage! It is now " << defStage << std::endl;
 		}
 	}
 	//Put self to sleep and completely heal self

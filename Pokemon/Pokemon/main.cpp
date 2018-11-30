@@ -317,8 +317,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 4) {
 		pokemonList.clear();
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -335,8 +335,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 5) {
 		pokemonList.clear();
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -355,8 +355,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 6) {
 		pokemonList.clear();
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -379,8 +379,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 7) {
 		pokemonList.clear();
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -405,8 +405,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 8) {
 		pokemonList.clear();	
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -434,8 +434,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	else if (stage == 9 || 10) {
 		pokemonList.clear();
 		pokemonList.push_back(venusaur);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -742,6 +742,9 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 		}
 		if(opponentCurrent < trainer.size() && currentPokemon < player.size()) {
+			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
 		}
 
 		int count = 0;
@@ -765,30 +768,39 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		if (count2 >= trainer.size()) {
 			trainerAlive = false;
 		}
-
-		display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
-		battleScreen.updateHP();
-		battleScreen.printScreen();
 	}
+	std::cout << "Press any key to continue...\n";
+	std::cin.ignore();
+	std::cin.get();
 }
 void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
-	int choice;
-	std::cout << "Opponent: " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.HP << std::endl;
+	int choice = 0;
 	while (p1Alive == true && trainerAlive == true) {
-		std::cout << "1. Move \n2. Pokemon" << std::endl;
-		std::cin >> choice;
-		if (choice == 1) {
+
+		std::cout << "Press any key to continue...\n";
+		std::cin.ignore();
+		std::cin.get();
+
+		while (choice != 1 || choice != 2 && p1Alive == true && trainerAlive == true) {
 			system("CLS");
-			selectMove(currentPokemon, opponentCurrent, player, trainer);
-		}
-		if (choice == 2) {
-			system("CLS");
-			//Pokemon screen
-		}
-		else {
+			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
 			std::cout << "1. Move \n2. Pokemon" << std::endl;
 			std::cin >> choice;
+			if (choice == 1) {
+				system("CLS");
+				selectMove(currentPokemon, opponentCurrent, player, trainer);
+			}
+			if (choice == 2) {
+				system("CLS");
+				//Pokemon screen
+			}
+			else {
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+			}
 		}
 	}
 }
@@ -803,211 +815,292 @@ int main() {
 
 	while (1) { //Game loop
 		system("CLS");
-		PlaySound(TEXT("pomf.wav"), NULL, SND_FILENAME|SND_LOOP|SND_ASYNC);
+
+		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		printScreen();
 
-		if (story == true) {
+		while(story == true) {
 			std::vector<Pokemon> player1;
 
-			//Stage 1
-			num = 3;
-			printChoosePokemon(player1);
+			if (p1Alive == true) {
+				if (stage == 1) {
+					//Stage 1
+					num = 3;
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer;
+					std::vector<Pokemon> trainer;
 
-			trainerName = "Youngster Jiminy";
-			trainer.push_back(raticate);
-			trainer.push_back(sandslash);
-			trainer.push_back(venusaur);
+					trainerName = "Youngster Jiminy";
+					trainer.push_back(raticate);
+					trainer.push_back(sandslash);
+					trainer.push_back(venusaur);
 
-			startBattle(player1, trainer);
-			endBattle();
+					startBattle(player1, trainer);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
+				else if (stage == 2) {
 
-			//Stage 2
-			printChoosePokemon(player1);
+					//Stage 2
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer2;
+					std::vector<Pokemon> trainer2;
 
-			trainerName = "Berry Farmer Robert";
-			trainer2.push_back(blastoise);
-			trainer2.push_back(tentacruel);
-			trainer2.push_back(beedrill);
+					trainerName = "Berry Farmer Robert";
+					trainer2.push_back(blastoise);
+					trainer2.push_back(tentacruel);
+					trainer2.push_back(beedrill);
 
-			startBattle(player1, trainer2);
-			endBattle();
+					startBattle(player1, trainer2);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 3
-			printChoosePokemon(player1);
+				else if (stage == 3) {
+					//Stage 3
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer3;
+					std::vector<Pokemon> trainer3;
 
-			trainerName = "Math Teacher Myles";
-			trainer3.push_back(charizard);
-			trainer3.push_back(machamp);
-			trainer3.push_back(nidoking);
+					trainerName = "Math Teacher Myles";
+					trainer3.push_back(charizard);
+					trainer3.push_back(machamp);
+					trainer3.push_back(nidoking);
 
-			startBattle(player1, trainer3);
-			endBattle();
+					startBattle(player1, trainer3);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 4
-			printChoosePokemon(player1);
+				else if (stage == 4) {
+					//Stage 4
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer4;
+					std::vector<Pokemon> trainer4;
 
-			trainerName = "Painter Charley";
-			trainer4.push_back(jynx);
-			trainer4.push_back(lapras);
-			trainer4.push_back(gengar);
+					trainerName = "Painter Charley";
+					trainer4.push_back(jynx);
+					trainer4.push_back(lapras);
+					trainer4.push_back(gengar);
 
-			startBattle(player1, trainer4);
-			endBattle();
+					startBattle(player1, trainer4);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 5
-			num = 6;
-			printChoosePokemon(player1);
+				else if (stage == 5) {
+					//Stage 5
+					num = 6;
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer5;
+					std::vector<Pokemon> trainer5;
 
-			trainerName = "No Frills Enthusiast Kennedy";
-			trainer5.push_back(butterfree);
-			trainer5.push_back(snorlax);
-			trainer5.push_back(exeggutor);
-			trainer5.push_back(magneton);
-			trainer5.push_back(poliwrath);
-			trainer5.push_back(clefable);
+					trainerName = "No Frills Enthusiast Kennedy";
+					trainer5.push_back(butterfree);
+					trainer5.push_back(snorlax);
+					trainer5.push_back(exeggutor);
+					trainer5.push_back(magneton);
+					trainer5.push_back(poliwrath);
+					trainer5.push_back(clefable);
 
-			startBattle(player1, trainer5);
-			endBattle();
+					startBattle(player1, trainer5);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 6
-			printChoosePokemon(player1);
+				else if (stage == 6) {
+					//Stage 6
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer6;
+					std::vector<Pokemon> trainer6;
 
-			trainerName = "Queen Ryan";
-			trainer6.push_back(arbok);
-			trainer6.push_back(weezing);
-			trainer6.push_back(raichu);
-			trainer6.push_back(tentacruel);
-			trainer6.push_back(gyarados);
-			trainer6.push_back(golem);
+					trainerName = "Queen Ryan";
+					trainer6.push_back(arbok);
+					trainer6.push_back(weezing);
+					trainer6.push_back(raichu);
+					trainer6.push_back(tentacruel);
+					trainer6.push_back(gyarados);
+					trainer6.push_back(golem);
 
-			startBattle(player1, trainer6);
-			endBattle();
+					startBattle(player1, trainer6);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 7
-			printChoosePokemon(player1);
+				else if (stage == 7) {
+					//Stage 7
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer7;
+					std::vector<Pokemon> trainer7;
 
-			trainerName = "Bird Keeper Steph";
-			trainer7.push_back(pidgeot);
-			trainer7.push_back(aerodactyl);
-			trainer7.push_back(gyarados);
-			trainer7.push_back(arcanine);
-			trainer7.push_back(scyther);
-			trainer7.push_back(articuno);
+					trainerName = "Bird Keeper Steph";
+					trainer7.push_back(pidgeot);
+					trainer7.push_back(aerodactyl);
+					trainer7.push_back(gyarados);
+					trainer7.push_back(arcanine);
+					trainer7.push_back(scyther);
+					trainer7.push_back(articuno);
 
-			startBattle(player1, trainer7);
-			endBattle();
+					startBattle(player1, trainer7);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 8
-			printChoosePokemon(player1);
+				else if (stage == 8) {
+					//Stage 8
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer8;
+					std::vector<Pokemon> trainer8;
 
-			trainerName = "Bodybuilder Cob";
-			trainer8.push_back(poliwrath);
-			trainer8.push_back(machamp);
-			trainer8.push_back(golem);
-			trainer8.push_back(onix);
-			trainer8.push_back(snorlax);
-			trainer8.push_back(dragonite);
+					trainerName = "Bodybuilder Cob";
+					trainer8.push_back(poliwrath);
+					trainer8.push_back(machamp);
+					trainer8.push_back(golem);
+					trainer8.push_back(onix);
+					trainer8.push_back(snorlax);
+					trainer8.push_back(dragonite);
 
-			startBattle(player1, trainer8);
-			endBattle();
+					startBattle(player1, trainer8);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 9
-			printChoosePokemon(player1);
+				else if (stage == 9) {
+					//Stage 9
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer9;
+					std::vector<Pokemon> trainer9;
 
-			trainerName = "Elite Trainer Jonah";
-			trainer9.push_back(venusaur);
-			trainer9.push_back(blastoise);
-			trainer9.push_back(charizard);
-			trainer9.push_back(articuno);
-			trainer9.push_back(moltres);
-			trainer9.push_back(zapdos);
+					trainerName = "Elite Trainer Jonah";
+					trainer9.push_back(venusaur);
+					trainer9.push_back(blastoise);
+					trainer9.push_back(charizard);
+					trainer9.push_back(articuno);
+					trainer9.push_back(moltres);
+					trainer9.push_back(zapdos);
 
-			startBattle(player1, trainer9);
-			endBattle();
+					startBattle(player1, trainer9);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			//Stage 10
-			printChoosePokemon(player1);
+				else if (stage == 10) {
+					//Stage 10
+					printChoosePokemon(player1);
 
-			std::vector<Pokemon> trainer10;
+					std::vector<Pokemon> trainer10;
 
-			trainerName = "Champion Rhyss";
-			trainer10.push_back(gyarados);
-			trainer10.push_back(clefable);
-			trainer10.push_back(gengar);
-			trainer10.push_back(dragonite);
-			trainer10.push_back(mewtwo);
-			trainer10.push_back(ampharos);
+					trainerName = "Champion Rhyss";
+					trainer10.push_back(gyarados);
+					trainer10.push_back(clefable);
+					trainer10.push_back(gengar);
+					trainer10.push_back(dragonite);
+					trainer10.push_back(mewtwo);
+					trainer10.push_back(ampharos);
 
-			startBattle(player1, trainer10);
-			endBattle();
+					startBattle(player1, trainer10);
 
-			std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
-			stage++;
-			player1.clear();
+					if (p1Alive == true) {
+						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						stage++;
+						endBattle();
+					}
+					else {
+						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
+					}
+					player1.clear();
+				}
 
-			std::cout << "You defeated EVERYONE!";
+				else if (stage == 11) {
+					std::cout << "You defeated EVERYONE!";
+					story = false;
+				}
+			}
+
+			if(p1Alive == false){
+				std::cout << "You were defeated on stage " << stage << "!";
+				story = false;
+			}
+
 			std::cin.ignore();
 			std::cin.get();
 
 			pokemonList.clear();
-			story = false;
 		}
 
-		else if (multiplayer == true) {
+		while (multiplayer == true) {
 			Pokemon player1;
 			Pokemon player2;
 
@@ -1017,11 +1110,9 @@ int main() {
 
 			multiplayer = false;
 		}
-		else {
 			std::cin.ignore();
 			std::cin.get();
 
 			return 0;
-		}
 	}
 }
