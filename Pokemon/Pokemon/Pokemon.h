@@ -18,6 +18,7 @@ public:
 	bool confused;
 	bool dontmove; //used for status effects
 	bool flinched;
+	bool charge;
 	int chance;
 
 	int accStage;

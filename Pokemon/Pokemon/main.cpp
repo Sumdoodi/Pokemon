@@ -8,6 +8,9 @@
 #include <ctime>
 #include <cstdlib>
 #include <iomanip>
+#include "BattleScreen.h"
+#include <Windows.h>
+#include <MMsystem.h>
 
 bool story = false, multiplayer = false;
 bool p1Alive = true, trainerAlive = true;
@@ -226,7 +229,7 @@ void printScreen() {
 
 	std::cout << std::endl << "========================================================================================================================" << std::endl;
 	std::cout << "  			                                .::." << std::endl;
-	std::cout << "  					                      .;:**'               " << std::endl;
+	std::cout << "  					              .;:**'               " << std::endl;
 	std::cout << "  			                              `                   " << std::endl;
 	std::cout << "  			  .:XHHHHk.              db.   .;;.     dH  MX    " << std::endl;
 	std::cout << "  			oMMMMMMMMMMM       ~MM  dMMP :MMMMMR   MMM  MR      ~MRMN" << std::endl;
@@ -572,10 +575,10 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 			}
 			else {
 				std::cout << "|============================|" << std::endl;
-				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
-				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
-				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
-				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << formater(("| 1. " + one.move1.name + " " + to_string(one.move1.getPP()) + "/" + to_string(one.move1.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 2. " + one.move2.name + " " + to_string(one.move2.getPP()) + "/" + to_string(one.move2.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 3. " + one.move3.name + " " + to_string(one.move3.getPP()) + "/" + to_string(one.move3.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 4. " + one.move4.name + " " + to_string(one.move4.getPP()) + "/" + to_string(one.move4.maxPP)), 29) << "|" << std::endl;
 				std::cout << "|============================|" << std::endl;
 				std::cout << "What will " << one.name << " do?" << std::endl;
 				std::cin.clear();
@@ -592,10 +595,10 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 			}
 			else {
 				std::cout << "|============================|" << std::endl;
-				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
-				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
-				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
-				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << formater(("| 1. " + one.move1.name + " " + to_string(one.move1.getPP()) + "/" + to_string(one.move1.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 2. " + one.move2.name + " " + to_string(one.move2.getPP()) + "/" + to_string(one.move2.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 3. " + one.move3.name + " " + to_string(one.move3.getPP()) + "/" + to_string(one.move3.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 4. " + one.move4.name + " " + to_string(one.move4.getPP()) + "/" + to_string(one.move4.maxPP)), 29) << "|" << std::endl;
 				std::cout << "|============================|" << std::endl;
 				std::cout << "What will " << one.name << " do?" << std::endl;
 				std::cin.clear();
@@ -612,10 +615,10 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 			}
 			else {
 				std::cout << "|============================|" << std::endl;
-				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
-				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
-				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
-				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << formater(("| 1. " + one.move1.name + " " + to_string(one.move1.getPP()) + "/" + to_string(one.move1.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 2. " + one.move2.name + " " + to_string(one.move2.getPP()) + "/" + to_string(one.move2.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 3. " + one.move3.name + " " + to_string(one.move3.getPP()) + "/" + to_string(one.move3.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 4. " + one.move4.name + " " + to_string(one.move4.getPP()) + "/" + to_string(one.move4.maxPP)), 29) << "|" << std::endl;
 				std::cout << "|============================|" << std::endl;
 				std::cout << "What will " << one.name << " do?" << std::endl;
 				std::cin.clear();
@@ -632,10 +635,10 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 			}
 			else {
 				std::cout << "|============================|" << std::endl;
-				std::cout << "1. " << one.move1.name << "	" << one.move1.getPP() << "/" << one.move1.maxPP << std::endl;
-				std::cout << "2. " << one.move2.name << "	" << one.move2.getPP() << "/" << one.move2.maxPP << std::endl;
-				std::cout << "3. " << one.move3.name << "	" << one.move3.getPP() << "/" << one.move3.maxPP << std::endl;
-				std::cout << "4. " << one.move4.name << "	" << one.move4.getPP() << "/" << one.move4.maxPP << std::endl;
+				std::cout << formater(("| 1. " + one.move1.name + " " + to_string(one.move1.getPP()) + "/" + to_string(one.move1.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 2. " + one.move2.name + " " + to_string(one.move2.getPP()) + "/" + to_string(one.move2.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 3. " + one.move3.name + " " + to_string(one.move3.getPP()) + "/" + to_string(one.move3.maxPP)), 29) << "|" << std::endl;
+				std::cout << formater(("| 4. " + one.move4.name + " " + to_string(one.move4.getPP()) + "/" + to_string(one.move4.maxPP)), 29) << "|" << std::endl;
 				std::cout << "|============================|" << std::endl;
 				std::cout << "What will " << one.name << " do?" << std::endl;
 				std::cin.clear();
@@ -651,10 +654,10 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 
 	if (currentPokemon < player.size()) {
 		std::cout << "|============================|" << std::endl;
-		std::cout << "| 1. " << player[currentPokemon].move1.name << "	" << player[currentPokemon].move1.getPP() << "/" << player[currentPokemon].move1.maxPP << "|" << std::endl;
-		std::cout << "| 2. " << player[currentPokemon].move2.name << "		" << player[currentPokemon].move2.getPP() << "/" << player[currentPokemon].move2.maxPP << "|" << std::endl;
-		std::cout << "| 3. " << player[currentPokemon].move3.name << "		" << player[currentPokemon].move3.getPP() << "/" << player[currentPokemon].move3.maxPP << "|" << std::endl;
-		std::cout << "| 4. " << player[currentPokemon].move4.name << "		" << player[currentPokemon].move4.getPP() << "/" << player[currentPokemon].move4.maxPP << "|" << std::endl;
+		std::cout << formater(("| 1. " + player[currentPokemon].move1.name + " " + to_string(player[currentPokemon].move1.getPP()) + "/" + to_string(player[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 2. " + player[currentPokemon].move2.name + " " + to_string(player[currentPokemon].move2.getPP()) + "/" + to_string(player[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 3. " + player[currentPokemon].move3.name + " " + to_string(player[currentPokemon].move3.getPP()) + "/" + to_string(player[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 4. " + player[currentPokemon].move4.name + " " + to_string(player[currentPokemon].move4.getPP()) + "/" + to_string(player[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
 		std::cout << "|============================|" << std::endl;
 		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
 		std::cin >> moveChoice;
@@ -662,9 +665,6 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		system("CLS");
 
 		oppMoveChoice = rand() % 4 + 1;
-		std::cout << "=========================================" << std::endl;
-		std::cout << "Previous: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
-		std::cout << "=========================================" << std::endl;
 
 		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
 		trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
@@ -742,9 +742,6 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
 		}
 		if(opponentCurrent < trainer.size() && currentPokemon < player.size()) {
-			std::cout << "=========================================" << std::endl;
-			std::cout << "Current: " << player[currentPokemon].name << " HP: " << player[currentPokemon].stat.getHP() << " " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.getHP() << std::endl;
-			std::cout << "=========================================" << std::endl;
 		}
 
 		int count = 0;
@@ -768,6 +765,10 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		if (count2 >= trainer.size()) {
 			trainerAlive = false;
 		}
+
+		display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+		battleScreen.updateHP();
+		battleScreen.printScreen();
 	}
 }
 void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
@@ -775,18 +776,19 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int choice;
 	std::cout << "Opponent: " << trainer[opponentCurrent].name << " HP: " << trainer[opponentCurrent].stat.HP << std::endl;
 	while (p1Alive == true && trainerAlive == true) {
-
 		std::cout << "1. Move \n2. Pokemon" << std::endl;
 		std::cin >> choice;
 		if (choice == 1) {
 			system("CLS");
-
 			selectMove(currentPokemon, opponentCurrent, player, trainer);
 		}
 		if (choice == 2) {
 			system("CLS");
-
 			//Pokemon screen
+		}
+		else {
+			std::cout << "1. Move \n2. Pokemon" << std::endl;
+			std::cin >> choice;
 		}
 	}
 }
@@ -801,7 +803,7 @@ int main() {
 
 	while (1) { //Game loop
 		system("CLS");
-
+		PlaySound(TEXT("pomf.wav"), NULL, SND_FILENAME|SND_LOOP|SND_ASYNC);
 		printScreen();
 
 		if (story == true) {
@@ -1009,6 +1011,10 @@ int main() {
 			Pokemon player1;
 			Pokemon player2;
 
+			for (;;) {
+				std::cout << "Fuck you!";
+			}
+
 			multiplayer = false;
 		}
 		else {
@@ -1019,4 +1025,3 @@ int main() {
 		}
 	}
 }
-
