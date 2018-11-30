@@ -105,7 +105,7 @@ Moves quiverdance("Quiver Dance", 0, 20, 0.0f, "bug", "S", "iSpATK1+SpDEF1+SPD1"
 
 //Flying 6 moves
 Moves aerialace("Aerial Ace", 60, 20, 0.0f, "flying", "P", "100");
-Moves airslash("Air Slash", 75, 15, 0.95f, "flying", "P", "flinch30");
+Moves airslash("Air Slash", 75, 15, 0.95f, "flying", "Sp", "flinch30");
 Moves aircutter("Air Cutter", 60, 25, 0.95f, "flying", "Sp", "crit");
 Moves hurricane("Hurricane", 110, 10, 0.75f, "flying", "Sp", "conf30");
 Moves featherdance("Feather Dance", 0, 15, 1.0f, "flying", "S", "dATK2");
@@ -274,6 +274,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	int playerSize = -1;
 
 	if (stage == 1) {
+		pokemonList.clear();
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -283,6 +284,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 2) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
@@ -295,6 +297,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 3) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
@@ -309,6 +312,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 4) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
@@ -326,6 +330,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 5) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
@@ -345,6 +350,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 6) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
@@ -368,6 +374,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 7) {
+		pokemonList.clear();
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
@@ -393,6 +400,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 8) {
+		pokemonList.clear();	
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
 		pokemonList.push_back(charizard);
@@ -421,34 +429,35 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	}
 
 	else if (stage == 9 || 10) {
-	pokemonList.push_back(venusaur);
-	pokemonList.push_back(blastoise);
-	pokemonList.push_back(charizard);
-	pokemonList.push_back(butterfree);
-	pokemonList.push_back(beedrill);
-	pokemonList.push_back(pidgeot);
-	pokemonList.push_back(raticate);
-	pokemonList.push_back(arbok);
-	pokemonList.push_back(raichu);
-	pokemonList.push_back(sandslash);
-	pokemonList.push_back(nidoking);
-	pokemonList.push_back(clefable);
-	pokemonList.push_back(arcanine);
-	pokemonList.push_back(poliwrath);
-	pokemonList.push_back(alakazam);
-	pokemonList.push_back(machamp);
-	pokemonList.push_back(tentacruel);
-	pokemonList.push_back(golem);
-	pokemonList.push_back(magneton);
-	pokemonList.push_back(gengar);
-	pokemonList.push_back(onix);
-	pokemonList.push_back(exeggutor);
-	pokemonList.push_back(weezing);
-	pokemonList.push_back(scyther);
-	pokemonList.push_back(jynx);
-	pokemonList.push_back(lapras);
-	pokemonList.push_back(aerodactyl);
-	pokemonList.push_back(snorlax);
+		pokemonList.clear();
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(clefable);
+		pokemonList.push_back(arcanine);
+		pokemonList.push_back(poliwrath);
+		pokemonList.push_back(alakazam);
+		pokemonList.push_back(machamp);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(golem);
+		pokemonList.push_back(magneton);
+		pokemonList.push_back(gengar);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(exeggutor);
+		pokemonList.push_back(weezing);
+		pokemonList.push_back(scyther);
+		pokemonList.push_back(jynx);
+		pokemonList.push_back(lapras);
+		pokemonList.push_back(aerodactyl);
+		pokemonList.push_back(snorlax);
 	}
 
 	/*pokemonList.push_back(venusaur);

@@ -173,18 +173,19 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	Stab = stab(move);
 	Burn = burn(move);
 	float modifier = Critical * Stab * typemodifier  * Random * Burn;
+	int missed = rand() % 100 + 1;
 
 	if (dontmove == false && flinched == false) {
-		if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+		if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
 			std::cout << move.name << " missed!" << std::endl;
 		}
 		else {
 			//modifier = typemodifier;
 			if (move.getCAT() == "P") {
-				move.damage = (((22 * (move.getPOW()*stat.getATK() * atkMod) / (other.stat.getDEF() * other.atkMod)) / 50) + 2) * modifier;
+				move.damage = (((22 * move.getPOW()*(stat.getATK() * atkMod) / (other.stat.getDEF() * other.defMod)) / 50) + 2) * modifier;
 			}
 			else if (move.getCAT() == "Sp") {
-				move.damage = (((22 * (move.getPOW()*stat.getSpATK() * spATKMod) / (other.stat.getSpDEF() * other.spATKMod)) / 50) + 2) * modifier;
+				move.damage = (((22 * move.getPOW()*(stat.getSpATK() * spATKMod) / (other.stat.getSpDEF() * other.spDEFMod)) / 50) + 2) * modifier;
 			}
 		}
 		if (confusionturns > 0) {
@@ -200,7 +201,7 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 				stat.setHP(stat.getHP() - ((((2*50 / 5 + 2)*stat.ATK * 40) / stat.DEF) / 50) + 2);
 
 			}
-			else if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+			else if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
 				std::cout << move.name << " missed!" << std::endl;
 			}
 			else {
@@ -208,7 +209,7 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 				secondaryEffect(other, move);
 			}
 		}
-		else if (move.getACC() * accMod * other.evaMod * 100 < rand() % 100 + 1 && move.getACC() != 0.0f) {
+		else if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
 		}
 		else {
 			other.stat.setHP(other.stat.getHP() - move.damage);
@@ -227,7 +228,7 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 		}
 	}
 	else {
-		if (dontmove == true) {
+		if (flinched == true) {
 			std::cout << name << " flinched and could not move!" << std::endl;
 		}
 		flinched == false;
@@ -387,7 +388,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Pokemon recovers 50% of max health
 	else if (move.getSEC() == "heal50") {
-		if(stat.HP + stat.IHP/2 > stat.IHP){
+		if(stat.HP + stat.IHP/2 >= stat.IHP){
 			stat.HP = stat.IHP;
 		}
 		else {
@@ -448,7 +449,12 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Takes 50% of damage done and recovers pokemon
 	else if (move.getSEC() == "drain50") {
-		stat.HP += move.damage / 2;
+		if (stat.HP + move.damage / 2 < stat.IHP) {
+			stat.HP += move.damage / 2;
+		}
+		else {
+			stat.HP = stat.IHP;
+		}
 	}
 	//10% chance to burn opponent
 	else if (move.getSEC() == "burn10" && (opp.ty != "fire" && opp.ty2 != "fire")) {
