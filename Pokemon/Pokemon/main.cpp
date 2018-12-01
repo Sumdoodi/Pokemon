@@ -15,7 +15,7 @@
 bool story = false, multiplayer = false;
 bool p1Alive = true, trainerAlive = true;
 int num;
-unsigned int stage = 1;
+unsigned int stage = 2;
 
 std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;

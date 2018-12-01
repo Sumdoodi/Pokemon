@@ -585,6 +585,13 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			std::cout << opp.name << " has been poisoned!" << std::endl;
 		}
 	}
+	//100% chance to poison opponent
+	else if (move.getSEC() == "poison100" && (opp.ty != "poison" && opp.ty2 != "poison")) {
+	if (opp.status == "none") {
+		opp.status = "poison";
+		std::cout << opp.name << " has been poisoned!" << std::endl;
+	}
+	}
 	//30% chance to poison opponent
 	else if (move.getSEC() == "poison30" && (opp.ty != "poison" && opp.ty2 != "poison")) {
 		if (rand() % 100 + 1 < 30 && opp.status == "none") {
