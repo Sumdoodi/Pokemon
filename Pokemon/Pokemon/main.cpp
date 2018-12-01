@@ -83,6 +83,7 @@ Moves explosion("Explosion", 250, 5, 1.0f, "normal", "P", "death");
 //Grass 5 moves
 Moves seedbomb("Seed Bomb", 80, 15, 1.0f, "grass", "P", "none");
 Moves solarbeam("Solar Beam", 120, 10, 1.0f, "grass", "Sp", "charge");
+Moves leafstorm("Leaf Storm", 130, 5, 0.9f, "grass", "Sp", "sdSpDEF2");
 Moves megadrain("Mega Drain", 40, 15, 1.0f, "grass", "Sp", "drain50");
 Moves gigadrain("Giga Drain", 75, 10, 1.0f, "grass", "Sp", "drain50");
 Moves sleeppowder("Sleep Powder", 0, 15, 0.75f, "grass", "S", "sleep100");
@@ -92,6 +93,7 @@ Moves stunspore("Stun Spore", 0, 30, 0.75f, "grass", "S", "par100");
 Moves firefang("Fire Fang", 65, 15, 0.95f, "fire", "P", "burn10+flinch10");
 Moves flamethrower("Flame Thrower", 90, 15, 1.0f, "fire", "Sp", "burn10");
 Moves flareblitz("Flare Blitz", 120, 15, 1.0f, "fire", "Sp", "coil33+burn10");
+Moves willowisp("Will-O-Wisp", 0, 15, 0.85f, "fire", "Sp", "burn100");
 
 //Water 4 moves
 Moves surf("Surf", 90, 15, 1.0f, "water", "Sp", "none");
@@ -187,41 +189,41 @@ Moves moonblast("Moonblast", 95, 15, 1.0f, "fairy", "Sp", "lSpATK30");
 Moves moonlight("Moonlight", 0, 10, 0.0f, "fairy", "S", "heal50");
 
 //Generate Pokemon
-Pokemon venusaur("1", "venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
-Pokemon charizard("2", "charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface);
-Pokemon blastoise("3", "blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch);
-Pokemon butterfree("4", "butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter);
-Pokemon beedrill("5", "beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance);
-Pokemon pidgeot("6", "pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance);
-Pokemon raticate("7", "raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy);
-Pokemon arbok("8", "arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare);
-Pokemon raichu("9", "raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam);
-Pokemon sandslash("10", "sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance);
-Pokemon nidoking("11", "nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam);
-Pokemon clefable("12", "clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight);
-Pokemon arcanine("13", "arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
-Pokemon poliwrath("14", "poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
-Pokemon alakazam("15", "alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
-Pokemon machamp("16", "machamp", machamp_stats, "fighting", "none", "none", crosschop, scaryface, focusenergy, lowsweep);
-Pokemon tentacruel("17", "tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
-Pokemon golem("18", "golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
-Pokemon magneton("19", "magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
-Pokemon gengar("20", "gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
-Pokemon onix("21", "onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
-Pokemon exeggutor("22", "exeggutor",exeggutor_stats, "grass", "psychic", "none", solarbeam, stomp, psychic, stunspore);
-Pokemon weezing("23", "weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
-Pokemon scyther("24", "scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
-Pokemon jynx("25", "jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
-Pokemon gyarados("26", "gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
-Pokemon lapras("27", "lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
-Pokemon aerodactyl("28", "aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
-Pokemon snorlax("29", "snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
-Pokemon articuno("30", "articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility);
-Pokemon zapdos("31", "zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter);
-Pokemon moltres("32", "moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, solarbeam);
-Pokemon dragonite("33", "dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane);
-Pokemon mewtwo("34", "mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere);
-Pokemon ampharos("35", "ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse);
+Pokemon venusaur("1", "Venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
+Pokemon charizard("2", "Charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface);
+Pokemon blastoise("3", "Blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch);
+Pokemon butterfree("4", "Butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter);
+Pokemon beedrill("5", "Beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance);
+Pokemon pidgeot("6", "Pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance);
+Pokemon raticate("7", "Raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy);
+Pokemon arbok("8", "Arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare);
+Pokemon raichu("9", "Raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam);
+Pokemon sandslash("10", "Sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance);
+Pokemon nidoking("11", "Nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam);
+Pokemon clefable("12", "Clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight);
+Pokemon arcanine("13", "Arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
+Pokemon poliwrath("14", "Poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
+Pokemon alakazam("15", "Alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
+Pokemon machamp("16", "Machamp", machamp_stats, "fighting", "none", "none", crosschop, scaryface, focusenergy, lowsweep);
+Pokemon tentacruel("17", "Tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
+Pokemon golem("18", "Golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
+Pokemon magneton("19", "Magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
+Pokemon gengar("20", "Gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
+Pokemon onix("21", "Onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
+Pokemon exeggutor("22", "Exeggutor", exeggutor_stats, "grass", "psychic", "none", leafstorm, stomp, psychic, stunspore);
+Pokemon weezing("23", "Weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
+Pokemon scyther("24", "Scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
+Pokemon jynx("25", "Jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
+Pokemon gyarados("26", "Gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
+Pokemon lapras("27", "Lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
+Pokemon aerodactyl("28", "Aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
+Pokemon snorlax("29", "Snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
+Pokemon articuno("30", "Articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility);
+Pokemon zapdos("31", "Zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter);
+Pokemon moltres("32", "Moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, willowisp);
+Pokemon dragonite("33", "Dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane);
+Pokemon mewtwo("34", "Mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere);
+Pokemon ampharos("35", "Ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse);
 
 
 void printScreen() {
@@ -275,6 +277,8 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::string name;
 	std::locale loc;
 	int playerSize = -1;
+
+	PlaySound(TEXT(NULL), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
 	if (stage == 1) {
 		pokemonList.clear();
@@ -527,8 +531,12 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 
 		std::cout << "Choose a pokemon: ";
 		std::cin >> name;
-		for (int i = 0; i < name.length(); i++) {
-			std::tolower(name[i], loc);
+
+		if (name.length() > 2) {
+			for (int i = 0; i < name.length(); i++) {
+				name[i] |= 32; //Changes each character of the string to lower case
+			}
+			name[0] ^= 32; //Changes the first character in the string to upper case
 		}
 
 		for (int x = 0; x < pokemonList.size(); x++) {
@@ -649,27 +657,56 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 	}
 }
 void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
-	int moveChoice;
-	int oppMoveChoice;
+	int moveChoice = 0;
+	int oppMoveChoice = 0;
+	bool p1first = false;
+	bool tfirst = false;
 
 	if (currentPokemon < player.size()) {
-		std::cout << "|============================|" << std::endl;
-		std::cout << formater(("| 1. " + player[currentPokemon].move1.name + " " + to_string(player[currentPokemon].move1.getPP()) + "/" + to_string(player[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
-		std::cout << formater(("| 2. " + player[currentPokemon].move2.name + " " + to_string(player[currentPokemon].move2.getPP()) + "/" + to_string(player[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
-		std::cout << formater(("| 3. " + player[currentPokemon].move3.name + " " + to_string(player[currentPokemon].move3.getPP()) + "/" + to_string(player[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
-		std::cout << formater(("| 4. " + player[currentPokemon].move4.name + " " + to_string(player[currentPokemon].move4.getPP()) + "/" + to_string(player[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
-		std::cout << "|============================|" << std::endl;
-		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
-		std::cin >> moveChoice;
+
+		if (player[currentPokemon].charge == false) {
+			std::cout << "|============================|" << std::endl;
+			std::cout << formater(("| 1. " + player[currentPokemon].move1.name + " " + to_string(player[currentPokemon].move1.getPP()) + "/" + to_string(player[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
+			std::cout << formater(("| 2. " + player[currentPokemon].move2.name + " " + to_string(player[currentPokemon].move2.getPP()) + "/" + to_string(player[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
+			std::cout << formater(("| 3. " + player[currentPokemon].move3.name + " " + to_string(player[currentPokemon].move3.getPP()) + "/" + to_string(player[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
+			std::cout << formater(("| 4. " + player[currentPokemon].move4.name + " " + to_string(player[currentPokemon].move4.getPP()) + "/" + to_string(player[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
+			std::cout << "|============================|" << std::endl;
+			std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
+			std::cin >> moveChoice;
+		}
+		else if (player[currentPokemon].name == "Exeggutor") {
+			moveChoice = 1;
+		}
+		else if (player[currentPokemon].name == "Moltres") {
+			moveChoice = 4;
+		}
 
 		system("CLS");
 
-		oppMoveChoice = rand() % 4 + 1;
+		if (trainer[opponentCurrent].charge == false) {
+			oppMoveChoice = rand() % 4 + 1;
+		}
+		else if (trainer[opponentCurrent].name == "Exeggutor") {
+			oppMoveChoice = 1;
+		}
+		else if (trainer[opponentCurrent].name == "Moltres") {
+			oppMoveChoice = 4;
+		}
 
 		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
 		trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
 
-		if (player[currentPokemon].stat.SPD * player[currentPokemon].spdMod > trainer[opponentCurrent].stat.SPD * trainer[opponentCurrent].spdMod) {
+		if ((player[currentPokemon].move1.name == quickattack.name && moveChoice == 1) || (player[currentPokemon].move4.name == extremespeed.name && moveChoice == 4)) {
+			std::cout << "Player 1 First" << std::endl;
+			p1first = true;
+		}
+
+		if ((trainer[opponentCurrent].move1.name == quickattack.name && moveChoice == 1 )|| (trainer[opponentCurrent].move4.name == extremespeed.name && moveChoice == 4)) {
+			std::cout << "Trainer First" << std::endl;
+			tfirst = true;
+		}
+
+		if ((player[currentPokemon].stat.SPD * player[currentPokemon].spdMod > trainer[opponentCurrent].stat.SPD * trainer[opponentCurrent].spdMod || p1first == true) && tfirst == false) {
 			int temp = opponentCurrent;
 			int temp2 = currentPokemon;
 
@@ -683,14 +720,17 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			if (player[currentPokemon].stat.HP <= 0) {
 				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 				currentPokemon++;
-				if (currentPokemon < player.size())
+				if (currentPokemon < player.size()) {
+					PlaySound(TEXT("out.wav"), NULL, SND_SYNC);
 					std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
+				}
 			}
 			else if (trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
-				if (opponentCurrent < trainer.size())
+				if (opponentCurrent < trainer.size()) {
 					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
+				}
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
@@ -718,8 +758,10 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
 				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 				opponentCurrent++;
-				if (opponentCurrent < trainer.size())
+				if (opponentCurrent < trainer.size()) {
+					PlaySound(TEXT("out.wav"), NULL, SND_ASYNC);
 					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
+				}
 			}
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
@@ -732,14 +774,16 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 		if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
 			std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
 			currentPokemon++;
-			if (currentPokemon < player.size())
+			if (currentPokemon < player.size()) {
 				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
+			}
 		}
 		else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
 			std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
 			opponentCurrent++;
-			if (opponentCurrent < trainer.size())
+			if (opponentCurrent < trainer.size()) {
 				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
+			}
 		}
 		if(opponentCurrent < trainer.size() && currentPokemon < player.size()) {
 			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
@@ -777,7 +821,7 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice = 0;
 	while (p1Alive == true && trainerAlive == true) {
-
+		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		std::cout << "Press any key to continue...\n";
 		std::cin.ignore();
 		std::cin.get();
@@ -787,8 +831,14 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
 			battleScreen.updateHP();
 			battleScreen.printScreen();
-			std::cout << "1. Move \n2. Pokemon" << std::endl;
-			std::cin >> choice;
+			if (player[currentPokemon].charge == false) {
+				std::cout << "1. Move \n2. Pokemon" << std::endl;
+				std::cin >> choice;
+			}
+			else {
+				choice = 1;
+			}
+
 			if (choice == 1) {
 				system("CLS");
 				selectMove(currentPokemon, opponentCurrent, player, trainer);
@@ -816,7 +866,6 @@ int main() {
 	while (1) { //Game loop
 		system("CLS");
 
-		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		printScreen();
 
 		while(story == true) {
@@ -838,6 +887,7 @@ int main() {
 					startBattle(player1, trainer);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						stage++;
 						endBattle();
@@ -848,8 +898,8 @@ int main() {
 					player1.clear();
 				}
 				else if (stage == 2) {
-
 					//Stage 2
+					num = 3;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer2;
@@ -874,6 +924,7 @@ int main() {
 
 				else if (stage == 3) {
 					//Stage 3
+					num = 3;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer3;
@@ -898,6 +949,7 @@ int main() {
 
 				else if (stage == 4) {
 					//Stage 4
+					num = 3;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer4;
@@ -950,6 +1002,7 @@ int main() {
 
 				else if (stage == 6) {
 					//Stage 6
+					num = 6;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer6;
@@ -977,6 +1030,7 @@ int main() {
 
 				else if (stage == 7) {
 					//Stage 7
+					num = 6;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer7;
@@ -1004,6 +1058,7 @@ int main() {
 
 				else if (stage == 8) {
 					//Stage 8
+					num = 6;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer8;
@@ -1031,11 +1086,12 @@ int main() {
 
 				else if (stage == 9) {
 					//Stage 9
+					num = 6;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer9;
 
-					trainerName = "Elite Trainer Jonah";
+					trainerName = "Dark Lord Jonah";
 					trainer9.push_back(venusaur);
 					trainer9.push_back(blastoise);
 					trainer9.push_back(charizard);
@@ -1058,6 +1114,7 @@ int main() {
 
 				else if (stage == 10) {
 					//Stage 10
+					num = 6;
 					printChoosePokemon(player1);
 
 					std::vector<Pokemon> trainer10;

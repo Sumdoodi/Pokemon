@@ -69,85 +69,85 @@ Pokemon::Pokemon(const Pokemon &poke) {
 
 void Pokemon::changeMod(int &stage, float &mod) {
 	if (stage == -6) {
-		mod = 2 / 8;
+		mod = 2.0f / 8.0f;
 	}
 	if (stage == -5) {
-		mod = 2 / 7;
+		mod = 2.0f / 7.0f;
 	}
 	if (stage == -4) {
-		mod = 2 / 6;
+		mod = 2.0f / 6.0f;
 	}
 	if (stage == -3) {
-		mod = 2 / 5;
+		mod = 2.0f / 5.0f;
 	}
 	if (stage == -2) {
-		mod = 2 / 4;
+		mod = 2.0f / 4.0f;
 	}
 	if (stage == -1) {
-		mod = 2 / 3;
+		mod = 2.0f / 3.0f;
 	}
 	if (stage == 0) {
-		mod = 1;
+		mod = 1.0f;
 	}
 	if (stage == 1) {
-		mod = 3 / 2;
+		mod = 3.0f / 2.0f;
 	}
 	if (stage == 2) {
-		mod = 4 / 2;
+		mod = 4.0f / 2.0f;
 	}
 	if (stage == 3) {
-		mod = 5 / 2;
+		mod = 5.0f / 2.0f;
 	}
 	if (stage == 4) {
-		mod = 6 / 2;
+		mod = 6.0f / 2.0f;
 	}
 	if (stage == 5) {
-		mod = 7 / 2;
+		mod = 7.0f / 2.0f;
 	}
 	if (stage == 6) {
-		mod = 8 / 2;
+		mod = 8.0f / 2.0f;
 	}
 }
 
 void Pokemon::changeAcc(int &stage, float &mod) {
 	if (stage == -6) {
-		mod = 3 / 9;
+		mod = 3.0f / 9.0f;
 	}
 	if (stage == -5) {
-		mod = 3 / 8;
+		mod = 3.0f / 8.0f;
 	}
 	if (stage == -4) {
-		mod = 3 / 7;
+		mod = 3.0f / 7.0f;
 	}
 	if (stage == -3) {
-		mod = 3 / 6;
+		mod = 3.0f / 6.0f;
 	}
 	if (stage == -2) {
-		mod = 3 / 5;
+		mod = 3.0f / 5.0f;
 	}
 	if (stage == -1) {
-		mod = 3 / 4;
+		mod = 3.0f / 4.0f;
 	}
 	if (stage == 0) {
-		mod = 1;
+		mod = 1.0f;
 	}
 	if (stage == 1) {
-		mod = 4 / 3;
+		mod = 4.0f / 3.0f;
 	}
 	if (stage == 2) {
-		mod = 5 / 3;
+		mod = 5.0f / 3.0f;
 	}
 	if (stage == 3) {
-		mod = 6 / 3;
+		mod = 6.0f / 3.0f;
 	}
 	if (stage == 4) {
-		mod = 7 / 3;
+		mod = 7.0f / 3.0f;
 	}
 	if (stage == 5) {
-		mod = 8 / 3;
+		mod = 8.0f / 3.0f;
 	}
 	if (stage == 6) {
-		mod = 9 / 3;
+		mod = 9.0f / 3.0f;
 	}
 }
 void Pokemon::useMove(Moves &move, Pokemon &other) {
@@ -175,12 +175,20 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	float modifier = Critical * Stab * typemodifier  * Random * Burn;
 	int missed = rand() % 100 + 1;
 
-	if (dontmove == false && flinched == false) {
+	if (move.getSEC() == "charge" && charge == false) {
+		secondaryEffect(other, move);
+	}
+
+	if (charge == true && chargeturn == 0) {
+		charge = false;
+	}
+
+	if (dontmove == false && flinched == false && charge == false) {
 		if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
 			std::cout << move.name << " missed!" << std::endl;
 		}
 		else {
-			//modifier = typemodifier;
+			//modifier = typemodifier
 			if (move.getCAT() == "P") {
 				move.damage = (((22 * move.getPOW()*(stat.getATK() * atkMod) / (other.stat.getDEF() * other.defMod)) / 50) + 2) * modifier;
 			}
@@ -230,8 +238,13 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	else {
 		if (flinched == true) {
 			std::cout << name << " flinched and could not move!" << std::endl;
+			flinched = false;
+			charge = false;
 		}
-		flinched == false;
+		else if (chargeturn == 1) {
+			chargeturn = 0;
+			std::cout << name << " took in sunlight!" << std::endl;
+		}
 	}
 }
 
@@ -445,7 +458,10 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	}
 	//Charges move for one turn
 	else if (move.getSEC() == "charge") {
-
+		if (charge == false) {
+			chargeturn = 1;
+			charge = true;
+		}
 	}
 	//Takes 50% of damage done and recovers pokemon
 	else if (move.getSEC() == "drain50") {
@@ -463,6 +479,13 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			opp.status = "burn";
 		}
 	}
+	//100% chance to burn opponent
+	else if (move.getSEC() == "burn100" && (opp.ty != "fire" && opp.ty2 != "fire")) {
+	if (opp.status == "none") {
+		std::cout << opp.name << " has been burned!" << std::endl;
+		opp.status = "burn";
+	}
+	}
 	//20% chance for opponent to flinch
 	else if (move.getSEC() == "flinch20") {
 		if (rand() % 100 + 1 < 20) {
@@ -477,6 +500,16 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 				std::cout << opp.name << "'s special defense fell by 1 stage! It is now " << opp.spDEFStage << std::endl;
 			}
 		}
+	}
+	//Lowers users speacial defense by 2 stage
+	else if (move.getSEC() == "sdSpDEF2") {
+		if (spDEFStage > -5) {
+			spDEFStage -= 2;
+		}
+		else {
+			spDEFStage = -6;
+		}
+		std::cout << name << "'s special defense sharply fell by 2 stage! It is now " << spDEFStage << std::endl;
 	}
 	//10% chance to confuse opponent
 	else if (move.getSEC() == "conf10") {
