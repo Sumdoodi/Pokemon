@@ -204,11 +204,11 @@ Pokemon clefable("12", "Clefable", clefable_stats, "fairy", "none", "none", body
 Pokemon arcanine("13", "Arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
 Pokemon poliwrath("14", "Poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
 Pokemon alakazam("15", "Alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
-Pokemon machamp("16", "Machamp", machamp_stats, "fighting", "none", "none", crosschop, scaryface, focusenergy, lowsweep);
+Pokemon machamp("16", "Machamp", machamp_stats, "fighting", "none", "none", crosschop, bulkup, focusenergy, lowsweep);
 Pokemon tentacruel("17", "Tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
 Pokemon golem("18", "Golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
 Pokemon magneton("19", "Magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
-Pokemon gengar("20", "Gengar",gengar_stats, "ghost", "poison", "none", shadowball, nightshade, hypnosis, darkpulse);
+Pokemon gengar("20", "Gengar",gengar_stats, "ghost", "poison", "none", shadowball, sludgebomb, hypnosis, darkpulse);
 Pokemon onix("21", "Onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
 Pokemon exeggutor("22", "Exeggutor", exeggutor_stats, "grass", "psychic", "none", leafstorm, stomp, psychic, stunspore);
 Pokemon weezing("23", "Weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
@@ -373,6 +373,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		pokemonList.push_back(poliwrath);
 		pokemonList.push_back(machamp);
 		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(magneton);
 		pokemonList.push_back(onix);
 		pokemonList.push_back(exeggutor);
 		pokemonList.push_back(jynx);
@@ -889,6 +890,7 @@ int main() {
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 1. Venusaur | 7. Raticate | 10. Sandslash |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -913,6 +915,7 @@ int main() {
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 3. Blastoise | 17. Tentacruel |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -938,6 +941,7 @@ int main() {
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 2. Charizard | 11. Nidoking | 16. Machamp |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -963,6 +967,7 @@ int main() {
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 25. Jynx | 27 Lapras |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -991,6 +996,7 @@ int main() {
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 12. Clefable | 14. Poliwrath | 19. Magneton | 22. Exeguutor | 29. Snorlax |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -1009,16 +1015,17 @@ int main() {
 
 					trainerName = "Queen Ryan";
 					trainer6.push_back(arbok);
-					trainer6.push_back(weezing);
-					trainer6.push_back(raichu);
+					trainer6.push_back(exeggutor);
 					trainer6.push_back(tentacruel);
-					trainer6.push_back(gyarados);
+					trainer6.push_back(weezing);
+					trainer6.push_back(alakazam);
 					trainer6.push_back(golem);
 
 					startBattle(player1, trainer6);
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 18. Golem | 23. Weezing |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -1047,6 +1054,7 @@ int main() {
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 13. Arcanine | 24. Scyther |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -1068,13 +1076,14 @@ int main() {
 					trainer8.push_back(machamp);
 					trainer8.push_back(golem);
 					trainer8.push_back(onix);
-					trainer8.push_back(snorlax);
+					trainer8.push_back(nidoking);
 					trainer8.push_back(dragonite);
 
 					startBattle(player1, trainer8);
 
 					if (p1Alive == true) {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "You unlocked some new Pokemon: | 15. Alakazam | 20. Gengar | 28. Aerodactyl |" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -1093,10 +1102,10 @@ int main() {
 
 					trainerName = "Dark Lord Jonah";
 					trainer9.push_back(venusaur);
-					trainer9.push_back(blastoise);
-					trainer9.push_back(charizard);
-					trainer9.push_back(articuno);
 					trainer9.push_back(moltres);
+					trainer9.push_back(blastoise);
+					trainer9.push_back(articuno);
+					trainer9.push_back(charizard);
 					trainer9.push_back(zapdos);
 
 					startBattle(player1, trainer9);
