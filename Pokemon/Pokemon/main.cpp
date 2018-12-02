@@ -1024,15 +1024,112 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	}
 }
 
+void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon> &player, std::vector<Pokemon> &player2, int moveChoice, int moveChoice2) {
+	bool p1first = false;
+	bool p2first = false;
+
+	if (currentPokemon < player.size()) {
+
+		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
+		player2[currentPokemon2].changeMod(player2[currentPokemon2].spdStage, player2[currentPokemon].spdMod);
+
+		if ((player[currentPokemon].move1.name == quickattack.name && moveChoice == 1) || (player[currentPokemon].move4.name == extremespeed.name && moveChoice == 4)) {
+			p1first = true;
+		}
+
+		if ((player2[currentPokemon2].move1.name == quickattack.name && moveChoice == 1) || (player2[currentPokemon2].move4.name == extremespeed.name && moveChoice == 4)) {
+			p2first = true;
+		}
+
+		if ((player[currentPokemon].stat.SPD * player[currentPokemon].spdMod > player2[currentPokemon2].stat.SPD * player2[currentPokemon2].spdMod || p1first == true) && p2first == false) {
+			int temp = currentPokemon2;
+			int temp2 = currentPokemon;
+
+			if (player[currentPokemon].flinched == true)
+				player[currentPokemon].flinched == false;
+
+
+			useTheMove(moveChoice, player[currentPokemon], player2[currentPokemon2]);
+
+
+			faint(currentPokemon, currentPokemon2, player, player2);
+
+			if (currentPokemon2 == temp && currentPokemon == temp2) {
+
+				useTheMove(moveChoice2, player2[currentPokemon2], player[currentPokemon]);
+
+			}
+		}
+		else {
+			int temp = currentPokemon;
+			int temp2 = currentPokemon;
+
+			if (player2[currentPokemon2].flinched == true)
+				player2[currentPokemon2].flinched == false;
+
+			useTheMove(moveChoice, player2[currentPokemon2], player[currentPokemon]);
+
+			faint(currentPokemon, currentPokemon2, player, player2);
+
+			if (currentPokemon == temp && currentPokemon == temp2) {
+
+				useTheMove(moveChoice, player[currentPokemon], player2[currentPokemon2]);
+			}
+		}
+
+		faint(currentPokemon, currentPokemon2, player, player2);
+
+		int count = 0;
+		int count2 = 0;
+
+		for (int f = 0; f < player.size(); f++) {
+			if (player[f].stat.getHP() <= 0) {
+				count++;
+			}
+		}
+
+		for (int f = 0; f < player2.size(); f++) {
+			if (player2[f].stat.getHP() <= 0) {
+				count2++;
+			}
+		}
+
+		if (player[currentPokemon].stat.getHP() <= 0 && player.size() > count && player2.size() > count2) {
+			choosePokemon(currentPokemon, player);
+		}
+
+		if (currentPokemon2 < player2.size() && currentPokemon < player.size()) {
+			display battleScreen(player[currentPokemon], player2[currentPokemon2]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
+		}
+
+		if (count >= player.size()) {
+			p1Alive = false;
+		}
+		if (count2 >= player2.size()) {
+			p2Alive = false;
+		}
+	}
+	if (p1Alive == true && p2Alive == true) {
+		std::cout << "Press any key to continue...\n";
+		std::cin.ignore();
+		std::cin.get();
+	}
+}
+
 void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) {
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice = 0, choice2 = 0;
+	int moveChoice = 0, moveChoice2 = 0;
+
 	while (p1Alive == true && p2Alive == true) {
 		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 		std::cout << "Press any key to continue...\n";
 		std::cin.ignore();
 		std::cin.get();
-
+		choice = 0;
+		choice2 = 0;
 		while (choice != 1 || choice != 2 && p1Alive == true && p2Alive == true) {
 			system("CLS");
 			display battleScreen(player1[currentPokemon], player2[opponentCurrent]);
@@ -1044,11 +1141,32 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 
 			if (choice == 1) {
 				system("CLS");
-				selectMove(currentPokemon, opponentCurrent, player1, player2);
+				moveChoice = 0;
+				moveChoice2 = 0;
+				while (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
+
+					std::cout << "|============================|" << std::endl;
+					//std::cout << formater(("| Player 1"), 29) << "|" << std::endl;
+					std::cout << formater(("| 1. " + player1[currentPokemon].move1.name + " " + to_string(player1[currentPokemon].move1.getPP()) + "/" + to_string(player1[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 2. " + player1[currentPokemon].move2.name + " " + to_string(player1[currentPokemon].move2.getPP()) + "/" + to_string(player1[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 3. " + player1[currentPokemon].move3.name + " " + to_string(player1[currentPokemon].move3.getPP()) + "/" + to_string(player1[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 4. " + player1[currentPokemon].move4.name + " " + to_string(player1[currentPokemon].move4.getPP()) + "/" + to_string(player1[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
+					std::cout << "|============================|" << std::endl;
+					std::cout << "What will " << player1[currentPokemon].name << " do?" << std::endl;
+					std::cin >> moveChoice;
+
+					if (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
+						std::cin.clear();
+						std::cin.ignore(INT_MAX, '\n');
+						system("CLS");
+					}
+				}
 			}
 			if (choice == 2) {
 				system("CLS");
 				choosePokemon(currentPokemon, player1);
+				std::cout << "Player 1 sent out " << player1[currentPokemon].name << "!\n";
+				oppMove(currentPokemon, opponentCurrent, player2, player1);
 				//Pokemon screen
 			}
 			else {
@@ -1056,30 +1174,52 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 				std::cin.ignore(INT_MAX, '\n');
 			}
 		}
-
-		while (choice2 != 1 || choice2 != 2 && p1Alive == true && p2Alive == true) {
+		while (choice != 1 || choice != 2 && p1Alive == true && p2Alive == true) {
 			system("CLS");
-			display battleScreen(player2[opponentCurrent], player1[currentPokemon]);
+			display battleScreen(player1[currentPokemon], player2[opponentCurrent]);
 			battleScreen.updateHP();
 			battleScreen.printScreen();
 
-			std::cout << "Player 2:\n1. Move \n2. Pokemon" << std::endl;
+			std::cout << "Player2:\n1. Move \n2. Pokemon" << std::endl;
 			std::cin >> choice2;
 
-			if (choice2 == 1) {
+			if (choice == 1) {
 				system("CLS");
-				selectMove(opponentCurrent, currentPokemon, player2, player1);
+				moveChoice = 0;
+				moveChoice2 = 0;
+				while (moveChoice2 != 1 && moveChoice2 != 2 && moveChoice2 != 3 && moveChoice2 != 4) {
+					std::cout << "|============================|" << std::endl;
+					//std::cout << formater(("| Player 2"), 29) << "|" << std::endl;
+					std::cout << formater(("| 1. " + player2[opponentCurrent].move1.name + " " + to_string(player2[opponentCurrent].move1.getPP()) + "/" + to_string(player2[opponentCurrent].move1.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 2. " + player2[opponentCurrent].move2.name + " " + to_string(player2[opponentCurrent].move2.getPP()) + "/" + to_string(player2[opponentCurrent].move2.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 3. " + player2[opponentCurrent].move3.name + " " + to_string(player2[opponentCurrent].move3.getPP()) + "/" + to_string(player2[opponentCurrent].move3.maxPP)), 29) << "|" << std::endl;
+					std::cout << formater(("| 4. " + player2[opponentCurrent].move4.name + " " + to_string(player2[opponentCurrent].move4.getPP()) + "/" + to_string(player2[opponentCurrent].move4.maxPP)), 29) << "|" << std::endl;
+					std::cout << "|============================|" << std::endl;
+					std::cout << "What will " << player2[opponentCurrent].name << " do?" << std::endl;
+					std::cin >> moveChoice2;
+
+					if (moveChoice2 != 1 && moveChoice2 != 2 && moveChoice2 != 3 && moveChoice2 != 4) {
+						std::cin.clear();
+						std::cin.ignore(INT_MAX, '\n');
+						system("CLS");
+					}
+				}
 			}
+
 			if (choice == 2) {
 				system("CLS");
-				choosePokemon(opponentCurrent, player2);
+				choosePokemon(currentPokemon, player1);
+				std::cout << "Player 2 sent out " << player1[currentPokemon].name << "!\n";
+				oppMove(currentPokemon, opponentCurrent, player2, player1);
 				//Pokemon screen
 			}
 			else {
 				std::cin.clear();
 				std::cin.ignore(INT_MAX, '\n');
 			}
+			system("CLS");
 		}
+		selectMMove(currentPokemon, opponentCurrent, player1, player2, moveChoice, moveChoice2);
 	}
 }
 
