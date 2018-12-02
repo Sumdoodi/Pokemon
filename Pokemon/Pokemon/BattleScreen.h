@@ -8,6 +8,7 @@ string formater(string str, int width);
 
 class display {
 public:
+	display(string pPokeName, int pMaxHP, int pCurHP);
 	display(string pPokeName, string oPokeName, int pMaxHP, int oMaxHP, int pCurHP, int oCurHP);
 	display(Pokemon &player, Pokemon &opponent);
 
@@ -36,4 +37,5 @@ public:
 	void updateHP();
 	//void testPrint(string hpb);
 	void printScreen();
+	void printPokemon();
 };

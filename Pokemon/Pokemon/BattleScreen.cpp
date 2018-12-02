@@ -17,6 +17,11 @@ string formater(string str, int width) {
 	}
 }
 
+display::display(string pPokeName, int pMaxHP, int pCurHP) {
+	display::setPlayerPokemonName(pPokeName);
+	display::setPlayerMaxHP(pMaxHP);
+	display::setPlayerCurHP(pCurHP);
+}
 
 display::display(string pPokeName, string oPokeName, int pMaxHP, int oMaxHP, int pCurHP, int oCurHP) {
 	display::setPlayerPokemonName(pPokeName);
@@ -124,4 +129,11 @@ void display::printScreen() {
 	//cout << setw(64) << "[  Item    ]\n";
 	//cout << setw(64) << "[  Pokemon ]\n";
 	//cout << setw(64) << "[  Run     ]\n";
+}
+
+void display::printPokemon()
+{
+	std::cout << formater(("[ " + formater(this->pPokeName, 23) + "]"), 64) << "\n";
+	std::cout << formater(("[ " + formater(this->pHPBar, 23) + "]"), 64) << "\n";
+	std::cout << formater(("[ " + formater((to_string(this->pMaxHP) + "/" + to_string(this->pCurHP)), 23) + "]"), 64) << "\n";
 }

@@ -183,7 +183,7 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 		charge = false;
 	}
 
-	if (dontmove == false && flinched == false && charge == false) {
+	if (dontmove == false && flinched == false) {
 		if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
 			std::cout << move.name << " missed!" << std::endl;
 		}
@@ -241,11 +241,8 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 			flinched = false;
 			charge = false;
 		}
-		else if (chargeturn == 1) {
-			chargeturn = 0;
-			std::cout << name << " took in sunlight!" << std::endl;
-		}
 	}
+	statusEffectBP(move);
 }
 
 
@@ -289,11 +286,7 @@ int Pokemon::critical(Moves usedMove)
 		return 1;
 }
 
-void Pokemon::statusEffect(Moves &usedmove)
-{
-	dontmove = false;
-	chance = rand() % 10000;
-
+void Pokemon::statusEffectBP(Moves &usedMove) {
 	if (status == "burn") {
 		stat.setHP(stat.getHP() - (stat.IHP / 16));
 		std::cout << name << " is burning!" << std::endl;
@@ -303,11 +296,26 @@ void Pokemon::statusEffect(Moves &usedmove)
 		stat.setHP(stat.getHP() - (stat.IHP / 8));
 		std::cout << name << " is poisoned!" << std::endl;
 	}
+	else if (usedMove.getSEC() == "coil33+burn10") {
+		stat.HP -= usedMove.damage * 0.33;
+		std::cout << name << " did " << usedMove.damage*0.33 << " damage to itself as recoil!" << std::endl;
 
-	else if (status == "sleep") {
+	}
+	//Pokemon recieves 25% of damage as recoil
+	else if (usedMove.getSEC() == "coil25") {
+		stat.HP -= usedMove.damage * 0.25;
+		std::cout << name << " did " << usedMove.damage*0.25 << " damage to itself as recoil!" << std::endl;
+	}
+}
+void Pokemon::statusEffect(Moves &usedmove)
+{
+	dontmove = false;
+	chance = rand() % 10000;
+
+	if (status == "sleep") {
 		dontmove = true;
-		std::cout << name << " cannot move because they are asleep!" << std::endl;
 		if (sleepturrns > 0) {
+			std::cout << name << " cannot move because they are asleep!" << std::endl;
 			sleepturrns--;
 		}
 		else {
@@ -369,11 +377,6 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			}
 		}
 		
-	}
-	//Pokemon recieves 25% of damage as recoil
-	else if (move.getSEC() == "coil25") {
-		stat.HP -= move.damage * 0.25;
-		std::cout << name << " did " << move.damage*0.25 << " damage to itself as recoil!" << std::endl;
 	}
 	//Opponents accuracy decreases a stage
 	else if (move.getSEC() == "dAcc1") {
@@ -784,21 +787,18 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			std::cout << opp.name << " has been burned!" << std::endl;
 			opp.status = "burn";
 		}
-		stat.HP -= move.damage * 0.33;
-		std::cout << name << " did " << move.damage*0.33 << " damage to itself as recoil!" << std::endl;
-
 	}
 
 }
 
-void Pokemon::resetStages(Pokemon &poke){
-	poke.accStage = 0;
-	poke.evaStage = 0;
-	poke.atkStage = 0;
-	poke.spATKStage = 0;
-	poke.defStage = 0;
-	poke.spDEFStage = 0;
-	poke.spdStage = 0;
+void Pokemon::resetStages(){
+	accStage = 0;
+	evaStage = 0;
+	atkStage = 0;
+	spATKStage = 0;
+	defStage = 0;
+	spDEFStage = 0;
+	spdStage = 0;
 }
 
 int Pokemon::stab(Moves usedMove)
@@ -1045,7 +1045,7 @@ void Pokemon::typecompare(Pokemon other, Moves usedMove)
 		{
 			if (other.ty2 == "bug" || other.ty2 == "grass")
 				typemodifier *= 0.5f;
-			else if (other.ty == "flying")
+			else if (other.ty2 == "flying")
 				typemodifier *= 0.0f;
 			else if (other.ty2 == "poison" || other.ty2 == "rock" || other.ty2 == "steel" || other.ty2 == "fire" || other.ty2 == "electric")
 				typemodifier *= 2.0f;
@@ -1056,7 +1056,7 @@ void Pokemon::typecompare(Pokemon other, Moves usedMove)
 		{
 			if (other.ty2 == "fighting" || other.ty2 == "ground" || other.ty2 == "steel")
 				typemodifier *= 0.5f;
-			else if (other.ty == "flying" || other.ty2 == "bug" || other.ty2 == "fire" || other.ty2 == "ice")
+			else if (other.ty2 == "flying" || other.ty2 == "bug" || other.ty2 == "fire" || other.ty2 == "ice")
 				typemodifier *= 2.0f;
 			else
 				typemodifier *= 1.0f;

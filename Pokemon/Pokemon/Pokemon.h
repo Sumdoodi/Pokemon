@@ -65,10 +65,11 @@ public:
 	void changeAcc(int&, float&);
 	void useMove(Moves&, Pokemon&);
 
+	void statusEffectBP(Moves &usedMove);
 	void statusEffect(Moves&);
 	void secondaryEffect(Pokemon&, Moves&);
 
-	void resetStages(Pokemon&);
+	void resetStages();
 
 	std::string getName() {
 		return name;

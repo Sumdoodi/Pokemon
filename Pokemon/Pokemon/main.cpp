@@ -13,8 +13,9 @@
 #include <MMsystem.h>
 
 bool story = false, multiplayer = false;
-bool p1Alive = true, trainerAlive = true;
+bool p1Alive = true, p2Alive = true, trainerAlive = true;
 int num;
+int pkm = 0;
 unsigned int stage = 1;
 
 std::vector<Pokemon> pokemonList;
@@ -275,172 +276,203 @@ void printScreen() {
 
 void printChoosePokemon(std::vector<Pokemon> &player) {
 	std::string name;
-	std::locale loc;
-	int playerSize = -1;
 
 	PlaySound(TEXT(NULL), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
-	if (stage == 1) {
-		pokemonList.clear();
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(onix);
+	if (story == true) {
+		if (stage == 1) {
+			pokemonList.clear();
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(onix);
+		}
+
+		else if (stage == 2) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(onix);
+		}
+
+		else if (stage == 3) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(onix);
+		}
+
+		else if (stage == 4) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(onix);
+		}
+
+		else if (stage == 5) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(onix);
+			pokemonList.push_back(jynx);
+			pokemonList.push_back(lapras);
+		}
+
+		else if (stage == 6) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(clefable);
+			pokemonList.push_back(poliwrath);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(magneton);
+			pokemonList.push_back(onix);
+			pokemonList.push_back(exeggutor);
+			pokemonList.push_back(jynx);
+			pokemonList.push_back(lapras);
+			pokemonList.push_back(snorlax);
+		}
+
+		else if (stage == 7) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(clefable);
+			pokemonList.push_back(poliwrath);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(golem);
+			pokemonList.push_back(magneton);
+			pokemonList.push_back(onix);
+			pokemonList.push_back(exeggutor);
+			pokemonList.push_back(jynx);
+			pokemonList.push_back(lapras);
+			pokemonList.push_back(snorlax);
+		}
+
+		else if (stage == 8) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(clefable);
+			pokemonList.push_back(arcanine);
+			pokemonList.push_back(poliwrath);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(golem);
+			pokemonList.push_back(magneton);
+			pokemonList.push_back(onix);
+			pokemonList.push_back(exeggutor);
+			pokemonList.push_back(weezing);
+			pokemonList.push_back(scyther);
+			pokemonList.push_back(jynx);
+			pokemonList.push_back(lapras);
+			pokemonList.push_back(snorlax);
+		}
+
+		else if (stage == 9 || 10) {
+			pokemonList.clear();
+			pokemonList.push_back(venusaur);
+			pokemonList.push_back(charizard);
+			pokemonList.push_back(blastoise);
+			pokemonList.push_back(butterfree);
+			pokemonList.push_back(beedrill);
+			pokemonList.push_back(pidgeot);
+			pokemonList.push_back(raticate);
+			pokemonList.push_back(arbok);
+			pokemonList.push_back(raichu);
+			pokemonList.push_back(sandslash);
+			pokemonList.push_back(nidoking);
+			pokemonList.push_back(clefable);
+			pokemonList.push_back(arcanine);
+			pokemonList.push_back(poliwrath);
+			pokemonList.push_back(alakazam);
+			pokemonList.push_back(machamp);
+			pokemonList.push_back(tentacruel);
+			pokemonList.push_back(golem);
+			pokemonList.push_back(magneton);
+			pokemonList.push_back(gengar);
+			pokemonList.push_back(onix);
+			pokemonList.push_back(exeggutor);
+			pokemonList.push_back(weezing);
+			pokemonList.push_back(scyther);
+			pokemonList.push_back(jynx);
+			pokemonList.push_back(lapras);
+			pokemonList.push_back(aerodactyl);
+			pokemonList.push_back(snorlax);
+		}
 	}
 
-	else if (stage == 2) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(onix);
-	}
-
-	else if (stage == 3) {
-		pokemonList.clear();
+	if (multiplayer == true && pkm == 0) {
 		pokemonList.push_back(venusaur);
 		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(onix);
-	}
-
-	else if (stage == 4) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
 		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(nidoking);
-		pokemonList.push_back(machamp);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(onix);
-	}
-
-	else if (stage == 5) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(nidoking);
-		pokemonList.push_back(machamp);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(onix);
-		pokemonList.push_back(jynx);
-		pokemonList.push_back(lapras);
-	}
-
-	else if (stage == 6) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(nidoking);
-		pokemonList.push_back(clefable);
-		pokemonList.push_back(poliwrath);
-		pokemonList.push_back(machamp);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(magneton);
-		pokemonList.push_back(onix);
-		pokemonList.push_back(exeggutor);
-		pokemonList.push_back(jynx);
-		pokemonList.push_back(lapras);
-		pokemonList.push_back(snorlax);
-	}
-
-	else if (stage == 7) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(nidoking);
-		pokemonList.push_back(clefable);
-		pokemonList.push_back(poliwrath);
-		pokemonList.push_back(machamp);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(golem);
-		pokemonList.push_back(magneton);
-		pokemonList.push_back(onix);
-		pokemonList.push_back(exeggutor);
-		pokemonList.push_back(jynx);
-		pokemonList.push_back(lapras);
-		pokemonList.push_back(snorlax);
-	}
-
-	else if (stage == 8) {
-		pokemonList.clear();	
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
-		pokemonList.push_back(butterfree);
-		pokemonList.push_back(beedrill);
-		pokemonList.push_back(pidgeot);
-		pokemonList.push_back(raticate);
-		pokemonList.push_back(arbok);
-		pokemonList.push_back(raichu);
-		pokemonList.push_back(sandslash);
-		pokemonList.push_back(nidoking);
-		pokemonList.push_back(clefable);
-		pokemonList.push_back(arcanine);
-		pokemonList.push_back(poliwrath);
-		pokemonList.push_back(machamp);
-		pokemonList.push_back(tentacruel);
-		pokemonList.push_back(golem);
-		pokemonList.push_back(magneton);
-		pokemonList.push_back(onix);
-		pokemonList.push_back(exeggutor);
-		pokemonList.push_back(weezing);
-		pokemonList.push_back(scyther);
-		pokemonList.push_back(jynx);
-		pokemonList.push_back(lapras);
-		pokemonList.push_back(snorlax);
-	}
-
-	else if (stage == 9 || 10) {
-		pokemonList.clear();
-		pokemonList.push_back(venusaur);
-		pokemonList.push_back(charizard);
-		pokemonList.push_back(blastoise);
 		pokemonList.push_back(butterfree);
 		pokemonList.push_back(beedrill);
 		pokemonList.push_back(pidgeot);
@@ -463,52 +495,23 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		pokemonList.push_back(weezing);
 		pokemonList.push_back(scyther);
 		pokemonList.push_back(jynx);
+		pokemonList.push_back(gyarados);
 		pokemonList.push_back(lapras);
 		pokemonList.push_back(aerodactyl);
 		pokemonList.push_back(snorlax);
-	}
+		pokemonList.push_back(articuno);
+		pokemonList.push_back(zapdos);
+		pokemonList.push_back(moltres);
+		pokemonList.push_back(dragonite);
+		pokemonList.push_back(mewtwo);
+		pokemonList.push_back(ampharos);
 
-	/*pokemonList.push_back(venusaur);
-	pokemonList.push_back(blastoise);
-	pokemonList.push_back(charizard);
-	pokemonList.push_back(butterfree);
-	pokemonList.push_back(beedrill);
-	pokemonList.push_back(pidgeot);
-	pokemonList.push_back(raticate);
-	pokemonList.push_back(arbok);
-	pokemonList.push_back(raichu);
-	pokemonList.push_back(sandslash);
-	pokemonList.push_back(nidoking);
-	pokemonList.push_back(clefable);
-	pokemonList.push_back(arcanine);
-	pokemonList.push_back(poliwrath);
-	pokemonList.push_back(alakazam);
-	pokemonList.push_back(machamp);
-	pokemonList.push_back(tentacruel);
-	pokemonList.push_back(golem);
-	pokemonList.push_back(magneton);
-	pokemonList.push_back(gengar);
-	pokemonList.push_back(onix);
-	pokemonList.push_back(exeggutor);
-	pokemonList.push_back(weezing);
-	pokemonList.push_back(scyther);
-	pokemonList.push_back(jynx);
-	pokemonList.push_back(gyarados);
-	pokemonList.push_back(lapras);
-	pokemonList.push_back(aerodactyl);
-	pokemonList.push_back(snorlax);
-	pokemonList.push_back(articuno);
-	pokemonList.push_back(zapdos);
-	pokemonList.push_back(moltres);
-	pokemonList.push_back(dragonite);
-	pokemonList.push_back(mewtwo);
-	pokemonList.push_back(ampharos);*/
+		pkm = 1;
+		num = 1;
+	}
 
 	bool poke = false;
 	bool duplicate = false;
-
-	/*std::cout << "how many pokemon: ";
-	std::cin >> num;*/
 
 	for (int i = 0; i < num; i++) {
 		poke = false;
@@ -519,7 +522,7 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		int tempCount = 0;
 
 		for (int i = 0; i < pokemonList.size(); i++) {
-			std::cout << pokemonList[i].num << ". " << pokemonList[i].name << std::setw(16); // change this, make my own setw
+			std::cout << formater((pokemonList[i].num + ". " + pokemonList[i].name), 20);
 			tempCount += 1;
 			if (tempCount % 4 == 0 || i == pokemonList.size() - 1) {
 				std::cout << "\n";
@@ -559,6 +562,120 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 						poke = true;
 					}
 				}
+
+			}
+		}
+		if (poke == false) {
+			std::cout << "\a";
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			i--;
+		}
+	}
+	system("CLS");
+}
+
+void printChooseMPokemon(std::vector<Pokemon> &player, std::vector<Pokemon> &player2, std::string pName) {
+	std::string name;
+
+	PlaySound(TEXT(NULL), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+
+	if (pkm == 0) {
+		pokemonList.push_back(venusaur);
+		pokemonList.push_back(charizard);
+		pokemonList.push_back(blastoise);
+		pokemonList.push_back(butterfree);
+		pokemonList.push_back(beedrill);
+		pokemonList.push_back(pidgeot);
+		pokemonList.push_back(raticate);
+		pokemonList.push_back(arbok);
+		pokemonList.push_back(raichu);
+		pokemonList.push_back(sandslash);
+		pokemonList.push_back(nidoking);
+		pokemonList.push_back(clefable);
+		pokemonList.push_back(arcanine);
+		pokemonList.push_back(poliwrath);
+		pokemonList.push_back(alakazam);
+		pokemonList.push_back(machamp);
+		pokemonList.push_back(tentacruel);
+		pokemonList.push_back(golem);
+		pokemonList.push_back(magneton);
+		pokemonList.push_back(gengar);
+		pokemonList.push_back(onix);
+		pokemonList.push_back(exeggutor);
+		pokemonList.push_back(weezing);
+		pokemonList.push_back(scyther);
+		pokemonList.push_back(jynx);
+		pokemonList.push_back(gyarados);
+		pokemonList.push_back(lapras);
+		pokemonList.push_back(aerodactyl);
+		pokemonList.push_back(snorlax);
+		pokemonList.push_back(articuno);
+		pokemonList.push_back(zapdos);
+		pokemonList.push_back(moltres);
+		pokemonList.push_back(dragonite);
+		pokemonList.push_back(mewtwo);
+		pokemonList.push_back(ampharos);
+
+		pkm = 1;
+	}
+
+	num = 1;
+
+	bool poke = false;
+	bool duplicate = false;
+
+	for (int i = 0; i < num; i++) {
+		poke = false;
+		duplicate = false;
+
+		system("CLS");
+
+		int tempCount = 0;
+
+		for (int i = 0; i < pokemonList.size(); i++) {
+			std::cout << formater((pokemonList[i].num + ". " + pokemonList[i].name), 20);
+			tempCount += 1;
+			if (tempCount % 4 == 0 || i == pokemonList.size() - 1) {
+				std::cout << "\n";
+			}
+		}
+
+		std::cout << pName << "'s Current Team: " << std::endl;
+		for (int i = 0; i < player.size(); i++)
+			std::cout << player[i].name << std::endl;
+
+		std::cout << "Choose a pokemon: ";
+		std::cin >> name;
+
+		if (name.length() > 2) {
+			for (int i = 0; i < name.length(); i++) {
+				name[i] |= 32; //Changes each character of the string to lower case
+			}
+			name[0] ^= 32; //Changes the first character in the string to upper case
+		}
+
+		for (int x = 0; x < pokemonList.size(); x++) {
+			if (name == pokemonList[x].name || name == pokemonList[x].num) {
+				if (player.size() == 0) {
+					player.push_back(Pokemon(pokemonList[x]));
+					pokemonList.erase(pokemonList.begin() + x);
+					poke = true;
+				}
+				//else {
+				//	for (int f = 0; f < player.size(); f++) {
+				//		for (int g = 0; g < player2.size(); g++) {
+				//			if (name == player[f].name || name == player[f].num || name == player2[g].name || name == player[g].num) {
+				//				duplicate = true;
+				//			}
+				//		}
+				//	}
+				//	if (duplicate == false)
+				//	{
+				//		player.push_back(Pokemon(pokemonList[x]));
+				//		poke = true;
+				//	}
+				//}
 
 			}
 		}
@@ -657,6 +774,117 @@ void useTheMove(int moveChoice, Pokemon &one, Pokemon &two) {
 		}
 	}
 }
+
+void choosePokemon(int &currentPokemon, std::vector<Pokemon> &player) {
+	int tempCount = 0;
+	bool poke = false;
+	std::string name;
+
+	while (poke == false) {
+		system("CLS");
+		for (int i = 0; i < player.size(); i++) {
+			display pokemon(player[i].name, player[i].stat.HP, player[i].stat.IHP);
+
+			pokemon.printPokemon();
+
+			tempCount += 1;
+			if (tempCount % 1 == 0 || i == player.size() - 1) {
+				std::cout << "\n";
+			}
+		}
+
+		std::cout << "Choose a pokemon: ";
+		std::cin >> name;
+
+		if (name.length() > 2) {
+			for (int i = 0; i < name.length(); i++) {
+				name[i] |= 32; //Changes each character of the string to lower case
+			}
+			name[0] ^= 32; //Changes the first character in the string to upper case
+		}
+
+		for (int x = 1; x < player.size() + 1; x++) {
+			if ((name == player[x - 1].name || name == std::to_string(x)) && player[x - 1].stat.getHP() > 0) {
+				player[currentPokemon].resetStages();
+				currentPokemon = x - 1;
+				poke = true;
+				break;
+			}
+		}
+		if (poke == false) {
+			std::cout << "\a";
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+		}
+	}
+	system("CLS");
+}
+
+void faint(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
+	if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
+		std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
+		player[currentPokemon].stat.setHP(0);
+		int count = 0;
+		for (int f = 0; f < player.size(); f++) {
+			if (player[f].stat.getHP() <= 0) {
+				count++;
+			}
+		}
+
+		if (count >= player.size()) {
+			std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
+		}
+	}
+	if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
+		std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
+		trainer[opponentCurrent].stat.setHP(0);
+		opponentCurrent++;
+		if (opponentCurrent < trainer.size()) {
+			std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
+		}
+	}
+}
+
+void oppMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &trainer, std::vector<Pokemon> &player) {
+	int oppMoveChoice = rand() % 4 + 1;
+
+	trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
+	useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
+	faint(currentPokemon, opponentCurrent, player, trainer);
+
+	if (opponentCurrent < trainer.size() && currentPokemon < player.size()) {
+		display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+		battleScreen.updateHP();
+		battleScreen.printScreen();
+	}
+
+	int count = 0;
+	int count2 = 0;
+
+	for (int f = 0; f < player.size(); f++) {
+		if (player[f].stat.getHP() <= 0) {
+			count++;
+		}
+	}
+
+	for (int f = 0; f < trainer.size(); f++) {
+		if (trainer[f].stat.getHP() <= 0) {
+			count2++;
+		}
+	}
+
+	if (count >= player.size()) {
+		p1Alive = false;
+	}
+	if (count2 >= trainer.size()) {
+		trainerAlive = false;
+	}
+
+	std::cout << "Press any key to continue...\n";
+	std::cin.ignore();
+	std::cin.get();
+}
+
 void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
 	int moveChoice = 0;
 	int oppMoveChoice = 0;
@@ -665,45 +893,36 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 
 	if (currentPokemon < player.size()) {
 
-		if (player[currentPokemon].charge == false) {
-			std::cout << "|============================|" << std::endl;
-			std::cout << formater(("| 1. " + player[currentPokemon].move1.name + " " + to_string(player[currentPokemon].move1.getPP()) + "/" + to_string(player[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
-			std::cout << formater(("| 2. " + player[currentPokemon].move2.name + " " + to_string(player[currentPokemon].move2.getPP()) + "/" + to_string(player[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
-			std::cout << formater(("| 3. " + player[currentPokemon].move3.name + " " + to_string(player[currentPokemon].move3.getPP()) + "/" + to_string(player[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
-			std::cout << formater(("| 4. " + player[currentPokemon].move4.name + " " + to_string(player[currentPokemon].move4.getPP()) + "/" + to_string(player[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
-			std::cout << "|============================|" << std::endl;
-			std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
-			std::cin >> moveChoice;
-		}
-		else if (player[currentPokemon].name == "Exeggutor") {
-			moveChoice = 1;
-		}
-		else if (player[currentPokemon].name == "Moltres") {
-			moveChoice = 4;
-		}
+	while (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
 
-		system("CLS");
+		std::cout << "|============================|" << std::endl;
+		std::cout << formater(("| 1. " + player[currentPokemon].move1.name + " " + to_string(player[currentPokemon].move1.getPP()) + "/" + to_string(player[currentPokemon].move1.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 2. " + player[currentPokemon].move2.name + " " + to_string(player[currentPokemon].move2.getPP()) + "/" + to_string(player[currentPokemon].move2.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 3. " + player[currentPokemon].move3.name + " " + to_string(player[currentPokemon].move3.getPP()) + "/" + to_string(player[currentPokemon].move3.maxPP)), 29) << "|" << std::endl;
+		std::cout << formater(("| 4. " + player[currentPokemon].move4.name + " " + to_string(player[currentPokemon].move4.getPP()) + "/" + to_string(player[currentPokemon].move4.maxPP)), 29) << "|" << std::endl;
+		std::cout << "|============================|" << std::endl;
+		std::cout << "What will " << player[currentPokemon].name << " do?" << std::endl;
+		std::cin >> moveChoice;
 
-		if (trainer[opponentCurrent].charge == false) {
-			oppMoveChoice = rand() % 4 + 1;
+		if (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			system("CLS");
 		}
-		else if (trainer[opponentCurrent].name == "Exeggutor") {
-			oppMoveChoice = 1;
-		}
-		else if (trainer[opponentCurrent].name == "Moltres") {
-			oppMoveChoice = 4;
-		}
+	}
+
+	system("CLS");
+
+		oppMoveChoice = rand() % 4 + 1;
 
 		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
 		trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
 
 		if ((player[currentPokemon].move1.name == quickattack.name && moveChoice == 1) || (player[currentPokemon].move4.name == extremespeed.name && moveChoice == 4)) {
-			std::cout << "Player 1 First" << std::endl;
 			p1first = true;
 		}
 
-		if ((trainer[opponentCurrent].move1.name == quickattack.name && moveChoice == 1 )|| (trainer[opponentCurrent].move4.name == extremespeed.name && moveChoice == 4)) {
-			std::cout << "Trainer First" << std::endl;
+		if ((trainer[opponentCurrent].move1.name == quickattack.name && moveChoice == 1) || (trainer[opponentCurrent].move4.name == extremespeed.name && moveChoice == 4)) {
 			tfirst = true;
 		}
 
@@ -718,25 +937,10 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 
 
-			if (player[currentPokemon].stat.HP <= 0) {
-				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
-				currentPokemon++;
-				if (currentPokemon < player.size()) {
-					PlaySound(TEXT("out.wav"), NULL, SND_SYNC);
-					std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
-				}
-			}
-			else if (trainer[opponentCurrent].stat.HP <= 0) {
-				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
-				opponentCurrent++;
-				if (opponentCurrent < trainer.size()) {
-					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
-				}
-			}
+			faint(currentPokemon, opponentCurrent, player, trainer);
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
 
-				//if (trainer[opponentCurrent].dontmove == false)
 				useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
 			}
@@ -750,43 +954,20 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 
 			useTheMove(oppMoveChoice, trainer[opponentCurrent], player[currentPokemon]);
 
-			if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
-				std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
-				currentPokemon++;
-				if (currentPokemon < player.size())
-					std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
-			}
-			else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
-				std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
-				opponentCurrent++;
-				if (opponentCurrent < trainer.size()) {
-					PlaySound(TEXT("out.wav"), NULL, SND_ASYNC);
-					std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
-				}
-			}
+			faint(currentPokemon, opponentCurrent, player, trainer);
 
 			if (opponentCurrent == temp && currentPokemon == temp2) {
 
-				//if (player[currentPokemon].dontmove == false)
 				useTheMove(moveChoice, player[currentPokemon], trainer[opponentCurrent]);
 			}
 		}
 
-		if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
-			std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
-			currentPokemon++;
-			if (currentPokemon < player.size()) {
-				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
-			}
+		if (player[currentPokemon].stat.getHP() <= 0) {
+			choosePokemon(currentPokemon, player);
 		}
-		else if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
-			std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
-			opponentCurrent++;
-			if (opponentCurrent < trainer.size()) {
-				std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
-			}
-		}
-		if(opponentCurrent < trainer.size() && currentPokemon < player.size()) {
+		faint(currentPokemon, opponentCurrent, player, trainer);
+
+		if (opponentCurrent < trainer.size() && currentPokemon < player.size()) {
 			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
 			battleScreen.updateHP();
 			battleScreen.printScreen();
@@ -818,6 +999,7 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 	std::cin.ignore();
 	std::cin.get();
 }
+
 void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice = 0;
@@ -832,13 +1014,9 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
 			battleScreen.updateHP();
 			battleScreen.printScreen();
-			if (player[currentPokemon].charge == false) {
-				std::cout << "1. Move \n2. Pokemon" << std::endl;
-				std::cin >> choice;
-			}
-			else {
-				choice = 1;
-			}
+
+			std::cout << "1. Move \n2. Pokemon" << std::endl;
+			std::cin >> choice;
 
 			if (choice == 1) {
 				system("CLS");
@@ -846,6 +1024,68 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 			}
 			if (choice == 2) {
 				system("CLS");
+				choosePokemon(currentPokemon, player);
+				std::cout << "Player 1 sent out " << player[currentPokemon].name << "!\n";
+				oppMove(currentPokemon, opponentCurrent, trainer, player);
+				//Pokemon screen
+			}
+			else {
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+			}
+		}
+	}
+}
+
+void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) {
+	int currentPokemon = 0, opponentCurrent = 0;
+	int choice = 0, choice2 = 0;
+	while (p1Alive == true && p2Alive == true) {
+		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+		std::cout << "Press any key to continue...\n";
+		std::cin.ignore();
+		std::cin.get();
+
+		while (choice != 1 || choice != 2 && p1Alive == true && p2Alive == true) {
+			system("CLS");
+			display battleScreen(player1[currentPokemon], player2[opponentCurrent]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
+
+			std::cout << "Player1:\n1. Move \n2. Pokemon" << std::endl;
+			std::cin >> choice;
+
+			if (choice == 1) {
+				system("CLS");
+				selectMove(currentPokemon, opponentCurrent, player1, player2);
+			}
+			if (choice == 2) {
+				system("CLS");
+				choosePokemon(currentPokemon, player1);
+				//Pokemon screen
+			}
+			else {
+				std::cin.clear();
+				std::cin.ignore(INT_MAX, '\n');
+			}
+		}
+
+		while (choice2 != 1 || choice2 != 2 && p1Alive == true && p2Alive == true) {
+			system("CLS");
+			display battleScreen(player2[opponentCurrent], player1[currentPokemon]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
+
+			std::cout << "Player 2:\n1. Move \n2. Pokemon" << std::endl;
+			std::cin >> choice2;
+
+			if (choice2 == 1) {
+				system("CLS");
+				selectMove(opponentCurrent, currentPokemon, player2, player1);
+			}
+			if (choice == 2) {
+				system("CLS");
+				choosePokemon(opponentCurrent, player2);
 				//Pokemon screen
 			}
 			else {
@@ -858,6 +1098,7 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 
 void endBattle() {
 	p1Alive = true;
+	p2Alive = true;
 	trainerAlive = true;
 }
 
@@ -893,8 +1134,11 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 1. Venusaur | 7. Raticate | 10. Sandslash |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -914,12 +1158,16 @@ int main() {
 					startBattle(player1, trainer2);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 3. Blastoise | 17. Tentacruel |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -940,12 +1188,16 @@ int main() {
 					startBattle(player1, trainer3);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 2. Charizard | 11. Nidoking | 16. Machamp |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -966,12 +1218,16 @@ int main() {
 					startBattle(player1, trainer4);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 25. Jynx | 27 Lapras |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -995,12 +1251,16 @@ int main() {
 					startBattle(player1, trainer5);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 12. Clefable | 14. Poliwrath | 19. Magneton | 22. Exeguutor | 29. Snorlax |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -1024,12 +1284,16 @@ int main() {
 					startBattle(player1, trainer6);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 18. Golem | 23. Weezing |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -1053,12 +1317,16 @@ int main() {
 					startBattle(player1, trainer7);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 13. Arcanine | 24. Scyther |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -1082,10 +1350,14 @@ int main() {
 					startBattle(player1, trainer8);
 
 					if (p1Alive == true) {
+						system("CLS");
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 15. Alakazam | 20. Gengar | 28. Aerodactyl |" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
@@ -1111,11 +1383,15 @@ int main() {
 					startBattle(player1, trainer9);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -1139,11 +1415,15 @@ int main() {
 					startBattle(player1, trainer10);
 
 					if (p1Alive == true) {
+						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						stage++;
 						endBattle();
+						std::cin.ignore();
+						std::cin.get();
 					}
 					else {
+						system("CLS");
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
 					}
 					player1.clear();
@@ -1160,25 +1440,39 @@ int main() {
 				story = false;
 			}
 
-			std::cin.ignore();
-			std::cin.get();
-
 			pokemonList.clear();
 		}
 
 		while (multiplayer == true) {
-			Pokemon player1;
-			Pokemon player2;
+			std::vector<Pokemon> player1;
+			std::vector<Pokemon> player2;
 
+			//Select Pokemon Order
+			printChooseMPokemon(player1, player2, "Player 1");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player1, player2, "Player 1");
+			printChooseMPokemon(player1, player2, "Player 1");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player1, player2, "Player 1");
+			printChooseMPokemon(player1, player2, "Player 1");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player2, player1, "Player 2");
+			printChooseMPokemon(player1, player2, "Player 1");
+
+			startMBattle(player1, player2);
+			endBattle();
 			for (;;) {
 				std::cout << "Fuck you!";
 			}
 
 			multiplayer = false;
 		}
-			std::cin.ignore();
-			std::cin.get();
 
-			return 0;
+		stage = 1;
+		p1Alive = true;
+		p2Alive = true;
+		trainerAlive = true;
 	}
 }
