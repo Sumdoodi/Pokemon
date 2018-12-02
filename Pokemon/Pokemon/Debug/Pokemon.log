@@ -1,33 +1,34 @@
 ﻿  main.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(524): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(533): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(540): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(546): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(554): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(636): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(645): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(652): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(658): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(785): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(800): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(806): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(824): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(828): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(834): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(838): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(842): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(855): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(864): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(870): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(876): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(879): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(894): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(934): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(953): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(970): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(979): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(985): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(991): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(994): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1106): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(524): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(533): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(540): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(546): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(554): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(636): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(645): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(652): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(658): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(785): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(800): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(806): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(825): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(829): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(835): warning C4018: '>=': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(839): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(843): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(856): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(865): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(871): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(877): warning C4018: '>=': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(880): warning C4018: '>=': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(895): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(935): warning C4553: '==': result of expression not used; did you intend '='?
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(954): warning C4553: '==': result of expression not used; did you intend '='?
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(971): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(977): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(983): warning C4018: '>': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(987): warning C4018: '<': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(993): warning C4018: '>=': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(996): warning C4018: '>=': signed/unsigned mismatch
+d:\repositories\pokemon\pokemon\pokemon\main.cpp(1110): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Pokemon.vcxproj -> D:\repositories\Pokemon\Pokemon\Debug\Pokemon.exe

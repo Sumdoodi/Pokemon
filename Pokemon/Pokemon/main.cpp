@@ -657,26 +657,9 @@ void printChooseMPokemon(std::vector<Pokemon> &player, std::vector<Pokemon> &pla
 
 		for (int x = 0; x < pokemonList.size(); x++) {
 			if (name == pokemonList[x].name || name == pokemonList[x].num) {
-				if (player.size() == 0) {
-					player.push_back(Pokemon(pokemonList[x]));
-					pokemonList.erase(pokemonList.begin() + x);
-					poke = true;
-				}
-				//else {
-				//	for (int f = 0; f < player.size(); f++) {
-				//		for (int g = 0; g < player2.size(); g++) {
-				//			if (name == player[f].name || name == player[f].num || name == player2[g].name || name == player[g].num) {
-				//				duplicate = true;
-				//			}
-				//		}
-				//	}
-				//	if (duplicate == false)
-				//	{
-				//		player.push_back(Pokemon(pokemonList[x]));
-				//		poke = true;
-				//	}
-				//}
-
+				player.push_back(Pokemon(pokemonList[x]));
+				pokemonList.erase(pokemonList.begin() + x);
+				poke = true;
 			}
 		}
 		if (poke == false) {
@@ -807,6 +790,7 @@ void choosePokemon(int &currentPokemon, std::vector<Pokemon> &player) {
 			if ((name == player[x - 1].name || name == std::to_string(x)) && player[x - 1].stat.getHP() > 0) {
 				player[currentPokemon].resetStages();
 				currentPokemon = x - 1;
+				std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
 				poke = true;
 				break;
 			}
@@ -962,16 +946,7 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			}
 		}
 
-		if (player[currentPokemon].stat.getHP() <= 0) {
-			choosePokemon(currentPokemon, player);
-		}
 		faint(currentPokemon, opponentCurrent, player, trainer);
-
-		if (opponentCurrent < trainer.size() && currentPokemon < player.size()) {
-			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
-			battleScreen.updateHP();
-			battleScreen.printScreen();
-		}
 
 		int count = 0;
 		int count2 = 0;
@@ -988,6 +963,16 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			}
 		}
 
+		if (player[currentPokemon].stat.getHP() <= 0 && player.size() > count && trainer.size() > count2) {
+			choosePokemon(currentPokemon, player);
+		}
+
+		if (opponentCurrent < trainer.size() && currentPokemon < player.size()) {
+			display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+			battleScreen.updateHP();
+			battleScreen.printScreen();
+		}
+
 		if (count >= player.size()) {
 			p1Alive = false;
 		}
@@ -995,9 +980,11 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 			trainerAlive = false;
 		}
 	}
-	std::cout << "Press any key to continue...\n";
-	std::cin.ignore();
-	std::cin.get();
+	if (p1Alive == true && trainerAlive == true) {
+		std::cout << "Press any key to continue...\n";
+		std::cin.ignore();
+		std::cin.get();
+	}
 }
 
 void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
@@ -1134,8 +1121,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 1. Venusaur | 7. Raticate | 10. Sandslash |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1163,8 +1148,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 3. Blastoise | 17. Tentacruel |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1193,8 +1176,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 2. Charizard | 11. Nidoking | 16. Machamp |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1223,8 +1204,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 25. Jynx | 27 Lapras |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1256,8 +1235,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 12. Clefable | 14. Poliwrath | 19. Magneton | 22. Exeguutor | 29. Snorlax |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1289,8 +1266,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 18. Golem | 23. Weezing |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1322,8 +1297,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 13. Arcanine | 24. Scyther |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1356,8 +1329,6 @@ int main() {
 						std::cout << "You unlocked some new Pokemon: | 15. Alakazam | 20. Gengar | 28. Aerodactyl |" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						std::cout << "You were defeated by " << trainerName << "!" << std::endl;
@@ -1419,8 +1390,6 @@ int main() {
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						stage++;
 						endBattle();
-						std::cin.ignore();
-						std::cin.get();
 					}
 					else {
 						system("CLS");
@@ -1436,10 +1405,11 @@ int main() {
 			}
 
 			if(p1Alive == false){
-				std::cout << "You were defeated on stage " << stage << "!";
+				std::cout << "You were defeated on stage " << stage << "!\n";
 				story = false;
 			}
-
+			std::cin.ignore();
+			std::cin.get();
 			pokemonList.clear();
 		}
 
