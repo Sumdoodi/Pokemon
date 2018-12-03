@@ -324,17 +324,17 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		if (stage == 1) {
 			pokemonList.clear();
 			pokemonList.push_back(butterfree);
-			pokemonList.back().img = butterfree.img;
+			//pokemonList.back().img = butterfree.img;
 			pokemonList.push_back(beedrill);
-			pokemonList.back().img = beedrill.img;
+			//pokemonList.back().img = beedrill.img;
 			pokemonList.push_back(pidgeot);
-			pokemonList.back().img = pidgeot.img;
+			//pokemonList.back().img = pidgeot.img;
 			pokemonList.push_back(arbok);
-			pokemonList.back().img = arbok.img;
+			//pokemonList.back().img = arbok.img;
 			pokemonList.push_back(raichu);
-			pokemonList.back().img = raichu.img;
+			//pokemonList.back().img = raichu.img;
 			pokemonList.push_back(onix);
-			pokemonList.back().img = onix.img;
+			//pokemonList.back().img = onix.img;
 		}
 
 		else if (stage == 2) {

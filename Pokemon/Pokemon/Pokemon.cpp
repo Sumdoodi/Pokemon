@@ -33,7 +33,16 @@ Pokemon::Pokemon(std::string newNum, std::string newName, Stats newStats, std::s
 	move2 = newMove2;
 	move3 = newMove3;
 	move4 = newMove4;
-	img = newimg;
+	img.L1 = newimg.L1;
+	img.L2 = newimg.L2;
+	img.L3 = newimg.L3;
+	img.L4 = newimg.L4;
+	img.L5 = newimg.L5;
+	img.L6 = newimg.L6;
+	img.L7 = newimg.L7;
+	img.L8 = newimg.L8;
+	img.L9 = newimg.L9;
+	img.L10 = newimg.L10;
 	confused = false;
 	flinched = false;
 
@@ -57,6 +66,16 @@ Pokemon::Pokemon(const Pokemon &poke) {
 	move2 = poke.move2;
 	move3 = poke.move3;
 	move4 = poke.move4;
+	img.L1 = poke.img.L1;
+	img.L2 = poke.img.L2;
+	img.L3 = poke.img.L3;
+	img.L4 = poke.img.L4;
+	img.L5 = poke.img.L5;
+	img.L6 = poke.img.L6;
+	img.L7 = poke.img.L7;
+	img.L8 = poke.img.L8;
+	img.L9 = poke.img.L9;
+	img.L10 = poke.img.L10;
 	confused = false;
 	flinched = false;
 

@@ -103,32 +103,43 @@ void display::printScreen() {
 	cout << formater(("[ " + formater(this->oPokeName, 23) + "]"), 64) << "\n";
 	cout << formater(("[ " + formater(this->oHPBar, 23) + "]"), 64) << "\n";
 	cout << formater(("[ " + formater((to_string(this->oCurHP) + "/" + to_string(this->oMaxHP)), 23) + "]"), 64) << "\n";
-	cout << "\n";
 
-	cout << formater((" " + p1.img.L1), 18) << "\n";
-	cout << formater((" " + p1.img.L2), 18) << "\n";
-	cout << formater((" " + p1.img.L3), 18) << "\n";
-	cout << formater((" " + p1.img.L4), 18) << "\n";
-	cout << formater((" " + p1.img.L5), 18) << "\n";
-	cout << formater((" " + p1.img.L6), 18) << "\n";
-	cout << formater((" " + p1.img.L7), 18) << "\n";
-	cout << formater((" " + p1.img.L8), 18) << "\n";
-	cout << formater((" " + p1.img.L9), 18) << "\n";
-	cout << formater((" " + p1.img.L10), 18) << "\n";
+	cout << formater((" " + p2.img.L1), 24) << "\n";
+	cout << formater((" " + p2.img.L2), 24) << "\n";
+	cout << formater((" " + p2.img.L3), 24) << "\n";
+	cout << formater((" " + p2.img.L4), 24) << "\n";
+	cout << formater((" " + p2.img.L5), 24) << "\n";
+	cout << formater((" " + p2.img.L6), 24) << "\n";
+	cout << formater((" " + p2.img.L7), 24) << "\n";
+	cout << formater((" " + p2.img.L8), 24) << "\n";
+	cout << formater((" " + p2.img.L9), 24) << "\n";
+	cout << formater((" " + p2.img.L10), 24) << "\n";
+
+
+	cout << formater(("                                                              " + p1.img.L1), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L2), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L3), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L4), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L5), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L6), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L7), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L8), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L9), 64) << "\n";
+	cout << formater(("                                                              " + p1.img.L10), 64) << "\n";
 	
 	
 	
 	
 	
 	
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
+	//cout << setw(64) << "\n";
 	/*cout << setw(64) << "\n";
 	cout << setw(64) << "\n";
 	cout << setw(64) << "\n";
@@ -140,11 +151,10 @@ void display::printScreen() {
 	//cout << setw(64) << "\n";
 	//cout << setw(64) << "\n";
 	//cout << setw(64) << "\n";
-	cout << "							" << "\n";
+	//cout << "							" << "\n";
 	cout << "							" << ("[ " + formater(this->pPokeName, 23) + "]\n");
 	cout << "							" << "[ " << formater(this->pHPBar, 23) << "]\n";
 	cout << "							" << ("[ " + formater((to_string(this->pCurHP) + "/" + to_string(this->pMaxHP)), 23) + "]\n");
-	cout << "\n";
 	//cout << setw(64) << "[  Attack  ]\n";
 	//cout << setw(64) << "[  Item    ]\n";
 	//cout << setw(64) << "[  Pokemon ]\n";

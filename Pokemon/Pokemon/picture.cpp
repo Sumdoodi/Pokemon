@@ -1,7 +1,6 @@
 #include "Pokemon.h"
 #include "picture.h"
 Picture::Picture(){
-
 }
 
 
@@ -16,9 +15,6 @@ Picture::Picture(std::string L1, std::string L2, std::string L3, std::string L4,
 	this->L8 = L8;
 	this->L9 = L9;
 	this->L10 = L10;
-
-
-	
 }
 
 
