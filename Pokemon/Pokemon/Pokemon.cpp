@@ -171,8 +171,10 @@ void Pokemon::changeAcc(int &stage, float &mod) {
 		mod = 9.0f / 3.0f;
 	}
 }
+
 void Pokemon::useMove(Moves &move, Pokemon &other) {
 	move.damage = 0;
+	flinched = false;
 	statusEffect(move);
 
 	changeAcc(accStage, accMod);
@@ -195,10 +197,6 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 	Burn = burn(move);
 	float modifier = Critical * Stab * typemodifier  * Random * Burn;
 	int missed = rand() % 100 + 1;
-
-	if (move.getSEC() == "charge" && charge == false) {
-		secondaryEffect(other, move);
-	}
 
 	if (charge == true && chargeturn == 0) {
 		charge = false;

@@ -877,6 +877,30 @@ void faint(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &play
 	}
 }
 
+void faintM(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
+	if (currentPokemon < player.size() && player[currentPokemon].stat.HP <= 0) {
+		std::cout << player[currentPokemon].name << " has fainted!" << std::endl;
+		player[currentPokemon].stat.setHP(0);
+		int count = 0;
+		for (int f = 0; f < player.size(); f++) {
+			if (player[f].stat.getHP() <= 0) {
+				count++;
+			}
+		}
+
+		if (count >= player.size()) {
+			std::cout << "Player has sent out " << player[currentPokemon].name << "!" << std::endl;
+		}
+	}
+	if (opponentCurrent < trainer.size() && trainer[opponentCurrent].stat.HP <= 0) {
+		std::cout << trainer[opponentCurrent].name << " has fainted!" << std::endl;
+		trainer[opponentCurrent].stat.setHP(0);
+		if (opponentCurrent < trainer.size()) {
+			std::cout << "Trainer has sent out " << trainer[opponentCurrent].name << "!" << std::endl;
+		}
+	}
+}
+
 void oppMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &trainer, std::vector<Pokemon> &player) {
 	int oppMoveChoice = rand() % 4 + 1;
 
@@ -1139,7 +1163,7 @@ void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon>
 			useTheMove(moveChoice, player[currentPokemon], player2[currentPokemon2]);
 
 
-			faint(currentPokemon, currentPokemon2, player, player2);
+			faintM(currentPokemon, currentPokemon2, player, player2);
 
 			if (currentPokemon2 == temp && currentPokemon == temp2) {
 
@@ -1156,7 +1180,7 @@ void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon>
 
 			useTheMove(moveChoice2, player2[currentPokemon2], player[currentPokemon]);
 
-			faint(currentPokemon, currentPokemon2, player, player2);
+			faintM(currentPokemon, currentPokemon2, player, player2);
 
 			if (currentPokemon == temp && currentPokemon == temp2) {
 
@@ -1164,7 +1188,7 @@ void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon>
 			}
 		}
 
-		faint(currentPokemon, currentPokemon2, player, player2);
+		faintM(currentPokemon, currentPokemon2, player, player2);
 
 		int count = 0;
 		int count2 = 0;
@@ -1183,6 +1207,10 @@ void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon>
 
 		if (player[currentPokemon].stat.getHP() <= 0 && player.size() > count && player2.size() > count2) {
 			choosePokemon(currentPokemon, player);
+		}
+
+		if (player2[currentPokemon2].stat.getHP() <= 0 && player.size() > count && player2.size() > count2) {
+			choosePokemon(currentPokemon2, player2);
 		}
 
 		if (currentPokemon2 < player2.size() && currentPokemon < player.size()) {
