@@ -408,7 +408,7 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 			stat.HP = stat.IHP;
 		}
 		else {
-			stat.HP += stat.HP / 2;
+			stat.HP += stat.IHP / 2;
 		}
 		std::cout << name << "'s health was increased by " << stat.HP / 2 << std::endl;
 	}

@@ -12,7 +12,7 @@
 #include <Windows.h>
 #include <MMsystem.h>
 
-bool story = false, multiplayer = false;
+bool story = false, multiplayer = false, extra = false;
 bool p1Alive = true, p2Alive = true, trainerAlive = true;
 int num;
 int pkm = 0;
@@ -59,6 +59,7 @@ Stats moltres_stats(90, 100, 90, 125, 85, 90);
 Stats dragonite_stats(91, 134, 95, 100, 100, 80);
 Stats mewtwo_stats(106, 110, 90, 154, 90, 130);
 Stats ampharos_stats(90, 75, 85, 115, 90, 55);
+
 
 //Generate Moves
 //Normal moves 18 moves
@@ -1300,6 +1301,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Jiminy: 'How did this happen!?'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 1. Venusaur | 7. Raticate | 10. Sandslash |" << std::endl;
 						stage++;
@@ -1327,6 +1329,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Robert: 'You know sometimes it really be like that.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 3. Blastoise | 17. Tentacruel |" << std::endl;
 						stage++;
@@ -1355,6 +1358,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Myles: 'Really??? That shouldn't have happened... I'll need to rethink my strategy. I'll give you it though!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 2. Charizard | 11. Nidoking | 16. Machamp |" << std::endl;
 						stage++;
@@ -1383,6 +1387,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Charley: 'Oh wow! That was really fun, thanks for the match!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 25. Jynx | 27 Lapras |" << std::endl;
 						stage++;
@@ -1414,6 +1419,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Kennedy: 'NO WAY okay good job.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 12. Clefable | 14. Poliwrath | 19. Magneton | 22. Exeguutor | 29. Snorlax |" << std::endl;
 						stage++;
@@ -1437,14 +1443,15 @@ int main() {
 					trainer6.push_back(arbok);
 					trainer6.push_back(exeggutor);
 					trainer6.push_back(tentacruel);
-					trainer6.push_back(weezing);
-					trainer6.push_back(alakazam);
 					trainer6.push_back(golem);
+					trainer6.push_back(alakazam);
+					trainer6.push_back(weezing);
 
 					startBattle(player1, trainer6);
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Ryan: 'Oh dear, that was certainly unexpected. You played beautifully, good job!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 18. Golem | 23. Weezing |" << std::endl;
 						stage++;
@@ -1476,6 +1483,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Steph: 'That's a big oof, my beautiful birds have been defeated!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 13. Arcanine | 24. Scyther |" << std::endl;
 						stage++;
@@ -1508,6 +1516,7 @@ int main() {
 					if (p1Alive == true) {
 						system("CLS");
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "'Cob: Ahaha! Nice teambuilding, I'll get you next time though.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 15. Alakazam | 20. Gengar | 28. Aerodactyl |" << std::endl;
 						stage++;
@@ -1538,6 +1547,7 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
+						std::cout << "Jonah: 'Oh, okay I'll give you it. Good luck with your next opponent.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						stage++;
 						endBattle();
@@ -1570,7 +1580,8 @@ int main() {
 
 					if (p1Alive == true) {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cout << "Rhyss: 'You're now the Pokemon champion! Congratulations my friend!'" << std::endl;
+						std::cout << "You defeated " << trainerName << ". You're the new Pokemon League Champion!" << std::endl;
 						stage++;
 						endBattle();
 					}
@@ -1583,7 +1594,10 @@ int main() {
 
 				else if (stage == 11) {
 					std::cout << "You defeated EVERYONE!";
+					std::cout << "In return, you unlocked Ampharos for multiplayer mode. This was Rhyss's favourite Pokemon.";
+					std::cout << "This game is dedicated to Rhyss Glenfield, our best friend.";
 					story = false;
+					extra = true;
 				}
 			}
 
