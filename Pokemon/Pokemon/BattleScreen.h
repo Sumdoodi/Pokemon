@@ -18,7 +18,8 @@ public:
 	int oMaxHP;
 	int pCurHP;
 	int oCurHP;
-
+	Pokemon p1;
+	Pokemon p2;
 
 	// full HP bar:  |********************| 
 	// empty HP bar: |____________________|

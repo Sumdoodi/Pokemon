@@ -1,4 +1,5 @@
 ﻿#include "BattleScreen.h"
+#include "Pokemon.h"
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -33,6 +34,10 @@ display::display(string pPokeName, string oPokeName, int pMaxHP, int oMaxHP, int
 }
 
 display::display(Pokemon &player, Pokemon &opponent) {
+	p1 = player;
+	p1.img = player.img;
+	p2 = opponent;
+	p2.img = opponent.img;
 	display::setPlayerPokemonName(player.name);
 	display::setOpponentPokemonName(opponent.name);
 	display::setOpponentPokemonName(opponent.name);
@@ -98,9 +103,24 @@ void display::printScreen() {
 	cout << formater(("[ " + formater(this->oPokeName, 23) + "]"), 64) << "\n";
 	cout << formater(("[ " + formater(this->oHPBar, 23) + "]"), 64) << "\n";
 	cout << formater(("[ " + formater((to_string(this->oCurHP) + "/" + to_string(this->oMaxHP)), 23) + "]"), 64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
-	cout << setw(64) << "\n";
+	cout << "\n";
+
+	cout << formater((" " + p1.img.L1), 18) << "\n";
+	cout << formater((" " + p1.img.L2), 18) << "\n";
+	cout << formater((" " + p1.img.L3), 18) << "\n";
+	cout << formater((" " + p1.img.L4), 18) << "\n";
+	cout << formater((" " + p1.img.L5), 18) << "\n";
+	cout << formater((" " + p1.img.L6), 18) << "\n";
+	cout << formater((" " + p1.img.L7), 18) << "\n";
+	cout << formater((" " + p1.img.L8), 18) << "\n";
+	cout << formater((" " + p1.img.L9), 18) << "\n";
+	cout << formater((" " + p1.img.L10), 18) << "\n";
+	
+	
+	
+	
+	
+	
 	cout << setw(64) << "\n";
 	cout << setw(64) << "\n";
 	cout << setw(64) << "\n";

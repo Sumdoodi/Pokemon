@@ -3,6 +3,7 @@
 Pokemon::Pokemon()
 {
 	stat = Stats();
+	img = Picture();
 	ty = "none";
 	ty2 = "none";
 	status = "none";
@@ -20,7 +21,7 @@ Pokemon::Pokemon()
 	spDEFStage = 0;
 }
 
-Pokemon::Pokemon(std::string newNum, std::string newName, Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4)
+Pokemon::Pokemon(std::string newNum, std::string newName, Stats newStats, std::string newTY, std::string newTY2, std::string newSTATUS, Moves newMove1, Moves newMove2, Moves newMove3, Moves newMove4, Picture newimg)
 {
 	num = newNum;
 	name = newName;
@@ -32,6 +33,7 @@ Pokemon::Pokemon(std::string newNum, std::string newName, Stats newStats, std::s
 	move2 = newMove2;
 	move3 = newMove3;
 	move4 = newMove4;
+	img = newimg;
 	confused = false;
 	flinched = false;
 

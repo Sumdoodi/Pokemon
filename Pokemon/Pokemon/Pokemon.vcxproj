@@ -121,6 +121,7 @@
     <ClCompile Include="BattleScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Moves.cpp" />
+    <ClCompile Include="picture.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="SecondaryEffect.cpp" />
     <ClCompile Include="Stats.cpp" />
@@ -128,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="BattleScreen.h" />
     <ClInclude Include="Moves.h" />
+    <ClInclude Include="picture.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="SecondaryEffect.h" />
     <ClInclude Include="Stats.h" />

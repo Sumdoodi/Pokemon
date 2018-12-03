@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <locale>
+#include "picture.h"
 #include "Pokemon.h"
 #include "Moves.h"
 #include "Stats.h"
@@ -21,6 +22,45 @@ unsigned int stage = 1;
 std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;
 std::string trainerName;
+
+
+Picture venusaur_img(" +----------------+", " |                |",  " |      |--|      |", " |     +----+     |", " |       ||       |", " |    +------+    |", " |   +o o    ++   |", " |    +------+    |", " |     ||   ||    |", " +----------------+");
+Picture blastoise_img(" +----------------+", " |                |", " |  ++    ++      |", " |   +------+     |", " |   |    +---+   |", " |   | +  |o o|   |", " |   | |  +---+   |", " |   +------+     |", " |    ||  ||      |", " +----------------+");
+Picture charizard_img(" +----------------+", " |                |", " | +---+ ++ +---+ |", " |  +--||oo||--+  |", " |    |------|    |", " |  <---------->  |", " |      |--|      |", " |   +--+--+      |", " |      |  |      |", " +----------------+");
+Picture butterfree_img(" +----------------+", " |                |", " | +----+  +----+ |", " | |    +--+    | |", " | |    |--|    | |", " | +-+--------+-+ |", " |   |  +--+  |   |", " |   +--+  +--+   |", " |                |", " +----------------+");
+Picture beedrill_img(" +----------------+", " |                |", " |    +-- +       |", " |    |oo |+ +    |", " |    +------ +   |", " |     |---- +    |", " |      |-- +     |", " |      +-+       |", " |       V        |", " +----------------+");
+Picture pidgeot_img(" +----------------+", " |        +--|	 |", " |    +---+ |o-+  |", " |  +-+   +--|    |", " |     +-----+    |", " |  +-------+     |", " |  |--+ | |      |", " | +-+   | |      |", " |       ++++     |", " +----------------+");
+Picture raticate_img(" +----------------+", " |       ()_--_() |", " |        |o  o|  |", " |    +---|    |  |", " | x +    | VV |  |", " | |+ u  u| ^^ |  |", " | |+     +----+  |", " |  +-----+       |", " |   U   U        |", " +----------------+");
+Picture arbok_img(" +----------------+", " |   +---+        |", " |  |     |       |", " |  | o o |       |", " |  | VVV |   ^^  |", " |  + VVV +   ||  |", " |   +---+  +--+  |", " |     +-----+    |", " |      |---|     |", " +----------------+");
+Picture raichu_img(" +----------------+", " |        ^  ^    |", " |        |  |    |", " |  +    ++--++   |", " |  ++ +-+ o o|   |", " |  ++ | +----+   |", " |   +-+ u   u|   |", " |     ++---+-+   |", " |      |   |     |", " +----------------+");
+Picture sandslash_img(" +----------------+", " |     ^    ^     |", " |     |----|     |", " |   <-| oo |->   |", " |  <---|  |--->  |", " |   +--------+   |", " |   v |    | v   |", " |     +----+     |", " |   +-+    +-+   |", " +----------------+");
+Picture nidoking_img(" +----------------+", " |   | +----+ |   |", " |   +-+\  /+-+   |", " |  +----------+  |", " | +--+      +--+ |", " | +- +-    -+ -+ |", " |    |------|    |", " |   +-|    |-+   |", " |   |-|    |-|   |", " +----------------+");
+Picture clefable_img(" +----------------+", " | ||   |--|   || |", " | +------------+ |", " |  ++   +-+  +   |", " |   |  o  o  |   |", " | <-+   ww   +-> |", " |    +      +    |", " |    +------+    |", " |    ||    ||    |", " +----------------+");
+Picture arcanine_img(" +----------------+", " | +----+     ||  |", " | |\  /|   +---+ |", " | | -- +-------| |", " | ++---+  +---++ |", " |  +          +  |", " |   +--------+   |", " |   +-|   +--+   |", " |    ||    ||    |", " +----------------+");
+Picture poliwrath_img(" +----------------+", " |                |", " |     +----+     |", " |    +      +    |", " |  ++  \  /  ++  |", " | +-+   __   +-+ |", " | + +        + + |", " |    +------+    |", " |   +-|    |-+   |", " +----------------+");
+Picture alakazam_img(" +----------------+", " |    ++    ++    |", " |     +----+     |", " | <--++ oo ++--> |", " |      +  +   +  |", " |  +--+ ++ +--++ |", " | + +  +  +      |", " |      +--+      |", " |      |  |      |", " +----------------+");
+Picture machamp_img(" +----------------+", " |                |", " |  +-+      +-+  |", " |    | +--+ |    |", " |    +-(..)+-+   |", " |  +----------+  |", " |  +  +----+  +  |", " |      |  |      |", " |      |  |      |", " +----------------+");
+Picture tentacruel_img(" +----------------+", " |   +--+  +--+   |", " |  |   +--+   |  |", " |   +--+  +--+   |", " |  +  ++  ++  +  |", " | + --(o++o)-- + |", " | v | ++--++ | v |", " |   v  |  |  v   |", " |      v  v      |", " +----------------+");
+Picture golem_img(" +----------------+", " |                |", " |  |          |  |", " |     +----+     |", " |    + _  _ +    |", " | ++ | o  o | ++ |", " | +  +      +  + |", " |     +----+     |", " |   ++      ++   |", " +----------------+");
+Picture magneton_img(" +----------------+", " |   |   ||   |   |", " |  +++------+++  |", " |    |  (o) |    |", " | ++-+      +-++ |", " |  | +-+--+-+ |  |", " |  |o) |  | (o|  |", " |  +---+  +---+  |", " |                |", " +----------------+");
+Picture gengar_img(" +----------------+", " | ||   |--|   || |", " | +----    ----+ |", " |  ++|\    /|++  |", " |   ||o\  /o||   |", " |  ++  ____  ++  |", " |  v + VVVV + v  |", " |    +------+    |", " |    ||    ||    |", " +----------------+");
+Picture onix_img(" +----------------+", " |                |", " |            |   |", " |          +-+-+ |", " | +   +--+ | ,,| |", " | +-+ |  +-+   | |", " | +- -  +- +-+-+ |", " |   |  | |   |   ||", " |   +--+ +---+   |", " +----------------+");
+Picture exeggutor_img(" +----------------+", " |   |   ||   |   |", " |  +++ +--+ +++  |", " |    +------+    |", " |     O () O     |", " |      ----      |", " |      |--|      |", " |     +----+     |", " |     |    |     |", " +----------------+");
+Picture weezing_img(" +----------------+", " |   +---+        |", " |  + T T +       |", " |  |  ^  +---+   |", " |  +     | T T+  |", " |    +--+   ^ +  |", " |      |-+---+   |", " |      +--+      |", " |                |", " +----------------+");
+Picture scyther_img(" +----------------+", " |       ||       |", " |  +-+ +oo+ +-+  |", " |   ++  ||  ++   |", " |   +--------+   |", " |  ++  +--+  ++  |", " | +-+   ||   +-+ |", " | ++   +--+   ++ |", " |      |  |      |", " +----------------+");
+Picture jynx_img(" +----------------+", " |    ~~~~~~~~    |", " |  ~~~+----+~~~  |", " | ~~~~|O  U|~~~~ |", " | ++~+- == -+~++ |", " | ++~~ +--+ ~~++ |", " |   +~~    ~~+   |", " |  +          +  |", " |  +----------+  |", " +----------------+");
+Picture gyarados_img(" +----------------+", " |   |            |", " |++ | ++     --+ |", " | +-+-+  +--+  | |", " | |\ /|--      | |", " | +VVV++   -+  | |", " |  | | +--+  + + |", " |  VVV      +++  |", " |         +-+    |", " +----------------+");
+Picture lapras_img(" +----------------+", " |         ||  || |", " |         +----+ |", " |          |u u| |", " |          +---+ |", " |    +--+  ||    |", " |   +    ---|    |", " |  -  ++   |-+   |", " | |--++-------+  |", " +----------------+");
+Picture aerodactyl_img(" +----------------+", " | +--+     |---| |", " | +   --  +O|VVV |", " |  |    ----+    |", " |  +--   +-+VVV  |", " |     +  |  +-+  |", " | +---+--++      |", " |      ++  ++    |", " |                |", " +----------------+");
+Picture snorlax_img(" +----------------+", " |     +----+     |", " |     |~  ~|     |", " |   +--------+   |", " |  +          +  |", " |  | U      U |  |", " |  +          +  |", " |   +--------+   |", " |   ||      ||   |", " +----------------+");
+Picture articuno_img(" +----------------+", " | |-|        |-| |", " | +-|   ++   |-+ |", " |  |-+  ||  +-|  |", " |  +----------+  |", " |      +--+    + |", " |     ++  +-+ ++ |", " |     ++  ++ ++  |", " |    ++    ++    |", " +----------------+");
+Picture zapdos_img(" +----------------+", " |                |", " | <+ ^  ++  ^ +> |", " |  +-+  || +-+   |", " | <------------> |", " |   <-------->   |", " |      +--+      |", " |   +-+ || +-+   |", " |      +--+      |", " +----------------+");
+Picture moltres_img(" +----------------+", " | ++    <>    ++ |", " | V+-+  |-> +-+V |", " | +------------+ |", " | VV+--------+VV |", " |   VV +--+ VV   |", " |     + ++ +     |", " |    ++ VV ++    |", " |      VVVV      |", " +----------------+");
+Picture dragonite_img(" +----------------+", " |      +--+      |", " | +--+ |oo| +--+ |", " | +  +-+  +-+  + |", " |  +--+ ++ +--+  |", " | +-+ |    | +-+ |", " | ++ +      + ++ |", " |    | ---- |    |", " |    ||    ||    |", " +----------------+");
+Picture mewtwo_img(" +----------------+", " |      ^  ^      |", " |      +--+  ++  |", " |      ----  ++  |", " |   +-+ || +-+   |", " | ++   +--+      |", " | ++   +--+      |", " |     ++  ++     |", " |     ||  ||     |", " +----------------+");
+Picture ampharos_img(" +----------------+", " |        |  |    |", " |        |--.+   |", " |         |o-o   |", " |   o      +--+  |", " |   +    _| |    |", " |    + _|+-  |-+ |", " |     +-----+    |", " |        |  |    |", " +----------------+");
+
+
 
 
 //Generate Pokemon stats
@@ -191,41 +231,41 @@ Moves moonblast("Moonblast", 95, 15, 1.0f, "fairy", "Sp", "lSpATK30");
 Moves moonlight("Moonlight", 0, 10, 0.0f, "fairy", "S", "heal50");
 
 //Generate Pokemon
-Pokemon venusaur("1", "Venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder);
-Pokemon charizard("2", "Charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface);
-Pokemon blastoise("3", "Blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch);
-Pokemon butterfree("4", "Butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter);
-Pokemon beedrill("5", "Beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance);
-Pokemon pidgeot("6", "Pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance);
-Pokemon raticate("7", "Raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy);
-Pokemon arbok("8", "Arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare);
-Pokemon raichu("9", "Raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam);
-Pokemon sandslash("10", "Sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance);
-Pokemon nidoking("11", "Nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam);
-Pokemon clefable("12", "Clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight);
-Pokemon arcanine("13", "Arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed);
-Pokemon poliwrath("14", "Poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep);
-Pokemon alakazam("15", "Alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball);
-Pokemon machamp("16", "Machamp", machamp_stats, "fighting", "none", "none", crosschop, bulkup, focusenergy, lowsweep);
-Pokemon tentacruel("17", "Tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic);
-Pokemon golem("18", "Golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish);
-Pokemon magneton("19", "Magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon);
-Pokemon gengar("20", "Gengar",gengar_stats, "ghost", "poison", "none", shadowball, sludgebomb, hypnosis, darkpulse);
-Pokemon onix("21", "Onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish);
-Pokemon exeggutor("22", "Exeggutor", exeggutor_stats, "grass", "psychic", "none", leafstorm, stomp, psychic, stunspore);
-Pokemon weezing("23", "Weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen);
-Pokemon scyther("24", "Scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash);
-Pokemon jynx("25", "Jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard);
-Pokemon gyarados("26", "Gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail);
-Pokemon lapras("27", "Lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray);
-Pokemon aerodactyl("28", "Aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace);
-Pokemon snorlax("29", "Snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch);
-Pokemon articuno("30", "Articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility);
-Pokemon zapdos("31", "Zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter);
-Pokemon moltres("32", "Moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, willowisp);
-Pokemon dragonite("33", "Dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane);
-Pokemon mewtwo("34", "Mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere);
-Pokemon ampharos("35", "Ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse);
+Pokemon venusaur("1", "Venusaur", venusaur_stats, "grass", "poison", "none", takedown, sludgebomb, gigadrain, poisonpowder, venusaur_img);
+Pokemon charizard("2", "Charizard",charizard_stats, "fire", "flying", "none", slash, flamethrower, airslash, scaryface, charizard_img);
+Pokemon blastoise("3", "Blastoise", blastoise_stats, "water", "none", "none", bodyslam, surf, irondefense, crunch, blastoise_img);
+Pokemon butterfree("4", "Butterfree", butterfree_stats, "bug", "flying", "none", bugbuzz, sleeppowder, quiverdance, aircutter, butterfree_img);
+Pokemon beedrill("5", "Beedrill",beedrill_stats, "bug", "poison", "none", poisonjab, agility, xscissor, assurance, beedrill_img);
+Pokemon pidgeot("6", "Pidgeot", pidgeot_stats, "normal", "flying", "none", quickattack, airslash, sandattack, featherdance, pidgeot_img);
+Pokemon raticate("7", "Raticate", raticate_stats, "normal", "none", "none", hyperfang, crunch, sworddance, focusenergy, raticate_img);
+Pokemon arbok("8", "Arbok", arbok_stats, "poison", "none", "none", sludgebomb, coil, screech, glare, arbok_img);
+Pokemon raichu("9", "Raichu", raichu_stats, "electric", "none", "none", thunderbolt, thunder, thunderwave, doubleteam, raichu_img);
+Pokemon sandslash("10", "Sandslash",sandslash_stats, "ground", "none", "none", slash, earthquake, sandattack, sworddance, sandslash_img);
+Pokemon nidoking("11", "Nidoking", nidoking_stats, "ground", "poison", "none", earthquake, megahorn, focusenergy, bodyslam, nidoking_img);
+Pokemon clefable("12", "Clefable", clefable_stats, "fairy", "none", "none", bodyslam, moonblast, cosmicpower, moonlight, clefable_img);
+Pokemon arcanine("13", "Arcanine", arcanine_stats, "fire", "none", "none", flareblitz, agility, crunch, extremespeed, arcanine_img);
+Pokemon poliwrath("14", "Poliwrath", poliwrath_stats, "water", "fighting", "none", waterfall, amnesia, bodyslam, lowsweep, poliwrath_img);
+Pokemon alakazam("15", "Alakazam", alakazam_stats, "psychic", "none", "none", calmmind, psychic, recover, shadowball, alakazam_img);
+Pokemon machamp("16", "Machamp", machamp_stats, "fighting", "none", "none", crosschop, bulkup, focusenergy, lowsweep, machamp_img);
+Pokemon tentacruel("17", "Tentacruel", tentacruel_stats, "water", "poison", "none", sludgewave, hydropump, barrier, supersonic, tentacruel_img);
+Pokemon golem("18", "Golem", golem_stats, "rock", "ground", "none", earthquake, stoneedge, explosion, rockpolish, golem_img);
+Pokemon magneton("19", "Magneton",magneton_stats, "electric", "steel", "none", supersonic, thunderbolt, flashcannon, zapcannon, magneton_img);
+Pokemon gengar("20", "Gengar",gengar_stats, "ghost", "poison", "none", shadowball, sludgebomb, hypnosis, darkpulse, gengar_img);
+Pokemon onix("21", "Onix",onix_stats, "rock", "ground", "none", rockslide, earthquake, irontail, rockpolish, onix_img);
+Pokemon exeggutor("22", "Exeggutor", exeggutor_stats, "grass", "psychic", "none", leafstorm, stomp, psychic, stunspore, exeggutor_img);
+Pokemon weezing("23", "Weezing",weezing_stats, "poison", "none", "none", sludgebomb, explosion, assurance, smokescreen, weezing_img);
+Pokemon scyther("24", "Scyther",scyther_stats, "bug", "flying", "none", airslash, xscissor, agility, nightslash, scyther_img);
+Pokemon jynx("25", "Jynx",jynx_stats, "psychic", "ice", "none", icepunch, bodyslam, psychic, blizzard, jynx_img);
+Pokemon gyarados("26", "Gyarados",gyarados_stats, "water", "flying", "none", dragondance, irontail, icefang, aquatail, gyarados_img);
+Pokemon lapras("27", "Lapras",lapras_stats, "water", "ice", "none", hydropump, icebeam, bodyslam, confuseray, lapras_img);
+Pokemon aerodactyl("28", "Aerodactyl",aerodactyl_stats, "rock", "flying", "none", crunch, rockslide, ironhead, aerialace, aerodactyl_img);
+Pokemon snorlax("29", "Snorlax",snorlax_stats, "normal", "none", "none", bodyslam, amnesia, rest, crunch, snorlax_img);
+Pokemon articuno("30", "Articuno",articuno_stats, "ice", "flying", "none", icebeam, roost, hurricane, agility, articuno_img);
+Pokemon zapdos("31", "Zapdos",zapdos_stats, "electric", "flying", "none", thunderbolt, roost, agility, aircutter, zapdos_img);
+Pokemon moltres("32", "Moltres",moltres_stats, "fire", "flying", "none", flamethrower, airslash, roost, willowisp, moltres_img);
+Pokemon dragonite("33", "Dragonite",dragonite_stats, "dragon", "flying", "none", dragonrush, thunderwave, dragondance, hurricane, dragonite_img);
+Pokemon mewtwo("34", "Mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere, mewtwo_img);
+Pokemon ampharos("35", "Ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse, ampharos_img);
 
 
 void printScreen() {
@@ -284,11 +324,17 @@ void printChoosePokemon(std::vector<Pokemon> &player) {
 		if (stage == 1) {
 			pokemonList.clear();
 			pokemonList.push_back(butterfree);
+			pokemonList.back().img = butterfree.img;
 			pokemonList.push_back(beedrill);
+			pokemonList.back().img = beedrill.img;
 			pokemonList.push_back(pidgeot);
+			pokemonList.back().img = pidgeot.img;
 			pokemonList.push_back(arbok);
+			pokemonList.back().img = arbok.img;
 			pokemonList.push_back(raichu);
+			pokemonList.back().img = raichu.img;
 			pokemonList.push_back(onix);
+			pokemonList.back().img = onix.img;
 		}
 
 		else if (stage == 2) {

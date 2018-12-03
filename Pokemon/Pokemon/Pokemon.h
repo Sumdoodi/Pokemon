@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "picture.h"
 #include "Stats.h"
 #include "Moves.h"
 
@@ -12,6 +13,7 @@ public:
 	std::string name; //Pokemon name
 
 	Stats stat; //Statistics
+	Picture img; //image
 	std::string ty; //Type 1
 	std::string ty2; //Type 2
 	std::string status; //Status Effect
@@ -58,7 +60,7 @@ public:
 	int burn(Moves);
 
 	Pokemon();
-	Pokemon(std::string, std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves);
+	Pokemon(std::string, std::string, Stats, std::string, std::string, std::string, Moves, Moves, Moves, Moves, Picture);
 	Pokemon(const Pokemon&);
 
 	void changeMod(int&, float&);
