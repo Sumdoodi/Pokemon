@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include "BattleScreen.h"
+#define _WIN32_WINNT 0x0500
 #include <Windows.h>
 #include <MMsystem.h>
 
@@ -1321,6 +1322,11 @@ void endBattle() {
 
 int main() {
 	srand(time(NULL)); //Random seed
+
+	HWND console = GetConsoleWindow();
+	RECT r;
+	GetWindowRect(console, &r);
+	MoveWindow(console, r.left, r.top, 1000, 650, TRUE); // set console exactly 38 lines in height
 
 	while (1) { //Game loop
 		system("CLS");
