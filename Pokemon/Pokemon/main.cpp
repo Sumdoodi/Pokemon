@@ -869,6 +869,45 @@ void oppMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &tr
 	std::cin.get();
 }
 
+void oppMMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &trainer, std::vector<Pokemon> &player, int moveChoice) {
+
+	trainer[opponentCurrent].changeMod(trainer[opponentCurrent].spdStage, trainer[opponentCurrent].spdMod);
+	useTheMove(moveChoice, trainer[opponentCurrent], player[currentPokemon]);
+	faint(currentPokemon, opponentCurrent, player, trainer);
+
+	if (opponentCurrent < trainer.size() && currentPokemon < player.size()) {
+		display battleScreen(player[currentPokemon], trainer[opponentCurrent]);
+		battleScreen.updateHP();
+		battleScreen.printScreen();
+	}
+
+	int count = 0;
+	int count2 = 0;
+
+	for (int f = 0; f < player.size(); f++) {
+		if (player[f].stat.getHP() <= 0) {
+			count++;
+		}
+	}
+
+	for (int f = 0; f < trainer.size(); f++) {
+		if (trainer[f].stat.getHP() <= 0) {
+			count2++;
+		}
+	}
+
+	if (count >= player.size()) {
+		p1Alive = false;
+	}
+	if (count2 >= trainer.size()) {
+		trainerAlive = false;
+	}
+
+	std::cout << "Press any key to continue...\n";
+	std::cin.ignore();
+	std::cin.get();
+}
+
 void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> &player, std::vector<Pokemon> &trainer) {
 	int moveChoice = 0;
 	int oppMoveChoice = 0;
@@ -1067,7 +1106,7 @@ void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon>
 			if (player2[currentPokemon2].flinched == true)
 				player2[currentPokemon2].flinched == false;
 
-			useTheMove(moveChoice, player2[currentPokemon2], player[currentPokemon]);
+			useTheMove(moveChoice2, player2[currentPokemon2], player[currentPokemon]);
 
 			faint(currentPokemon, currentPokemon2, player, player2);
 
@@ -1122,15 +1161,12 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 	int currentPokemon = 0, opponentCurrent = 0;
 	int choice = 0, choice2 = 0;
 	int moveChoice = 0, moveChoice2 = 0;
+	PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 
 	while (p1Alive == true && p2Alive == true) {
-		PlaySound(TEXT("red.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
-		std::cout << "Press any key to continue...\n";
-		std::cin.ignore();
-		std::cin.get();
 		choice = 0;
 		choice2 = 0;
-		while (choice != 1 || choice != 2 && p1Alive == true && p2Alive == true) {
+		while (choice != 1 && choice != 2 && p1Alive == true && p2Alive == true) {
 			system("CLS");
 			display battleScreen(player1[currentPokemon], player2[opponentCurrent]);
 			battleScreen.updateHP();
@@ -1142,7 +1178,6 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 			if (choice == 1) {
 				system("CLS");
 				moveChoice = 0;
-				moveChoice2 = 0;
 				while (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
 
 					std::cout << "|============================|" << std::endl;
@@ -1162,11 +1197,11 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 					}
 				}
 			}
-			if (choice == 2) {
+			else if (choice == 2) {
 				system("CLS");
 				choosePokemon(currentPokemon, player1);
 				std::cout << "Player 1 sent out " << player1[currentPokemon].name << "!\n";
-				oppMove(currentPokemon, opponentCurrent, player2, player1);
+				//oppMMove(currentPokemon, opponentCurrent, player2, player1);
 				//Pokemon screen
 			}
 			else {
@@ -1174,7 +1209,7 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 				std::cin.ignore(INT_MAX, '\n');
 			}
 		}
-		while (choice != 1 || choice != 2 && p1Alive == true && p2Alive == true) {
+		while (choice2 != 1 && choice2 != 2 && p1Alive == true && p2Alive == true) {
 			system("CLS");
 			display battleScreen(player1[currentPokemon], player2[opponentCurrent]);
 			battleScreen.updateHP();
@@ -1183,9 +1218,8 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 			std::cout << "Player2:\n1. Move \n2. Pokemon" << std::endl;
 			std::cin >> choice2;
 
-			if (choice == 1) {
+			if (choice2 == 1) {
 				system("CLS");
-				moveChoice = 0;
 				moveChoice2 = 0;
 				while (moveChoice2 != 1 && moveChoice2 != 2 && moveChoice2 != 3 && moveChoice2 != 4) {
 					std::cout << "|============================|" << std::endl;
@@ -1206,11 +1240,11 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 				}
 			}
 
-			if (choice == 2) {
+			else if (choice2 == 2) {
 				system("CLS");
-				choosePokemon(currentPokemon, player1);
-				std::cout << "Player 2 sent out " << player1[currentPokemon].name << "!\n";
-				oppMove(currentPokemon, opponentCurrent, player2, player1);
+				choosePokemon(opponentCurrent, player2);
+				std::cout << "Player 2 sent out " << player2[currentPokemon].name << "!\n";
+				//oppMMove(currentPokemon, opponentCurrent, player2, player1);
 				//Pokemon screen
 			}
 			else {
@@ -1219,7 +1253,16 @@ void startMBattle(std::vector<Pokemon> &player1, std::vector<Pokemon> &player2) 
 			}
 			system("CLS");
 		}
-		selectMMove(currentPokemon, opponentCurrent, player1, player2, moveChoice, moveChoice2);
+
+		if (choice != 2 && choice2 != 2) {
+			selectMMove(currentPokemon, opponentCurrent, player1, player2, moveChoice, moveChoice2);
+		}
+		if (choice == 2 && choice2 != 2) {
+			oppMMove(currentPokemon, opponentCurrent, player2, player1, moveChoice2);
+		}
+		if (choice != 2 && choice2 == 2) {
+			oppMMove(opponentCurrent, currentPokemon, player1, player2, moveChoice);
+		}
 	}
 }
 
