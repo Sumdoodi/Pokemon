@@ -985,7 +985,8 @@ void selectMove(int &currentPokemon, int &opponentCurrent, std::vector<Pokemon> 
 	int oppMoveChoice = 0;
 	bool p1first = false;
 	bool tfirst = false;
-
+	player[currentPokemon].flinched = false;
+	trainer[opponentCurrent].flinched = false;
 	if (currentPokemon < player.size()) {
 
 	while (moveChoice != 1 && moveChoice != 2 && moveChoice != 3 && moveChoice != 4) {
@@ -1138,7 +1139,8 @@ void startBattle(std::vector<Pokemon> player, std::vector<Pokemon> trainer) {
 void selectMMove(int &currentPokemon, int &currentPokemon2, std::vector<Pokemon> &player, std::vector<Pokemon> &player2, int moveChoice, int moveChoice2) {
 	bool p1first = false;
 	bool p2first = false;
-
+	player[currentPokemon].flinched = false;
+	player2[currentPokemon2].flinched = false;
 	if (currentPokemon < player.size()) {
 
 		player[currentPokemon].changeMod(player[currentPokemon].spdStage, player[currentPokemon].spdMod);
@@ -1710,9 +1712,6 @@ int main() {
 
 			startMBattle(player1, player2);
 			endBattle();
-			for (;;) {
-				std::cout << "Fuck you!";
-			}
 
 			multiplayer = false;
 		}

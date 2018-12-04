@@ -174,7 +174,6 @@ void Pokemon::changeAcc(int &stage, float &mod) {
 
 void Pokemon::useMove(Moves &move, Pokemon &other) {
 	move.damage = 0;
-	flinched = false;
 	statusEffect(move);
 
 	changeAcc(accStage, accMod);
@@ -226,10 +225,6 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 			chance = rand() % 10000;
 			if (chance < 3333) {
 				stat.setHP(stat.getHP() - ((((2*50 / 5 + 2)*stat.ATK * 40) / stat.DEF) / 50) + 2);
-
-			}
-			else if (move.getACC() * accMod * other.evaMod * 100 < missed && move.getACC() != 0.0f) {
-				std::cout << move.name << " missed!" << std::endl;
 			}
 			else {
 				other.stat.setHP(other.stat.getHP() - move.damage);
@@ -258,7 +253,6 @@ void Pokemon::useMove(Moves &move, Pokemon &other) {
 		if (flinched == true) {
 			std::cout << name << " flinched and could not move!" << std::endl;
 			flinched = false;
-			charge = false;
 		}
 	}
 	statusEffectBP(move);
@@ -477,13 +471,6 @@ void Pokemon::secondaryEffect(Pokemon &opp, Moves &move) {
 	//Kills pokemon
 	else if (move.getSEC() == "death") {
 		stat.setHP(0);
-	}
-	//Charges move for one turn
-	else if (move.getSEC() == "charge") {
-		if (charge == false) {
-			chargeturn = 1;
-			charge = true;
-		}
 	}
 	//Takes 50% of damage done and recovers pokemon
 	else if (move.getSEC() == "drain50") {
