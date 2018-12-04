@@ -18,12 +18,75 @@ bool story = false, multiplayer = false, extra = false;
 bool p1Alive = true, p2Alive = true, trainerAlive = true;
 int num;
 int pkm = 0;
-unsigned int stage = 1;
+unsigned int stage = 0;
 
 std::vector<Pokemon> pokemonList;
 std::vector<Pokemon> trainer;
 std::string trainerName;
 
+char TL = '+', TM = '-', TR = '+', ML = '+', MM = '-', MR = '+', BL = ' ', BM = '+', BR = ' ';
+int TLX = 2, TLY = 31;
+int TMX = TLX + 1, TMY = TLY;
+int TRX = TLX + 2, TRY = TLY;
+int MLX = TLX, MLY = TLY + 1;
+int MMX = TLX + 1, MMY = TLY + 1;
+int MRX = TLX + 2, MRY = TLY + 1;
+int BLX = TLX, BLY = TLY + 2;
+int BMX = TLX + 1, BMY = TLY + 2;
+int BRX = TLX + 2, BRY = TLY + 2;
+
+char map[35][67] = 
+{'+','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','+',
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X','X','X','X',' ','X','X','X','X','X',' ',' ','X','X','X',' ',' ',' ','X','X','X','X',' ',' ','X','X','X','X',' ','X','X','X','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ','X',' ',' ',' ','X',' ',' ',' ','X',' ','X',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X','X','X','X',' ',' ',' ','X',' ',' ',' ','X','X','X','X','X',' ','X',' ',' ','X','X',' ',' ','X','X','X',' ',' ','X','X','X','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ','X',' ',' ',' ','X',' ',' ',' ','X',' ','X',' ',' ',' ','X',' ',' ','X',' ',' ',' ',' ',' ',' ',' ','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','X','X','X','X',' ',' ',' ','X',' ',' ',' ','X',' ',' ',' ','X',' ',' ','X','X','X','X',' ',' ','X','X','X','X',' ','X','X','X','X',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','-','-','-','-','-','-','-','-','+' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',TL,TM,TR,' ',' ',' ',' ',' ',' ',' ',' ','+','-','-','-','-','+',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',ML,MM,MR,' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'|',' ',BL,BM,BR,' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|' ,
+'+','-','-','-','-','-','-','-','-','-','-','-','-','+','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','+' };
+
+void printMap(){
+	system("CLS");
+	std::cout << std::endl;
+	for (int row = 0; row < 35; row++)
+	{
+		std::cout << "                          ";
+		for (int col = 0; col < 67; col++)
+		{
+			std::cout << map[row][col];
+		}
+		std::cout << std::endl;
+	}
+	std::cin.ignore();
+	std::cin.get();
+}
 
 Picture venusaur_img(" +----------------+", " |                |",  " |      |--|      |", " |     +----+     |", " |       ||       |", " |    +------+    |", " |   +o o    ++   |", " |    +------+    |", " |     ||   ||    |", " +----------------+");
 Picture blastoise_img(" +----------------+", " |                |", " |  ++    ++      |", " |   +------+     |", " |   |    +---+   |", " |   | +  |o o|   |", " |   | |  +---+   |", " |   +------+     |", " |    ||  ||      |", " +----------------+");
@@ -268,10 +331,45 @@ Pokemon dragonite("33", "Dragonite",dragonite_stats, "dragon", "flying", "none",
 Pokemon mewtwo("34", "Mewtwo",mewtwo_stats, "psychic", "none", "none", psystrike, shadowball, recover, aurasphere, mewtwo_img);
 Pokemon ampharos("35", "Ampharos",ampharos_stats, "electric", "none", "none", thunderpunch, thunderwave, signalbeam, dragonpulse, ampharos_img);
 
+void rearangeMan(int x, int y) {
+	map[TLY][TLX] = ' ';
+	map[TMY][TMX] = ' ';
+	map[TRY][TRX] = ' ';
 
+	map[MLY][MLX] = ' ';
+	map[MMY][MMX] = ' ';
+	map[MRY][MRX] = ' ';
+
+	map[BLY][BLX] = ' ';
+	map[BMY][BMX] = ' ';
+	map[BRY][BRX] = ' ';
+
+	TLX += x, TLY -= y;
+	TMX = TLX + 1, TMY = TLY;
+	TRX = TLX + 2, TRY = TLY;
+
+	MLX = TLX, MLY = TLY + 1;
+	MMX = TLX + 1, MMY = TLY + 1;
+	MRX = TLX + 2, MRY = TLY + 1;
+
+	BLX = TLX, BLY = TLY + 2;
+	BMX = TLX + 1, BMY = TLY + 2;
+	BRX = TLX + 2, BRY = TLY + 2;
+
+	map[TLY][TLX] = TL;
+	map[TMY][TMX] = TM;
+	map[TRY][TRX] = TR;
+
+	map[MLY][MLX] = ML;
+	map[MMY][MMX] = MM;
+	map[MRY][MRX] = MR;
+
+	map[BLY][BLX] = BL;
+	map[BMY][BMX] = BM;
+	map[BRY][BRX] = BR;
+}
 void printScreen() {
 	int choice;
-
 	std::cout << std::endl << "========================================================================================================================" << std::endl;
 	std::cout << "  			                                .::." << std::endl;
 	std::cout << "  					              .;:**'               " << std::endl;
@@ -1367,6 +1465,12 @@ int main() {
 			std::vector<Pokemon> player1;
 
 			if (p1Alive == true) {
+				if (stage == 0) {
+					printMap();
+					rearangeMan(7, 0);
+					printMap();
+					stage++;
+				}
 				if (stage == 1) {
 					//Stage 1
 					num = 3;
@@ -1386,6 +1490,14 @@ int main() {
 						std::cout << "Jiminy: 'How did this happen!?'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 1. Venusaur | 7. Raticate | 10. Sandslash |" << std::endl;
+
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1414,6 +1526,13 @@ int main() {
 						std::cout << "Robert: 'You know sometimes it really be like that.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 3. Blastoise | 17. Tentacruel |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1443,6 +1562,13 @@ int main() {
 						std::cout << "Myles: 'Really??? That shouldn't have happened... I'll need to rethink my strategy. I'll give you it though!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 2. Charizard | 11. Nidoking | 16. Machamp |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1472,6 +1598,13 @@ int main() {
 						std::cout << "Charley: 'Oh wow! That was really fun, thanks for the match!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 25. Jynx | 27 Lapras |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1504,6 +1637,13 @@ int main() {
 						std::cout << "Kennedy: 'NO WAY okay good job.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 12. Clefable | 14. Poliwrath | 19. Magneton | 22. Exeguutor | 29. Snorlax |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1536,6 +1676,13 @@ int main() {
 						std::cout << "Ryan: 'Oh dear, that was certainly unexpected. You played beautifully, good job!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 18. Golem | 23. Weezing |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1568,6 +1715,13 @@ int main() {
 						std::cout << "Steph: 'That's a big oof, my beautiful birds have been defeated!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 13. Arcanine | 24. Scyther |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1601,6 +1755,13 @@ int main() {
 						std::cout << "'Cob: Ahaha! Nice teambuilding, I'll get you next time though.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
 						std::cout << "You unlocked some new Pokemon: | 15. Alakazam | 20. Gengar | 28. Aerodactyl |" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1631,6 +1792,13 @@ int main() {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "Jonah: 'Oh, okay I'll give you it. Good luck with your next opponent.'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". Congratulations!" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 						std::cin.ignore();
@@ -1664,6 +1832,13 @@ int main() {
 						PlaySound(TEXT("win.wav"), NULL, SND_FILENAME | SND_LOOP | SND_ASYNC);
 						std::cout << "Rhyss: 'You're now the Pokemon champion! Congratulations my friend!'" << std::endl;
 						std::cout << "You defeated " << trainerName << ". You're the new Pokemon League Champion!" << std::endl;
+						std::cin.ignore();
+						std::cin.get();
+
+						system("CLS");
+						printMap();
+						rearangeMan(5, 3);
+						printMap();
 						stage++;
 						endBattle();
 					}
@@ -1675,9 +1850,13 @@ int main() {
 				}
 
 				else if (stage == 11) {
-					std::cout << "You defeated EVERYONE!";
-					std::cout << "In return, you unlocked Ampharos for multiplayer mode. This was Rhyss's favourite Pokemon.";
-					std::cout << "This game is dedicated to Rhyss Glenfield, our best friend.";
+					system("CLS");
+					printMap();
+					rearangeMan(7, 0);
+					printMap();
+					std::cout << "You defeated EVERYONE!" << std::endl;
+					std::cout << "In return, you unlocked Ampharos for multiplayer mode. This was Rhyss's favourite Pokemon." << std::endl;
+					std::cout << "This game is dedicated to Rhyss Glenfield, our best friend." << std::endl;
 					story = false;
 					extra = true;
 				}
@@ -1687,8 +1866,8 @@ int main() {
 				std::cout << "You were defeated on stage " << stage << "!\n";
 				story = false;
 			}
-			std::cin.ignore();
-			std::cin.get();
+			/*std::cin.ignore();
+			std::cin.get();*/
 			pokemonList.clear();
 		}
 
