@@ -1,0 +1,5 @@
+﻿  BattleScreen.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+  Generating code
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(300): warning C4715: 'Pokemon::critical': not all control paths return a value
+  Finished generating code
+  Pokemon.vcxproj -> C:\Users\steph\source\repos\Pokemon\Pokemon\Release\Pokemon.exe

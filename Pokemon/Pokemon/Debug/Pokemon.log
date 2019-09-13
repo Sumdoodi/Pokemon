@@ -1,59 +1,93 @@
-﻿  main.cpp
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(101): warning C4129: ' ': unrecognized character escape sequence
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(103): warning C4129: ' ': unrecognized character escape sequence
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(104): warning C4129: ' ': unrecognized character escape sequence
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(110): warning C4129: ' ': unrecognized character escape sequence
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(116): warning C4129: ' ': unrecognized character escape sequence
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(670): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(679): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(686): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(692): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(700): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(782): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(791): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(798): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(804): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(914): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(929): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(935): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(954): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(958): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(964): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(968): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(972): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(979): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(983): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(989): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(993): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(996): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1009): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1018): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1024): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1030): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1033): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1048): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1057): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1063): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1069): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1072): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1088): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1128): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1147): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1164): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1170): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1176): warning C4018: '>': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1180): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1186): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1189): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1242): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1260): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1279): warning C4553: '==': result of expression not used; did you intend '='?
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1296): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1302): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1308): warning C4018: '>': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1312): warning C4018: '>': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1316): warning C4018: '<': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1322): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1325): warning C4018: '>=': signed/unsigned mismatch
-c:\users\100702748\desktop\pokemon\pokemon\pokemon\pokemon\main.cpp(1452): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Pokemon.vcxproj -> C:\Users\100702748\Desktop\Pokemon\Pokemon\Pokemon\Debug\Pokemon.exe
+﻿  BattleScreen.cpp
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\BattleScreen.cpp(9,19): warning C4018:  '>=': signed/unsigned mismatch
+  main.cpp
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\BattleScreen.cpp(14,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(101,68): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(103,68): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(104,115): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(110,89): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(110,112): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(116,114): warning C4129:  ' ': unrecognized character escape sequence
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(670,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(679,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(686,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(692,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(700,24): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(782,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(791,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(798,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(804,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(914,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(929,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(935,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(954,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(958,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(964,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(968,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(972,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(979,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(983,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(989,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(993,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(996,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1009,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1009,57): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1018,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1024,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1030,12): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1033,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1048,22): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1048,57): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1057,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1063,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1069,12): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1072,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1088,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1128,37): warning C4553:  '==': result of expression not used; did you intend '='?
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1147,39): warning C4553:  '==': result of expression not used; did you intend '='?
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1164,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1170,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1176,65): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1176,91): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1180,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1180,58): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1186,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1189,14): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1242,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1260,37): warning C4553:  '==': result of expression not used; did you intend '='?
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1279,39): warning C4553:  '==': result of expression not used; did you intend '='?
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1296,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1302,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1308,65): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1308,91): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1312,67): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1312,93): warning C4018:  '>': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1316,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1316,58): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1322,13): warning C4018:  '>=': signed/unsigned mismatch
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1325,14): warning C4018:  '>=': signed/unsigned mismatch
+  Moves.cpp
+  picture.cpp
+  Pokemon.cpp
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\main.cpp(1452,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(192,35): warning C4244:  '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(194,21): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(195,13): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(196,13): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(211,117): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(214,125): warning C4244:  '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(297,10): warning C4244:  'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(313,36): warning C4244:  '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(319,36): warning C4244:  '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(389,20): warning C4244:  '*=': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(468,19): warning C4244:  '*=': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(617,20): warning C4244:  '*=': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(813,10): warning C4244:  'return': conversion from 'double' to 'int', possible loss of data
+  SecondaryEffect.cpp
+  Stats.cpp
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(821,10): warning C4244:  'return': conversion from 'double' to 'int', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Stats.cpp(32,10): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Stats.cpp(148,9): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\steph\source\repos\Pokemon\Pokemon\Pokemon\Pokemon.cpp(300): warning C4715:  'Pokemon::critical': not all control paths return a value
+  Pokemon.vcxproj -> C:\Users\steph\source\repos\Pokemon\Pokemon\Debug\Pokemon.exe
